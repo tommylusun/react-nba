@@ -1,0 +1,10 @@
+Table {
+    /* display: block; */
+    max-height: 300px !important;
+    overflow: auto !important;
+}
+.table-body {
+    /* display: block; */
+    max-height: 100px !important;
+    overflow: auto !important;
+}
