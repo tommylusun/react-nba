@@ -17,10 +17,9 @@ class GameStats extends Component {
     
     render() {
 
-        this.currentPeriodString = '';
+        this.currentPeriodString = null;
         this.progressBar = <LinearProgress className={styles.livebar}/>;
         this.data = this.props.stats;
-        console.log(this.props.stats);
         if (this.data === undefined){
             return null;
         }
@@ -65,15 +64,15 @@ class GameStats extends Component {
             if (this.data.clock==='' || this.data.clock === undefined) {
                 this.data.clock = '--';
             } else {
-                this.currentPeriodString = 'Period: ' + this.data.period.current;
+                this.currentPeriodString = (<p>Period: {this.data.period.current}</p>);
             }
             if (this.data.statusNum === 3){
                 this.data.clock = 'Final';
                 this.progressBar = null;
+                this.currentPeriodString = null;
             }
             
         }
-        console.log(this.progressBar);
         return (
             <div className={styles.container}>
                 <Grid>
@@ -91,7 +90,7 @@ class GameStats extends Component {
                         </Grid.Column>
                         <Grid.Column className={styles.middleCol}>
                             <h1>{this.data.clock}</h1>
-                            <p>{this.currentPeriodString}</p>
+                            {this.currentPeriodString}
 
                         </Grid.Column>
                         <Grid.Column>

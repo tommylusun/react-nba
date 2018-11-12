@@ -25,7 +25,6 @@ class MatchDetails extends Component {
     }
 
     render() {
-        
         if (!!this.props.match.stats){
             this.basicGameData = this.props.match.basicGameData;
             this.match = this.props.match.stats;
