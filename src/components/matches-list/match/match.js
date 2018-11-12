@@ -19,7 +19,11 @@ class Match extends Component {
             this.props.match.hTeam.score = '--';
             this.props.match.vTeam.score = '--';
         } else{
-            period = 'P' + this.props.match.period.current;
+            period = 'P' + this.props.match.period.current + ' ' + this.props.match.clock;
+        }
+
+        if (this.props.match.statusNum===3){
+            period = "End";
         }
 
         return (
@@ -35,7 +39,7 @@ class Match extends Component {
                 <p>{this.props.match.vTeam.score}</p>
             </div>
             <div className={styles.col}>
-                <label>{period} {this.props.match.clock}</label>
+                <label>{period}</label>
             </div>
                 
             </div>

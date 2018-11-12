@@ -9,7 +9,6 @@ class MatchesList extends Component {
 
 
     render() {
-        // this.props.selected();
         const matches = this.props.games;
         if (matches===null || matches===undefined){
             return <div>Loading...</div>;   
