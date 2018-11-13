@@ -9,7 +9,7 @@ import { Loader, Grid, Button } from 'semantic-ui-react'
 
 class App extends Component {
 
-  baseURL = 'https://data.nba.net';
+  baseURL = 'https://cors.io/?https://data.nba.net';
   getTeamsURL = '/prod/v2/2018/teams.json';
   getPlayersURL = '/prod/v1/2018/players.json';
   
@@ -77,13 +77,17 @@ class App extends Component {
 
     // Get list of games, or show loading
     if (this.state.games===null){
-      matchList = (<Loader className='loader' size='large' active content='Fetching games...' />);
+      matchList = (
+      <div className='divider'>
+        <Loader className='loader' size='large' active content='Fetching games...' />
+        </div>);
     } else {
       matchList = (
         <MatchesList 
         games={this.state.games}
         selected={this.onClickHandler}/>);
     }
+
 
     // Show match details if available
     if (this.state.match !== null){
