@@ -40,7 +40,7 @@ class GameStats extends Component {
                 </Table.Header>
                 <Table.Body>
                 <Table.Row>
-                    <Table.Cell>{this.data.hTeam.triCode}</Table.Cell>
+                    <Table.Cell>{this.data.hTeam.fullName}</Table.Cell>
                         <Table.Cell>{this.data.hTeam.linescore[0].score}</Table.Cell>
                         <Table.Cell>{this.data.hTeam.linescore[1].score}</Table.Cell>
                         <Table.Cell>{this.data.hTeam.linescore[2].score}</Table.Cell>
@@ -48,7 +48,7 @@ class GameStats extends Component {
                         <Table.Cell>{this.data.hTeam.score}</Table.Cell>
                     </Table.Row>
                     <Table.Row>
-                    <Table.Cell>{this.data.vTeam.triCode}</Table.Cell>
+                    <Table.Cell>{this.data.vTeam.fullName}</Table.Cell>
                         <Table.Cell>{this.data.vTeam.linescore[0].score}</Table.Cell>
                         <Table.Cell>{this.data.vTeam.linescore[1].score}</Table.Cell>
                         <Table.Cell>{this.data.vTeam.linescore[2].score}</Table.Cell>
@@ -83,7 +83,7 @@ class GameStats extends Component {
                     </Grid.Row> */}
                     <Grid.Row columns={5}>
                         <Grid.Column>
-                            <h1>{this.data.hTeam.triCode}</h1>
+                            <h1>{this.data.hTeam.fullName}</h1>
                         </Grid.Column>
                         <Grid.Column>
                             <h2>{this.data.hTeam.score}</h2>
@@ -97,7 +97,7 @@ class GameStats extends Component {
                             <h2>{this.data.vTeam.score}</h2>
                         </Grid.Column>
                         <Grid.Column>
-                            <h1>{this.data.vTeam.triCode}</h1>
+                            <h1>{this.data.vTeam.fullName}</h1>
                         </Grid.Column>
                     </Grid.Row>
                     {/* <Grid.Row>

@@ -30,13 +30,16 @@ class App extends Component {
   async componentDidMount() {
     this.setState({games: null});
     await this.getNBAGamesToday();
-
+    await this.getPlayers();
+    await this.getTeams();
     // Refresh the data every 10 seconds
     this.interval = setInterval(async () => {
       await this.getNBAGamesToday();
       console.log(this.state.matchId);
       if (this.state.matchId){
         const matchDetails = await this.getGameDetails(this.formatDate(this.date),this.state.matchId);
+        matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
+        matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
         this.setState({
           match: matchDetails.data
         });
@@ -53,6 +56,8 @@ class App extends Component {
     try {
       const matchDetails = await this.getGameDetails(dateFormatted,gameId);
       console.log(matchDetails);
+      matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
+      matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
       this.setState({
         match: matchDetails.data,
         matchId: gameId
@@ -96,6 +101,7 @@ class App extends Component {
         <MatchDetails className='App-Match-Details-Container'
         match={this.state.match}
         players={this.state.players}
+        
         ></MatchDetails>
       </Grid.Column>);
     }
@@ -127,20 +133,38 @@ class App extends Component {
   async getNBAGamesToday() {
     // this.setState({games: null});
     const dateFormatted = this.formatDate(this.date);
-    const res = await axios.get(this.baseURL + this.getTeamsURL);
-    const teams = await res.data.league.standard;
     const res2 = await axios.get(this.baseURL + this.getDayGamesURL(dateFormatted));
     const games = await res2.data.games;
-    const res3 = await axios.get(this.baseURL + this.getPlayersURL);
-    const players = await res3.data.league.standard;
     
     this.setState({
       games: games,
-      teams: teams,
-      players: players
     });
     return this.state;
     
+  }
+
+  async getPlayers() {
+    const res3 = await axios.get(this.baseURL + this.getPlayersURL);
+    const players = await res3.data.league.standard;
+    this.setState({
+      players: players,
+    });
+    return this.state;
+  }
+
+  async getTeams() {
+    const res = await axios.get(this.baseURL + this.getTeamsURL);
+    const teams = await res.data.league.standard;
+    console.log(teams);
+
+    this.setState({
+      teams: teams,
+    });
+    return this.state;
+  }
+
+  getTeamName(teamId) {
+    return this.state.teams.find( team => team.teamId === teamId);
   }
 }
 
