@@ -30,6 +30,7 @@
 .col {
     display: inline-block;
     width: 150px;
+    text-align: center;
 }
 
 .heading {

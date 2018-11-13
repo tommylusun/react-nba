@@ -9,7 +9,7 @@ import GameStats from './game-stats/game-stats';
 
 class MatchDetails extends Component {
 
-    loading = (<Loader inline='centered' active content='Loading' />);
+    loading = (<Loader className={styles.loading} inline='centered' active content='Loading' />);
     
     
     componentDidMount() {
@@ -25,6 +25,13 @@ class MatchDetails extends Component {
     }
 
     render() {
+        if (this.props.match === 'loading'){
+            return (
+                <div className = {styles['container-placeholder']}>
+                    {this.loading}
+                </div>
+            );
+        }
         if (!!this.props.match.stats){
             this.basicGameData = this.props.match.basicGameData;
             this.match = this.props.match.stats;
@@ -39,7 +46,7 @@ class MatchDetails extends Component {
             }
             
             return ( 
-                <Grid centered columns={2}>
+                <Grid centered columns={2} className={styles.container}>
                     <Grid.Row>
                     <GameStats stats={this.basicGameData}/>
                     </Grid.Row>
@@ -62,7 +69,7 @@ class MatchDetails extends Component {
             );
         } else {
             return (
-                <div className = {styles.container}>
+                <div className = {styles['container-placeholder']}>
                     <h3>Game Not Started</h3>
                 </div>
             );

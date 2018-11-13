@@ -50,9 +50,9 @@ class App extends Component {
   //Handle clicking on a match
   onClickHandler = async (gameId) => {
     const dateFormatted = this.formatDate(this.date);
-    // this.setState({
-    //   match: "loading"
-    // });
+    this.setState({
+      match: "loading"
+    });
     try {
       const matchDetails = await this.getGameDetails(dateFormatted,gameId);
       console.log(matchDetails);
