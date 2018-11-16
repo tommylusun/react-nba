@@ -35,7 +35,6 @@ class App extends Component {
     // Refresh the data every 10 seconds
     this.interval = setInterval(async () => {
       await this.getNBAGamesToday();
-      console.log(this.state.matchId);
       if (this.state.matchId){
         const matchDetails = await this.getGameDetails(this.formatDate(this.date),this.state.matchId);
         matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
@@ -55,7 +54,6 @@ class App extends Component {
     });
     try {
       const matchDetails = await this.getGameDetails(dateFormatted,gameId);
-      console.log(matchDetails);
       matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
       matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
       this.setState({
@@ -155,7 +153,6 @@ class App extends Component {
   async getTeams() {
     const res = await axios.get(this.baseURL + this.getTeamsURL);
     const teams = await res.data.league.standard;
-    console.log(teams);
 
     this.setState({
       teams: teams,

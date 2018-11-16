@@ -14,8 +14,6 @@ class GameStats extends Component {
         this.data = this.props.stats;   
     }
 
-    
-    
     render() {
 
         this.currentPeriodString = null;
