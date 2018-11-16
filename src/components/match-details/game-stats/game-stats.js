@@ -8,6 +8,7 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 
 class GameStats extends Component {
 
+    url = (tricode) => `https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/${tricode.toLowerCase()}.png`;
 
     componentDidMount() {
         this.data = this.props.stats;   
@@ -75,40 +76,52 @@ class GameStats extends Component {
         }
         return (
             <div className={styles.container}>
-                <Grid>
+                <Grid textAlign="center">
                     {/* <Grid.Row>
                         <div class="progress">
                             <div class="indeterminate"></div>
                         </div>
                     </Grid.Row> */}
-                    <Grid.Row columns={5}>
-                        <Grid.Column>
+                    <Grid.Row>
+                        <Grid.Column width={3}>
+                            <img src={this.url(this.data.hTeam.triCode)} alt="team"></img>
+                        </Grid.Column>
+                        <Grid.Column width={2}>
                             <h1>{this.data.hTeam.fullName}</h1>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column width={1}>
                             <h2>{this.data.hTeam.score}</h2>
                         </Grid.Column>
-                        <Grid.Column className={styles.middleCol}>
+                        <Grid.Column width={4} className={styles.middleCol}>
                             <h1>{this.data.clock}</h1>
                             {this.currentPeriodString}
 
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column width={1}>
                             <h2>{this.data.vTeam.score}</h2>
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column width={2}>
                             <h1>{this.data.vTeam.fullName}</h1>
+                        </Grid.Column>
+                        <Grid.Column width={3}>
+                            <img src={this.url(this.data.vTeam.triCode)} alt="team"></img>
                         </Grid.Column>
                     </Grid.Row>
                     {/* <Grid.Row>
                         <div>{this.data.nugget.text}</div>
                     </Grid.Row> */}
 
-                    <Grid.Row>
-                        {this.table}
+                    <Grid.Row textAlign="center">
+                        <Grid.Column width={8} textAlign="center">
+                            {this.table}
+                        </Grid.Column>
                     </Grid.Row>
+                    
                 </Grid>
-                {this.progressBar}                
+                <div className={styles.bar}>
+                    {this.progressBar}                
+
+                </div>
             </div>
             
         );

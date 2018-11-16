@@ -8,8 +8,8 @@ import axios from 'axios';
 import { Loader, Grid, Button } from 'semantic-ui-react'
 
 class App extends Component {
-
-  baseURL = 'https://cors.io/?https://data.nba.net';
+  //https://cors.io/?
+  baseURL = 'https://data.nba.net';
   getTeamsURL = '/prod/v2/2018/teams.json';
   getPlayersURL = '/prod/v1/2018/players.json';
   
@@ -111,7 +111,7 @@ class App extends Component {
         <Grid.Row divided className="App-Grid-Header">
           <img src={nbalogo} className="App-logo" alt="logo" />
         </Grid.Row>
-        <Grid.Row textAlign='centered'>
+        <Grid.Row textAlign='centered' className="App-body">
           <Grid.Column textAlign='centered' width={4} className='MatchesList-container'>
             <Button.Group>
               <Button onClick={() => this.dayHandler(-1)}>Prev Day</Button>

@@ -46,24 +46,24 @@ class MatchDetails extends Component {
             }
             
             return ( 
-                <Grid centered columns={2} className={styles.container}>
+                <Grid centered className={styles.container}>
                     <Grid.Row>
-                    <GameStats stats={this.basicGameData}/>
+                        <GameStats stats={this.basicGameData}/>
                     </Grid.Row>
-                    <Grid.Row>
-                    <Grid.Column>
+                    <div className={styles.playerstats}>
+                        <Grid.Column width={6} className={styles.playerscol}>
                             {/* <div className = {styles.container}> */}
                             {/* <h3>{this.home.triCode}</h3> */}
                                 {this.hPlayers}
                             {/* </div> */}
                         </Grid.Column>
-                        <Grid.Column>
+                        <Grid.Column width={6} className={styles.playerscol}>
                             {/* <div className = {styles.container}> */}
                             {/* <h3>{this.away.triCode}</h3> */}
                                 {this.vplayers}
                             {/* </div> */}
                         </Grid.Column>
-                    </Grid.Row>
+                    </div>
                 </Grid>
                 
             );

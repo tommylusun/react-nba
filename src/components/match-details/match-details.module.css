@@ -37,3 +37,9 @@ label {
     margin-top: 200px;
     padding: 100px;
 }
+.playerstats {
+    display: flex;
+}
+.playerscol {
+    padding: 15px;
+}
