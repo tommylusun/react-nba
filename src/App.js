@@ -9,7 +9,7 @@ import { Loader, Grid, Button } from 'semantic-ui-react'
 
 class App extends Component {
   //https://cors.io/?
-  baseURL = 'https://data.nba.net';
+  baseURL = 'https://cors.io/?https://data.nba.net';
   getTeamsURL = '/prod/v2/2018/teams.json';
   getPlayersURL = '/prod/v1/2018/players.json';
   
