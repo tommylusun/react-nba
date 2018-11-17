@@ -1,11 +1,14 @@
  .container {
-    /* display: flex; */
+    /* display: flex;
     /* text-align: end; */
     /* border: 1px solid black; */
-    /* box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.25);
-    margin-top: 100px; */
-    animation-name: example;
+    /* box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.25); */
+    /* margin-top: 100px; */
+    animation-name: example; 
     animation-duration: 0.2s;
+    padding: 10px;
+    min-width: 780px;
+    margin: 0;
 }
 
 @keyframes example {
@@ -38,7 +41,7 @@ label {
     padding: 100px;
 }
 .playerstats {
-    display: flex;
+    /* display: flex; */
 }
 .playerscol {
     padding: 15px;

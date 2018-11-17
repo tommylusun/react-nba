@@ -9,7 +9,7 @@ import { Loader, Grid, Button } from 'semantic-ui-react'
 
 class App extends Component {
   //https://cors.io/?
-  baseURL = 'https://cors.io/?https://data.nba.net';
+  baseURL = 'https://data.nba.net';
   getTeamsURL = '/prod/v2/2018/teams.json';
   getPlayersURL = '/prod/v1/2018/players.json';
   
@@ -73,57 +73,6 @@ class App extends Component {
 
   }
 
-
-  render() {
-    let match = null;
-    let matchList = null;
-
-    // Get list of games, or show loading
-    if (this.state.games===null){
-      matchList = (
-      <div className='divider'>
-        <Loader className='loader' size='large' active content='Fetching games...' />
-        </div>);
-    } else {
-      matchList = (
-        <MatchesList 
-        games={this.state.games}
-        selected={this.onClickHandler}/>);
-    }
-
-
-    // Show match details if available
-    if (this.state.match !== null){
-      match = (
-      <Grid.Column textAlign='centered' width={10} >
-        <MatchDetails className='App-Match-Details-Container'
-        match={this.state.match}
-        players={this.state.players}
-        
-        ></MatchDetails>
-      </Grid.Column>);
-    }
-
-    return (
-      <Grid centered>
-        <Grid.Row divided className="App-Grid-Header">
-          <img src={nbalogo} className="App-logo" alt="logo" />
-        </Grid.Row>
-        <Grid.Row textAlign='centered' className="App-body">
-          <Grid.Column textAlign='centered' width={4} className='MatchesList-container'>
-            <Button.Group>
-              <Button onClick={() => this.dayHandler(-1)}>Prev Day</Button>
-              <Button onClick={() => this.dayHandler(1)}>Next Day</Button>
-            </Button.Group>
-            <h1>{this.date.toDateString()}</h1>
-            {matchList}
-          </Grid.Column>
-          {match}
-        </Grid.Row>    
-      </Grid> 
-    );
-  }
-
   async getGameDetails(date, gameId) {
     return await axios.get(this.baseURL + this.getGameDetailsURL(date,gameId));
   }
@@ -163,6 +112,55 @@ class App extends Component {
   getTeamName(teamId) {
     return this.state.teams.find( team => team.teamId === teamId);
   }
+
+  render() {
+    let match = null;
+    let matchList = null;
+
+    // Get list of games, or show loading
+    if (this.state.games===null){
+      matchList = (
+      <div className='divider'>
+        <Loader className='loader' size='large' active content='Fetching games...' />
+        </div>);
+    } else {
+      matchList = (
+        <MatchesList 
+        games={this.state.games}
+        selected={this.onClickHandler}/>);
+    }
+    // Show match details if available
+    if (this.state.match !== null){
+      match = (
+      <Grid.Column textAlign='centered' width={12} >
+        <MatchDetails className='App-Match-Details-Container'
+        match={this.state.match}
+        players={this.state.players}
+        
+        ></MatchDetails>
+      </Grid.Column>);
+    }
+
+    return (
+      <Grid centered>
+        <Grid.Row divided className="App-Grid-Header">
+          <img src={nbalogo} className="App-logo" alt="logo" />
+        </Grid.Row>
+        <Grid.Row textAlign='centered' className="App-body">
+          <Grid.Column textAlign='centered' width={4} className='MatchesList-container'>
+            <Button.Group>
+              <Button onClick={() => this.dayHandler(-1)}>Prev Day</Button>
+              <Button onClick={() => this.dayHandler(1)}>Next Day</Button>
+            </Button.Group>
+            <h1 style={{margin: '25px'}}>{this.date.toDateString()}</h1>
+            {matchList}
+          </Grid.Column>
+          {match}
+        </Grid.Row>    
+      </Grid> 
+    );
+  }
+
 }
 
 export default App;

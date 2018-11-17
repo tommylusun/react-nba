@@ -7,6 +7,7 @@ import { Loader, Dimmer, Grid } from 'semantic-ui-react'
 import PlayerStats from './player-stats/player-stats';
 import GameStats from './game-stats/game-stats';
 
+
 class MatchDetails extends Component {
 
     loading = (<Loader className={styles.loading} inline='centered' active content='Loading' />);
@@ -46,25 +47,25 @@ class MatchDetails extends Component {
             }
             
             return ( 
-                <Grid centered className={styles.container}>
-                    <Grid.Row>
-                        <GameStats stats={this.basicGameData}/>
-                    </Grid.Row>
-                    <div className={styles.playerstats}>
-                        <Grid.Column width={6} className={styles.playerscol}>
-                            {/* <div className = {styles.container}> */}
-                            {/* <h3>{this.home.triCode}</h3> */}
-                                {this.hPlayers}
-                            {/* </div> */}
-                        </Grid.Column>
-                        <Grid.Column width={6} className={styles.playerscol}>
-                            {/* <div className = {styles.container}> */}
-                            {/* <h3>{this.away.triCode}</h3> */}
-                                {this.vplayers}
-                            {/* </div> */}
-                        </Grid.Column>
-                    </div>
-                </Grid>
+                <div className={styles.container}>
+                <Grid>
+
+                
+                        <Grid.Row>
+                            <GameStats stats={this.basicGameData}/>
+                        </Grid.Row>
+                        {/* <div className={styles.playerstats}> */}
+                        <Grid.Row>
+                            <Grid.Column width={8} className={styles.playerscol}>
+                                    {this.hPlayers}
+                            </Grid.Column>
+                            <Grid.Column width={8} className={styles.playerscol}>
+                                    {this.vplayers}
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                    {/* </div> */}
+                </div>
                 
             );
         } else {

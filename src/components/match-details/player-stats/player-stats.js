@@ -4,6 +4,11 @@ import React, {
 import styles from './player-stats.module.css';
 import { Table } from 'semantic-ui-react'
 
+// import Table2 from '@material-ui/core/Table';
+// import TableBody from '@material-ui/core/TableBody';
+// import TableCell from '@material-ui/core/TableCell';
+// import TableHead from '@material-ui/core/TableHead';
+// import TableRow from '@material-ui/core/TableRow';
 
 class PlayerStats extends Component {
 
@@ -19,11 +24,15 @@ class PlayerStats extends Component {
     renderPlayerList = () => {
         return this.props.playerList.map( player => {
             if (player.teamId === this.props.teamId){
-                const playerDetails = this.props.players.find( person => person.personId === player.personId);
+                let playerDetails = this.props.players.find( person => person.personId === player.personId);
+                if (playerDetails === undefined) {
+                    playerDetails = {firstName: "Not",lastName: "Found"};
+                }
+                
                 return (
                     <Table.Row>
                         <Table.Cell>{player.pos}</Table.Cell>
-                        <Table.Cell singleLine>{playerDetails.firstName[0]}. {playerDetails.lastName}</Table.Cell>
+                        <Table.Cell singleLine>{playerDetails.firstName} {playerDetails.lastName}</Table.Cell>
                         <Table.Cell>{player.points}</Table.Cell>
                         <Table.Cell>{player.assists}</Table.Cell>
                         <Table.Cell>{player.totReb}</Table.Cell>
@@ -40,12 +49,12 @@ class PlayerStats extends Component {
                 
                 <Table.Header>
                     <Table.Row>
-                        <Table.Cell>Position</Table.Cell>
-                        <Table.Cell>Player</Table.Cell>
-                        <Table.Cell>Points</Table.Cell>
-                        <Table.Cell>Assists</Table.Cell>
-                        <Table.Cell>Rebounds</Table.Cell>
-                        <Table.Cell>Minutes</Table.Cell>
+                        <Table.Cell><b>Pos</b></Table.Cell>
+                        <Table.Cell><b>Player</b></Table.Cell>
+                        <Table.Cell><b>Pts</b></Table.Cell>
+                        <Table.Cell><b>Ast</b></Table.Cell>
+                        <Table.Cell><b>Reb</b></Table.Cell>
+                        <Table.Cell><b>Minutes</b></Table.Cell>
                     </Table.Row>
                 </Table.Header>
                 

@@ -29,12 +29,12 @@ class GameStats extends Component {
             this.table = (<Table className={styles.table}>
                 <Table.Header>
                     <Table.Row>
-                        <Table.Cell>Team</Table.Cell>
-                        <Table.Cell>1</Table.Cell>
-                        <Table.Cell>2</Table.Cell>
-                        <Table.Cell>3</Table.Cell>
-                        <Table.Cell>4</Table.Cell>
-                        <Table.Cell>Total</Table.Cell>
+                        <Table.Cell><b>Team</b></Table.Cell>
+                        <Table.Cell><b>P1</b></Table.Cell>
+                        <Table.Cell><b>P2</b></Table.Cell>
+                        <Table.Cell><b>P3</b></Table.Cell>
+                        <Table.Cell><b>P4</b></Table.Cell>
+                        <Table.Cell><b>Total</b></Table.Cell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -75,34 +75,42 @@ class GameStats extends Component {
         return (
             <div className={styles.container}>
                 <Grid textAlign="center">
-                    {/* <Grid.Row>
-                        <div class="progress">
-                            <div class="indeterminate"></div>
-                        </div>
-                    </Grid.Row> */}
                     <Grid.Row>
-                        <Grid.Column width={3}>
-                            <img src={this.url(this.data.hTeam.triCode)} alt="team"></img>
-                        </Grid.Column>
-                        <Grid.Column width={2}>
+                        
+                        <Grid.Column width={6} className={styles.teamName}>
                             <h1>{this.data.hTeam.fullName}</h1>
                         </Grid.Column>
-                        <Grid.Column width={1}>
-                            <h2>{this.data.hTeam.score}</h2>
-                        </Grid.Column>
-                        <Grid.Column width={4} className={styles.middleCol}>
-                            <h1>{this.data.clock}</h1>
+                        
+                        <Grid.Column width={4} verticalAlign="middle" className={styles.middleCol}>
+                            <h3>{this.data.clock}</h3>
                             {this.currentPeriodString}
+                        </Grid.Column>
 
-                        </Grid.Column>
-                        <Grid.Column width={1}>
-                            <h2>{this.data.vTeam.score}</h2>
-                        </Grid.Column>
-                        <Grid.Column width={2}>
+                        <Grid.Column width={6} className={styles.teamName}>
                             <h1>{this.data.vTeam.fullName}</h1>
                         </Grid.Column>
-                        <Grid.Column width={3}>
-                            <img src={this.url(this.data.vTeam.triCode)} alt="team"></img>
+                        
+                    </Grid.Row>
+
+                    <Grid.Row>
+                        <Grid.Column width={4}>
+                            <img className={styles.image} src={this.url(this.data.hTeam.triCode)} alt="team"></img>
+                            <p><b>{this.data.hTeam.win} - {this.data.hTeam.loss}</b></p>
+                        </Grid.Column>
+                        <Grid.Column width={2} verticalAlign="middle">
+                            <h1 className={styles.score}> {this.data.hTeam.score}</h1>
+                        </Grid.Column>
+
+                        <Grid.Column width={2} verticalAlign="middle" className={styles.middleCol}>
+                            <h1>-</h1>
+                        </Grid.Column>
+
+                        <Grid.Column width={2} verticalAlign="middle">
+                            <h1 className={styles.score}>{this.data.vTeam.score}</h1>
+                        </Grid.Column>
+                        <Grid.Column width={4}>
+                            <img className={styles.image} src={this.url(this.data.vTeam.triCode)} alt="team"></img>
+                            <p><b>{this.data.vTeam.win} - {this.data.vTeam.loss}</b></p>
                         </Grid.Column>
                     </Grid.Row>
                     {/* <Grid.Row>
