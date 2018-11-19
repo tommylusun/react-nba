@@ -27,6 +27,7 @@ class MatchesList extends Component {
             <div>
                 {matchesList} 
             </div>
+            
         );
     }
 }

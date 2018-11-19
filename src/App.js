@@ -142,7 +142,7 @@ class App extends Component {
     }
 
     return (
-      <Grid centered>
+      <Grid centered className="App">
         <Grid.Row divided className="App-Grid-Header">
           <img src={nbalogo} className="App-logo" alt="logo" />
         </Grid.Row>

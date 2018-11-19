@@ -55,7 +55,7 @@ class MatchDetails extends Component {
                             <GameStats stats={this.basicGameData}/>
                         </Grid.Row>
                         {/* <div className={styles.playerstats}> */}
-                        <Grid.Row>
+                        <Grid.Row centered>
                             <Grid.Column width={8} className={styles.playerscol}>
                                     {this.hPlayers}
                             </Grid.Column>

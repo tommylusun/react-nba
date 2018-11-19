@@ -1,15 +1,20 @@
 .container {
+    display: flex;
     min-width: 180px;
     text-align: center;
-    /* border: 1px solid black; */
-    box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.25);
-    padding: 15px;
+    justify-content: center;
+    cursor: pointer;
+    /* border-bottom: 1px solid black; */
+    border-top: 1px solid rgba(0,0,0,0.25);
+    /* box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.25); */
+    padding: 10px;
     /* width: 400px; */
-    margin: 15px;
+    /* margin: 15px; */
     /* max-height: 300px;
     overflow: auto; */
     animation-name: example;
     animation-duration: 0.2s;
+    border-radius: 5px;
 }
 
 @keyframes example {
@@ -24,15 +29,41 @@
 }
 
 .container:hover{
-    background: rgba(167, 195, 255, 0.5)
+    background: rgba(0, 0, 0, 0.1)
+    
 }
 
+.record {
+    height: 20%;
+    font-size: 8pt;
+    font-weight: 600;
+}
 .col {
     display: inline-block;
-    width: 50%;
+    width: 20%;
     text-align: center;
+}
+.colMid{
+    display: inline-block;
+    width: 30%;
+    justify-content: center;
+    margin: auto;
+}
+.colScoreH{
+    display: inline-block;
+    width: 20%;
+    justify-content: center;
+    margin: auto;
+}
+.colScoreV{
+    display: inline-block;
+    width: 20%;
+    justify-content: center;
+    margin: auto;
 }
 
 .heading {
     margin: 10px;
+    height: 50px;
+    margin: auto;
 }

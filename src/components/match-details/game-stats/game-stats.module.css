@@ -1,5 +1,7 @@
-.ui.table {
-    /* width: 200px !important; */
+.table {
+    display: flex;
+    text-align: center;
+    align-items: center;
 }
 .livebar {
     width: 200px;
@@ -11,6 +13,7 @@
 }
 .container{
     margin: 25px;
+    margin-bottom: 0px;
     align-items: center;
     text-align: center;
 }
@@ -27,4 +30,33 @@
 }
 .score {
     font-size: 30pt;
+}
+ul {
+    list-style-type: none;
+    /* padding-left: 0px; */
+    text-align: start;
+}
+li {
+    /* padding-left : 15px; */
+    /* text-align: center; */
+    /* flex-wrap: nowrap; */
+    /* flex: none; */
+    /* vertical-align: middle; */
+    
+    /* border-top: solid 1px black; */
+}
+label {
+    text-align: start;
+    flex-wrap: nowrap;
+    min-width: 50px;
+    width: 50px;
+}
+.teamName {
+    min-width: 120px;
+}
+.header {
+    padding-top: 10px;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 5px;
+
 }

@@ -26,36 +26,36 @@ class GameStats extends Component {
         if (this.data.hTeam.linescore.length === 0 || this.data.vTeam.linescore.length === 0){
             this.table = null;
         } else {
-            this.table = (<Table className={styles.table}>
-                <Table.Header>
-                    <Table.Row>
-                        <Table.Cell><b>Team</b></Table.Cell>
-                        <Table.Cell><b>P1</b></Table.Cell>
-                        <Table.Cell><b>P2</b></Table.Cell>
-                        <Table.Cell><b>P3</b></Table.Cell>
-                        <Table.Cell><b>P4</b></Table.Cell>
-                        <Table.Cell><b>Total</b></Table.Cell>
-                    </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                <Table.Row>
-                    <Table.Cell>{this.data.hTeam.fullName}</Table.Cell>
-                        <Table.Cell>{this.data.hTeam.linescore[0].score}</Table.Cell>
-                        <Table.Cell>{this.data.hTeam.linescore[1].score}</Table.Cell>
-                        <Table.Cell>{this.data.hTeam.linescore[2].score}</Table.Cell>
-                        <Table.Cell>{this.data.hTeam.linescore[3].score}</Table.Cell>
-                        <Table.Cell>{this.data.hTeam.score}</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                    <Table.Cell>{this.data.vTeam.fullName}</Table.Cell>
-                        <Table.Cell>{this.data.vTeam.linescore[0].score}</Table.Cell>
-                        <Table.Cell>{this.data.vTeam.linescore[1].score}</Table.Cell>
-                        <Table.Cell>{this.data.vTeam.linescore[2].score}</Table.Cell>
-                        <Table.Cell>{this.data.vTeam.linescore[3].score}</Table.Cell>
-                        <Table.Cell>{this.data.vTeam.score}</Table.Cell>
-                    </Table.Row>
-                </Table.Body>
-            </Table>);
+            this.table = (
+                <div className={styles.table}>
+                    <ul>
+                        <li className={styles.header}>
+                            <label className={styles.teamName}><b>Team</b></label>
+                            <label><b>P1</b></label>
+                            <label><b>P2</b></label>
+                            <label><b>P3</b></label>
+                            <label><b>P4</b></label>
+                            <label><b>Total</b></label>
+                        </li>
+                        <li>
+                            <label className={styles.teamName}>{this.data.hTeam.fullName}</label>
+                            <label>{this.data.hTeam.linescore[0].score}</label>
+                            <label>{this.data.hTeam.linescore[1].score}</label>
+                            <label>{this.data.hTeam.linescore[2].score}</label>
+                            <label>{this.data.hTeam.linescore[3].score}</label>
+                            <label>{this.data.hTeam.score}</label>
+                        </li>
+                        <li>
+                            <label className={styles.teamName}>{this.data.vTeam.fullName}</label>
+                            <label>{this.data.vTeam.linescore[0].score}</label>
+                            <label>{this.data.vTeam.linescore[1].score}</label>
+                            <label>{this.data.vTeam.linescore[2].score}</label>
+                            <label>{this.data.vTeam.linescore[3].score}</label>
+                            <label>{this.data.vTeam.score}</label>
+                        </li>
+                    </ul>
+                </div>
+            );
             
             if (this.data.period.isEndOfPeriod){
                 this.data.clock = 'End of period '+ this.data.period.current;
@@ -117,10 +117,8 @@ class GameStats extends Component {
                         <div>{this.data.nugget.text}</div>
                     </Grid.Row> */}
 
-                    <Grid.Row textAlign="center">
-                        <Grid.Column width={8} textAlign="center">
+                    <Grid.Row centered>
                             {this.table}
-                        </Grid.Column>
                     </Grid.Row>
                     
                 </Grid>

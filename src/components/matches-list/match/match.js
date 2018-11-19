@@ -24,24 +24,36 @@ class Match extends Component {
 
         if (this.props.match.statusNum===3){
             period = "End";
+            // if (this.props.match.hTeam.score < this.props.match.vTeam.score) {
+            //     styles.colScoreH = {
+            //         fontSize: '600'
+            //     }
+            // } else {
+            //     styles.colScoreV = {
+            //         fontSize: '600'
+            //     }
+            // }
         }
 
         return (
             <div onClick={this.props.click} className={styles.container}>
                 <div className={styles.col}>
-                    <p className={styles.heading}>{this.props.match.hTeam.win} - {this.props.match.hTeam.loss}</p>
+                    <p className={styles.record}>{this.props.match.hTeam.win} - {this.props.match.hTeam.loss}</p>
                     <h4 className={styles.heading}>{this.props.match.hTeam.triCode}</h4>
+                </div>
+                <div className={styles.colScoreH}>
                     <p>{this.props.match.hTeam.score}</p>
                 </div>
-                <div className={styles.col}>
-                    <p className={styles.heading}>{this.props.match.vTeam.win} - {this.props.match.vTeam.loss}</p>
-                    <h4 className={styles.heading}>{this.props.match.vTeam.triCode}</h4>
+                <div className={styles.colMid}>
+                    <p>{period}</p>
+                </div>
+                <div className={styles.colScoreV}>
                     <p>{this.props.match.vTeam.score}</p>
                 </div>
                 <div className={styles.col}>
-                    <p>{period}</p>
+                    <p className={styles.record}>{this.props.match.vTeam.win} - {this.props.match.vTeam.loss}</p>
+                    <h4 className={styles.heading}>{this.props.match.vTeam.triCode}</h4>
                 </div>
-                
             </div>
         );
     }
