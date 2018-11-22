@@ -6,6 +6,8 @@ import MatchDetails from './components/match-details/match-details';
 import MatchesList from './components/matches-list/matches-list';
 import axios from 'axios';
 import { Loader, Grid, Button } from 'semantic-ui-react'
+import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+
 
 class App extends Component {
   //https://cors.io/?
@@ -28,7 +30,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    this.setState({games: null});
+    this.setState({games: null, date: this.date});
     await this.getNBAGamesToday();
     await this.getPlayers();
     await this.getTeams();
@@ -68,7 +70,7 @@ class App extends Component {
 
   dayHandler = async (offset) => {
     this.date.setDate(this.date.getDate() + offset);
-    this.setState({games:null});
+    this.setState({games:null, date: this.date});
     await this.getNBAGamesToday();
 
   }
@@ -126,26 +128,20 @@ class App extends Component {
     } else {
       matchList = (
         <MatchesList 
+        date={this.date}
         games={this.state.games}
         selected={this.onClickHandler}/>);
     }
     // Show match details if available
     if (this.state.match !== null){
       match = (
-      <Grid.Column textAlign='centered' width={12} >
+      <Grid.Column textAlign='centered' width={12} className='App-Match-Details-Container'>
         <MatchDetails className='App-Match-Details-Container'
         match={this.state.match}
-        players={this.state.players}
-        
-        ></MatchDetails>
+        players={this.state.players}/>
       </Grid.Column>);
     }
-
-    return (
-      <Grid centered className="App">
-        <Grid.Row divided className="App-Grid-Header">
-          <img src={nbalogo} className="App-logo" alt="logo" />
-        </Grid.Row>
+    let body = (
         <Grid.Row textAlign='centered' className="App-body">
           <Grid.Column textAlign='centered' width={4} className='MatchesList-container'>
             <Button.Group>
@@ -156,8 +152,32 @@ class App extends Component {
             {matchList}
           </Grid.Column>
           {match}
-        </Grid.Row>    
-      </Grid> 
+        </Grid.Row>  
+      );
+
+    return (
+      <BrowserRouter>
+        <Grid centered className="App">
+          <Grid.Row divided className="App-Grid-Header">
+          <Link to={'/'} onClick={() => {this.setState({ match: null})}}>
+            <img src={nbalogo} className="App-logo" alt="logo" />
+          </Link>
+            
+          </Grid.Row>
+          <Switch>
+              {/* <Route path="/posts" component={body} /> */}
+              <Route exact path="/matches" render={() => body}/>
+              <Route exact path="/matches/:date/:id" render={() => body}/>
+              <Redirect from="/" to="/matches" />
+             
+          </Switch>
+            <div className="App-footer">
+
+            </div>
+           
+        </Grid> 
+      </BrowserRouter>
+      
     );
   }
 

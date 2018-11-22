@@ -16,6 +16,7 @@ class MatchesList extends Component {
         const matchesList = matches.map(match => {
             return ( 
                 <Match
+                date={this.props.date}
                 click={()=>this.props.selected(match.gameId)}
                 match={match} 
                 key={match.gameId}/> 

@@ -45,7 +45,7 @@ class PlayerStats extends Component {
     
     render() {
         return (
-            <div>
+            <div className={styles.PlayersTable}>
                 <ul>
                     <li className={styles.header}>
                         <label><b>Pos</b></label>

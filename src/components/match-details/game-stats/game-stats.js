@@ -27,7 +27,7 @@ class GameStats extends Component {
             this.table = null;
         } else {
             this.table = (
-                <div className={styles.table}>
+                <div className={styles.GameScoreSummary}>
                     <ul>
                         <li className={styles.header}>
                             <label className={styles.teamName}><b>Team</b></label>

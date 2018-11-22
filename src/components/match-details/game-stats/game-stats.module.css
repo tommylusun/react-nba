@@ -1,4 +1,4 @@
-.table {
+.GameScoreSummary {
     display: flex;
     text-align: center;
     align-items: center;
@@ -31,30 +31,29 @@
 .score {
     font-size: 30pt;
 }
-ul {
+.GameScoreSummary ul {
     list-style-type: none;
-    /* padding-left: 0px; */
+    padding-left: 0px;
     text-align: start;
 }
-li {
-    /* padding-left : 15px; */
-    /* text-align: center; */
+.GameScoreSummary li {
+    padding-left : 15px;
+    text-align: center;
     /* flex-wrap: nowrap; */
     /* flex: none; */
-    /* vertical-align: middle; */
+    vertical-align: middle;
     
-    /* border-top: solid 1px black; */
 }
-label {
+.GameScoreSummary label {
     text-align: start;
     flex-wrap: nowrap;
     min-width: 50px;
     width: 50px;
 }
-.teamName {
+.GameScoreSummary .teamName {
     min-width: 120px;
 }
-.header {
+.GameScoreSummary .header {
     padding-top: 10px;
     background-color: rgba(0,0,0,0.1);
     border-radius: 5px;

@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    min-width: 180px;
+    min-width: 240px;
     text-align: center;
     justify-content: center;
     cursor: pointer;
