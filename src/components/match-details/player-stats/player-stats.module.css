@@ -14,7 +14,7 @@
     text-align: start;
     /* border: solid 1px rgba(0,0,0,0.1); */
     /* box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.25); */
-    width: 480px;
+    max-width: 480px;
     /* border-radius: 5px; */
 }
 .PlayersTable li {
@@ -22,20 +22,20 @@
     text-align: center;
     flex-wrap: nowrap;
     flex: none;
-    min-width: 480px;
+    /* min-width: 480px; */
     padding-top: 5px;
     
+    
     /* border-bottom: solid 1px black; */
-}
-.PlayersTable li:hover {
-    background-color: rgba(0,0,0,0.05);
 }
 .PlayersTable label {
     text-align: start;
     flex-wrap: nowrap;
     min-width: 50px;
     width: 50px;
+    cursor: pointer;
 }
+
 
 .PlayersTable .players {
     min-width: 200px;
@@ -52,3 +52,47 @@
 
     background-color: rgba(0,0,0,0.1);
 }
+
+.PlayersTable .morestats {
+    font-style: italic;
+    padding-bottom: 10px;
+    padding-top: 0px;
+    margin-top: 0px;
+    /* background-color: rgba(0,0,0,0.1); */
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-left: 1px solid rgba(0,0,0,0.1);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    animation-name: example; 
+    animation-duration: 0.2s;
+}
+.PlayersTable .playerRow:hover {
+    background-color: rgba(0,0,0,0.05);
+    
+}
+
+@keyframes example {
+    0%   {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0px);
+    }
+}
+.highlight {
+    background-color: rgba(0,0,0,0.05);
+}
+.PlayersTable .divider2{
+    position: relative;
+    /* display: block; */
+
+    /* padding-top: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-left: 1px solid rgba(0,0,0,0.1);
+    border-right: 1px solid rgba(0,0,0,0.1); */
+    /* animation-name: example; 
+    animation-duration: 0.2s; */
+  }

@@ -56,10 +56,10 @@ class MatchDetails extends Component {
                         </Grid.Row>
                         {/* <div className={styles.playerstats}> */}
                         <Grid.Row centered>
-                            <Grid.Column width={8} className={styles.playerscol}>
+                            <Grid.Column className={styles.playerscol}>
                                     {this.hPlayers}
                             </Grid.Column>
-                            <Grid.Column width={8} className={styles.playerscol}>
+                            <Grid.Column className={styles.playerscol}>
                                     {this.vplayers}
                             </Grid.Column>
                         </Grid.Row>

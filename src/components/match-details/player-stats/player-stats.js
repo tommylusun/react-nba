@@ -3,6 +3,9 @@ import React, {
 } from 'react';
 import styles from './player-stats.module.css';
 import { Table } from 'semantic-ui-react'
+import axios from 'axios';
+import { Loader } from 'semantic-ui-react'
+
 
 // import Table2 from '@material-ui/core/Table';
 // import TableBody from '@material-ui/core/TableBody';
@@ -12,13 +15,80 @@ import { Table } from 'semantic-ui-react'
 
 class PlayerStats extends Component {
 
+    getPlayerStatsURL = (personId) => `https://data.nba.net/prod/v1/2018/players/${personId}_profile.json`;
 
     componentDidMount() {
 
+        this.setState({players: {}});
+        
     }
 
-    getMoreStats = (player) => {
 
+    getPlayerStats = async (id) => {
+
+        console.log(this.getPlayerStatsURL(id));
+        let playerstats = await axios.get(this.getPlayerStatsURL(id));
+        return playerstats.data.league.standard.stats;
+
+    }
+    getMoreStats = async (player) => {
+        console.log(player);
+
+        if (this.state !== undefined && this.state.players){
+            if (!!this.state.players[player.personId]) {
+                let players = Object.assign({},this.state.players);
+                players[player.personId] = null;
+                this.setState({players: players});
+                return;
+            }
+        }
+        let stats = (<li className={styles.divider2}>
+            <Loader className='loader' size='small' active />
+        </li>); 
+        let players = Object.assign({},this.state.players);
+        players[player.personId] = stats;
+        this.setState({players: players});
+
+        let playerstats = await this.getPlayerStats(player.personId);
+        console.log(playerstats);
+
+        if (playerstats !== undefined){
+            let stats = (
+                <li className={styles.morestats}>
+                    <li>
+                        <label>Avg</label>
+                        <label className={styles.players}>2018 Season</label>
+                        <label>{playerstats.latest.ppg}</label>
+                        <label>{playerstats.latest.apg}</label>
+                        <label>{playerstats.latest.rpg}</label>
+                        <label>{playerstats.latest.mpg}</label>
+                    </li>
+                    <li>
+                        <label>Avg</label>
+                        <label className={styles.players}>Career</label>
+                        <label>{playerstats.careerSummary.ppg}</label>
+                        <label>{playerstats.careerSummary.apg}</label>
+                        <label>{playerstats.careerSummary.rpg}</label>
+                        <label>{playerstats.careerSummary.mpg}</label>
+                    </li>      
+                </li>
+            );
+            let players = Object.assign({},this.state.players);
+            players[player.personId] = stats;
+            this.setState({players: players});
+        }
+
+    }
+
+    showStats = (personId) => {
+        if (this.state === null){
+            return null;
+        }
+        if (this.state.players[personId] === undefined) {
+            return null;
+        } else {
+            return this.state.players[personId];
+        }
 
     }
     renderPlayerList = () => {
@@ -28,16 +98,20 @@ class PlayerStats extends Component {
                 if (playerDetails === undefined) {
                     playerDetails = {firstName: "Not",lastName: "Found"};
                 }
-                
+                const selected = (!!this.state && !!this.state.players[player.personId]) ? styles.highlight : '';
                 return (
-                    <li>
+                    <>
+                    <li className={[styles.playerRow, selected].join(' ')} onClick={() => this.getMoreStats(player)}>
                         <label>{player.pos}</label>
                         <label className={styles.players}>{playerDetails.firstName} {playerDetails.lastName}</label>
                         <label>{player.points}</label>
                         <label>{player.assists}</label>
                         <label>{player.totReb}</label>
                         <label>{player.min}</label>
-                    </li>);
+                    </li>
+                    {this.showStats(player.personId)}
+                    </>
+                    );
             }
             
         });
@@ -64,32 +138,3 @@ class PlayerStats extends Component {
 }
 
 export default PlayerStats;
-
-                    // <Table.Row>
-                    //     <Table.Cell>{player.pos}</Table.Cell>
-                    //     <Table.Cell singleLine>{playerDetails.firstName} {playerDetails.lastName}</Table.Cell>
-                    //     <Table.Cell>{player.points}</Table.Cell>
-                    //     <Table.Cell>{player.assists}</Table.Cell>
-                    //     <Table.Cell>{player.totReb}</Table.Cell>
-                    //     <Table.Cell>{player.min}</Table.Cell>
-                    // </Table.Row>);
-
-            // <Table sortable selectable size='small'>
-                
-            //     <Table.Header>
-            //         <Table.Row>
-            //             <Table.Cell><b>Pos</b></Table.Cell>
-            //             <Table.Cell><b>Player</b></Table.Cell>
-            //             <Table.Cell><b>Pts</b></Table.Cell>
-            //             <Table.Cell><b>Ast</b></Table.Cell>
-            //             <Table.Cell><b>Reb</b></Table.Cell>
-            //             <Table.Cell><b>Minutes</b></Table.Cell>
-            //         </Table.Row>
-            //     </Table.Header>
-                
-            //     <Table.Body className={styles['table-body']}>
-            //         {this.renderPlayerList()}
-            //     </Table.Body>
-                
-                
-            // </Table>
