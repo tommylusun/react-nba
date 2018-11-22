@@ -42,9 +42,12 @@ class PlayerStats extends Component {
                 return;
             }
         }
-        let stats = (<li className={styles.divider2}>
-            <Loader className='loader' size='small' active />
-        </li>); 
+        let stats = (
+            <div className={styles.divider2}>
+                <Loader className={styles.loader} size='small' active />
+
+            </div>
+        ); 
         let players = Object.assign({},this.state.players);
         players[player.personId] = stats;
         this.setState({players: players});
@@ -56,15 +59,16 @@ class PlayerStats extends Component {
             let stats = (
                 <li className={styles.morestats}>
                     <li>
-                        <label>Avg</label>
+                        <label></label>
                         <label className={styles.players}>2018 Season</label>
                         <label>{playerstats.latest.ppg}</label>
                         <label>{playerstats.latest.apg}</label>
                         <label>{playerstats.latest.rpg}</label>
                         <label>{playerstats.latest.mpg}</label>
+                        
                     </li>
                     <li>
-                        <label>Avg</label>
+                        <label></label>
                         <label className={styles.players}>Career</label>
                         <label>{playerstats.careerSummary.ppg}</label>
                         <label>{playerstats.careerSummary.apg}</label>

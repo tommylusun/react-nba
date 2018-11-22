@@ -157,13 +157,16 @@ class App extends Component {
 
     return (
       <BrowserRouter>
-        <Grid centered className="App">
-          <Grid.Row divided className="App-Grid-Header">
-          <Link to={'/'} onClick={() => {this.setState({ match: null})}}>
-            <img src={nbalogo} className="App-logo" alt="logo" />
-          </Link>
-            
+        <Grid className="App">
+          <Grid.Row className="App-Grid-Header">
+            <div className='App-Title'>
+              <Link style={{ textDecoration: 'none', color: 'black'}} to={'/'} onClick={() => {this.setState({ match: null})}}>
+                <h1 className='App-logo'>NBA Stats</h1>
+                {/* <img src='../public/nba_logo2.png' alt="nba-logo"></img> */}
+              </Link>
+            </div>
           </Grid.Row>
+
           <Switch>
               {/* <Route path="/posts" component={body} /> */}
               <Route exact path="/matches" render={() => body}/>

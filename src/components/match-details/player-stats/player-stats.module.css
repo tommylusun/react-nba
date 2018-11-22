@@ -85,14 +85,10 @@
 }
 .PlayersTable .divider2{
     position: relative;
-    /* display: block; */
-
-    /* padding-top: 10px;
-    text-align: center;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    border-left: 1px solid rgba(0,0,0,0.1);
-    border-right: 1px solid rgba(0,0,0,0.1); */
-    /* animation-name: example; 
-    animation-duration: 0.2s; */
   }
+
+.PlayersTable .loader {
+    display: inline-block;
+    top: -16px;
+    position: relative;
+}
