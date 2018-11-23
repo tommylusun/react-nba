@@ -35,17 +35,17 @@ class App extends Component {
     await this.getPlayers();
     await this.getTeams();
     // Refresh the data every 10 seconds
-    this.interval = setInterval(async () => {
-      await this.getNBAGamesToday();
-      if (this.state.matchId){
-        const matchDetails = await this.getGameDetails(this.formatDate(this.date),this.state.matchId);
-        matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
-        matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
-        this.setState({
-          match: matchDetails.data
-        });
-      }
-    }, 10000);
+    // this.interval = setInterval(async () => {
+    //   await this.getNBAGamesToday();
+    //   if (this.state.matchId){
+    //     const matchDetails = await this.getGameDetails(this.formatDate(this.date),this.state.matchId);
+    //     matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
+    //     matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
+    //     this.setState({
+    //       match: matchDetails.data
+    //     });
+    //   }
+    // }, 10000);
   }
 
   //Handle clicking on a match
@@ -54,18 +54,18 @@ class App extends Component {
     this.setState({
       match: "loading"
     });
-    try {
-      const matchDetails = await this.getGameDetails(dateFormatted,gameId);
-      matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
-      matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
-      this.setState({
-        match: matchDetails.data,
-        matchId: gameId
-      });
-    } 
-    catch (e) {
-      console.log(e);
-    } 
+    // try {
+    //   const matchDetails = await this.getGameDetails(dateFormatted,gameId);
+    //   matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
+    //   matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
+    //   this.setState({
+    //     match: matchDetails.data,
+    //     matchId: gameId
+    //   });
+    // } 
+    // catch (e) {
+    //   console.log(e);
+    // } 
   }
 
   dayHandler = async (offset) => {
@@ -115,8 +115,19 @@ class App extends Component {
     return this.state.teams.find( team => team.teamId === teamId);
   }
 
+  match = (
+    <Grid.Column textAlign='centered' width={12} className='App-Match-Details-Container'>
+    <Route exact path="/matches/:date/:id" component={ (props) => 
+        <MatchDetails 
+          className='App-Match-Details-Container'
+          {...props}
+          // game={this.state.match}
+          // players={this.state.players}
+          />}
+      />        
+    </Grid.Column>);
+
   render() {
-    let match = null;
     let matchList = null;
 
     // Get list of games, or show loading
@@ -127,20 +138,19 @@ class App extends Component {
         </div>);
     } else {
       matchList = (
-        <MatchesList 
-        date={this.date}
-        games={this.state.games}
-        selected={this.onClickHandler}/>);
+        // <Route path="/matches2" render={(props) => 
+          <MatchesList 
+          // {...props}
+            date={this.formatDate(this.date)}
+            games={this.state.games}
+            selected={this.onClickHandler}
+          // />}
+        /> 
+        );
     }
     // Show match details if available
-    if (this.state.match !== null){
-      match = (
-      <Grid.Column textAlign='centered' width={12} className='App-Match-Details-Container'>
-        <MatchDetails className='App-Match-Details-Container'
-        match={this.state.match}
-        players={this.state.players}/>
-      </Grid.Column>);
-    }
+    // if (this.state.match !== null){
+    // }
     let body = (
         <Grid.Row textAlign='centered' className="App-body">
           <Grid.Column textAlign='centered' width={4} className='MatchesList-container'>
@@ -151,7 +161,7 @@ class App extends Component {
             <h1 style={{margin: '25px'}}>{this.date.toDateString()}</h1>
             {matchList}
           </Grid.Column>
-          {match}
+          {this.match}
         </Grid.Row>  
       );
 
@@ -160,23 +170,19 @@ class App extends Component {
         <Grid className="App">
           <Grid.Row className="App-Grid-Header">
             <div className='App-Title'>
-              <Link style={{ textDecoration: 'none', color: 'black'}} to={'/'} onClick={() => {this.setState({ match: null})}}>
+              <Link style={{ textDecoration: 'none', color: 'black'}} to={'/'} onClick={() => {this.setState({ match: null, matchId: null})}}>
                 <h1 className='App-logo'>NBA Stats</h1>
                 {/* <img src='../public/nba_logo2.png' alt="nba-logo"></img> */}
               </Link>
             </div>
-          </Grid.Row>
-
+          </Grid.Row>    
           <Switch>
-              {/* <Route path="/posts" component={body} /> */}
-              <Route exact path="/matches" render={() => body}/>
-              <Route exact path="/matches/:date/:id" render={() => body}/>
-              <Redirect from="/" to="/matches" />
-             
+            {body}
           </Switch>
-            <div className="App-footer">
-
-            </div>
+          
+          {/* <Redirect from="/" to="/matches" /> */}
+          <div className="App-footer">
+          </div>
            
         </Grid> 
       </BrowserRouter>

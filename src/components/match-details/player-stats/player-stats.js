@@ -105,7 +105,7 @@ class PlayerStats extends Component {
                 const selected = (!!this.state && !!this.state.players[player.personId]) ? styles.highlight : '';
                 return (
                     <>
-                    <li className={[styles.playerRow, selected].join(' ')} onClick={() => this.getMoreStats(player)}>
+                    <li key={player.personId} className={[styles.playerRow, selected].join(' ')} onClick={() => this.getMoreStats(player)}>
                         <label>{player.pos}</label>
                         <label className={styles.players}>{playerDetails.firstName} {playerDetails.lastName}</label>
                         <label>{player.points}</label>
