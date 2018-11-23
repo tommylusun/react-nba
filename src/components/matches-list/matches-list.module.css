@@ -5,3 +5,9 @@
     height: 100vh;
     overflow-y: auto;
 }
+
+.divider{
+    margin-top: 100px;
+    position: relative;
+    display: block;
+}
