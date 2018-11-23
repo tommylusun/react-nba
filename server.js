@@ -1,21 +1,29 @@
 const path = require('path');
 const express = require('express');
-
+const cors = require('cors');
 const app = express();
+const axios = require('axios');
 
+app.use(cors());
 // Define the port to run on
 const port = process.env.PORT || 80;
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
 
+app.options('*', cors());
 app.use(express.static(path.join(__dirname, 'build')));
-app.get('*', (req, res)=>{
+app.get('/app/*', cors(), (req, res)=>{
     res.sendFile(path.join(__dirname, './build/index.html'));
   });
+
+app.get('/api', cors(), (req, res)=>{
+    console.log(req.query.request);
+    axios.get('https://data.nba.net' + req.query.request).then( response => {
+        res.send(response.data);
+    })
+    .catch(error => {
+        console.log(error);
+    }); 
+});
 
 // Listen for requests
 app.listen(port, () => {

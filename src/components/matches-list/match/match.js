@@ -37,7 +37,7 @@ class Match extends Component {
         }
 
         return (
-            <Link to={'/matches/' + this.props.date + '/' + this.props.match.gameId} style={{ textDecoration: 'none', color: 'black'}}>
+            <Link to={'/app/matches/' + this.props.date + '/' + this.props.match.gameId} style={{ textDecoration: 'none', color: 'black'}}>
                 <div className={styles.container}>
                     <div className={styles.col}>
                         <p className={styles.record}>{this.props.match.hTeam.win} - {this.props.match.hTeam.loss}</p>

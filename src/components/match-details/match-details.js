@@ -14,7 +14,7 @@ class gameDetails extends Component {
     loading = (<Loader className={styles.loading} inline='centered' active content='Loading' />);
     // game = 'loading';
     getGameDetailsURL = (formattedDate, gameId) => `/prod/v1/${formattedDate}/${gameId}_boxscore.json`;
-    baseURL = 'https://data.nba.net';
+    baseURL = '/api?request=';
     state = {game: 'loading'};
 
 

@@ -10,7 +10,7 @@ import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-rou
 
 
 class App extends Component {
-  baseURL = 'https://data.nba.net';
+  baseURL = '/api?request=';
   getTeamsURL = '/prod/v2/2018/teams.json';
   getPlayersURL = '/prod/v1/2018/players.json';
   
@@ -22,7 +22,7 @@ class App extends Component {
     this.date = new Date();
     this.state = {
       games: [],
-      teams: null,
+      teams: null,  
       match: null,
       players: null
     };
@@ -103,7 +103,7 @@ class App extends Component {
 
   render() {
     let match = (
-      <Route exact path="/matches/:date/:id" component={ (props) => 
+      <Route exact path="/app/matches/:date/:id" component={ (props) => 
           { return !!this.state.teams ? 
             <Grid.Column textAlign='centered' width={12} className='App-Match-Details-Container'>
             <MatchDetails 
@@ -117,7 +117,7 @@ class App extends Component {
       );
 
     let matchList = (
-        <Route path="/matches" render={() => 
+        <Route path="/app/matches" render={() => 
           <Grid.Column textAlign='centered' width={4} className='MatchesList-container'>
             <Button.Group>
               <Button onClick={() => this.dayHandler(-1)}>Prev Day</Button>
@@ -148,7 +148,7 @@ class App extends Component {
             
           <Grid.Row textAlign='centered' className="App-body">
             <Switch>
-              <Redirect exact from="/" to="/matches" />
+              <Redirect exact from="/" to="/app/matches" />
             </Switch>
               {matchList}
               {match}
