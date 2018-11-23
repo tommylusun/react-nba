@@ -10,8 +10,7 @@ import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-rou
 
 
 class App extends Component {
-  //https://cors.io/?
-  baseURL = 'https://cors.io/?https://data.nba.net';
+  baseURL = 'https://data.nba.net';
   getTeamsURL = '/prod/v2/2018/teams.json';
   getPlayersURL = '/prod/v1/2018/players.json';
   

@@ -15,7 +15,7 @@ import { Loader } from 'semantic-ui-react'
 
 class PlayerStats extends Component {
 
-    getPlayerStatsURL = (personId) => `https://cors.io/?https://data.nba.net/prod/v1/2018/players/${personId}_profile.json`;
+    getPlayerStatsURL = (personId) => `https://data.nba.net/prod/v1/2018/players/${personId}_profile.json`;
 
     componentDidMount() {
 
