@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 
 // Define the port to run on
-const port = 9090;
+const port = process.env.PORT || 80;
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
