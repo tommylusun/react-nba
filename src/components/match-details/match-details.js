@@ -2,21 +2,57 @@ import React, {
     Component
 } from 'react';
 import styles from './match-details.module.css';
-// import styles from './matches-list.module.css';
+// import styles from './gamees-list.module.css';
 import { Loader, Dimmer, Grid } from 'semantic-ui-react'
 import PlayerStats from './player-stats/player-stats';
 import GameStats from './game-stats/game-stats';
+import axios from 'axios';
 
 
-class MatchDetails extends Component {
+class gameDetails extends Component {
 
     loading = (<Loader className={styles.loading} inline='centered' active content='Loading' />);
-    
-    
-    componentDidMount() {
+    // game = 'loading';
+    getGameDetailsURL = (formattedDate, gameId) => `/prod/v1/${formattedDate}/${gameId}_boxscore.json`;
+    baseURL = 'https://cors.io/?https://data.nba.net';
+    state = {game: 'loading'};
+
+
+    async componentDidMount() {
         this.hPlayers = this.loading;
         this.vplayers = this.loading;
+        await this.getGameDetails(this.props.match.params.date,this.props.match.params.id);
     }
+
+    async componentWillReceiveProps(nextProps) {
+        if (this.props.match.params.id !== nextProps.match.params.id ){
+            await this.getGameDetails(nextProps.match.params.date,nextProps.match.params.id);
+        }
+        
+    }
+
+    async getGameDetails(date, gameId) {
+
+        try {
+            this.setState( {game: 'loading'});
+            // this.game = 'loading';
+            const matchDetails = await axios.get(this.baseURL + this.getGameDetailsURL(date,gameId));
+            matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
+            matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
+            this.setState( {game: matchDetails.data});
+            console.log(this.game);
+            return;
+
+          } 
+          catch (e) {
+            console.log(e);
+          } 
+        return true;
+    }
+
+    getTeamName(teamId) {
+        return this.props.teams.find( team => team.teamId === teamId);
+      }
     
 
     gameStats = (stats) => {
@@ -26,22 +62,24 @@ class MatchDetails extends Component {
     }
 
     render() {
-        if (this.props.match === 'loading'){
+        // this.props.game = null;
+        // this.props.game = 'loading';
+        if (this.state.game === 'loading' || !!!this.props.players){
             return (
                 <div className = {styles['container-placeholder']}>
                     {this.loading}
                 </div>
             );
         }
-        if (!!this.props.match.stats){
-            this.basicGameData = this.props.match.basicGameData;
-            this.match = this.props.match.stats;
-            this.home = this.props.match.basicGameData.hTeam;
-            this.away = this.props.match.basicGameData.vTeam;
-            this.activePlayers = this.match.activePlayers;
+        if (!!this.state.game.stats && !!this.state.game.basicGameData && !!this.state.game.stats.activePlayers){
+            this.basicGameData = this.state.game.basicGameData;
+            this.game = this.state.game.stats;
+            this.home = this.basicGameData.hTeam;
+            this.away = this.basicGameData.vTeam;
+            this.activePlayers = this.game.activePlayers;
             
                 
-            if (this.props.match !== 'loading') {
+            if (this.game !== 'loading') {
                 this.hPlayers = <PlayerStats playerList={this.activePlayers} players={this.props.players} teamId={this.home.teamId}/>;
                 this.vplayers = <PlayerStats playerList={this.activePlayers} players={this.props.players} teamId={this.away.teamId}/>;
             }
@@ -49,8 +87,6 @@ class MatchDetails extends Component {
             return ( 
                 <div className={styles.container}>
                 <Grid>
-
-                
                         <Grid.Row>
                             <GameStats stats={this.basicGameData}/>
                         </Grid.Row>
@@ -81,4 +117,4 @@ class MatchDetails extends Component {
     }
 }
 
-export default MatchDetails;
+export default gameDetails;

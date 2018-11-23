@@ -39,7 +39,6 @@
   min-width: 500px;
   background-color: rgb(255, 255, 255); 
   height: 85vh;
-  overflow: hidden;
 }
 body ::-webkit-scrollbar {
   width: 0px;
@@ -59,11 +58,7 @@ body ::-webkit-scrollbar {
   top: 50%;
   margin-top: 100px;
 }
-.divider{
-  margin-top: 100px;
-  position: relative;
-  display: block;
-}
+
 .App-footer{
   padding: 0px;
   top: 0px;
