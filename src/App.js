@@ -10,6 +10,7 @@ import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-rou
 
 
 class App extends Component {
+  
   baseURL = '/api?request=';
   // baseURL = 'https://data.nba.net';
   getTeamsURL = '/prod/v2/2018/teams.json';
@@ -31,51 +32,10 @@ class App extends Component {
 
   async componentDidMount() {
     this.setState({games: null, date: this.date});
-    await this.getNBAGamesToday();
     await this.getPlayers();
     await this.getTeams();
-
   }
 
-  //Handle clicking on a match
-  onClickHandler = async (gameId) => {
-    // const dateFormatted = this.formatDate(this.date);
-    // this.setState({
-    //   match: "loading"
-    // });
-    // try {
-    //   const matchDetails = await this.getGameDetails(dateFormatted,gameId);
-    //   matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
-    //   matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
-    //   this.setState({
-    //     match: matchDetails.data,
-    //     matchId: gameId
-    //   });
-    // } 
-    // catch (e) {
-    //   console.log(e);
-    // } 
-  }
-
-  dayHandler = async (offset) => {
-    this.date.setDate(this.date.getDate() + offset);
-    this.setState({games:null, date: this.date});
-    await this.getNBAGamesToday();
-
-  }
-
-  async getNBAGamesToday() {
-    // this.setState({games: null});
-    const dateFormatted = this.formatDate(this.date);
-    const res2 = await axios.get(this.baseURL + this.getDayGamesURL(dateFormatted));
-    const games = await res2.data.games;
-    
-    this.setState({
-      games: games,
-    });
-    return this.state;
-    
-  }
 
   async getPlayers() {
     const res3 = await axios.get(this.baseURL + this.getPlayersURL);
@@ -89,19 +49,14 @@ class App extends Component {
   async getTeams() {
     const res = await axios.get(this.baseURL + this.getTeamsURL);
     const teams = await res.data.league.standard;
-
     this.setState({
       teams: teams,
     });
     return this.state;
   }
 
-  getTeamName(teamId) {
-    return this.state.teams.find( team => team.teamId === teamId);
-  }
   match = (
     <Route exact path="/app/matches/:date/:id" component={ (props) => 
-        
           <Grid.Column textAlign='centered' width={12} className='App-Match-Details-Container'>
             <MatchDetails 
             className='App-Match-Details-Container'
@@ -111,33 +66,20 @@ class App extends Component {
             />
           </Grid.Column>
         }/>
-    );
-  
+  );
+
+  matchList = (
+    <Route path="/app/matches" render={() => 
+      <Grid.Column textAlign='centered' width={4} className='MatchesList-container'>
+        <MatchesList/>
+      </Grid.Column>
+      }/> 
+  );
 
   render() { 
-
     if (this.state.teams === null){
       return null;
     }
-
-    let matchList = (
-        <Route path="/app/matches" render={() => 
-          <Grid.Column textAlign='centered' width={4} className='MatchesList-container'>
-            <Button.Group>
-              <Button onClick={() => this.dayHandler(-1)}>Prev Day</Button>
-              <Button onClick={() => this.dayHandler(1)}>Next Day</Button>
-            </Button.Group>
-            <h1 style={{margin: '25px'}}>{this.date.toDateString()}</h1>
-            <MatchesList 
-              date={this.formatDate(this.date)}
-              games={this.state.games}
-              selected={this.onClickHandler}
-              />
-          </Grid.Column>
-          }
-        /> 
-        );
-
     return (
       <BrowserRouter>
         <Grid className="App">
@@ -145,7 +87,6 @@ class App extends Component {
             <div className='App-Title'>
               <Link style={{ textDecoration: 'none', color: 'black'}} to={'/app/matches'} onClick={() => {this.setState({ match: null, matchId: null})}}>
                 <h1 className='App-logo'>NBA Stats</h1>
-                {/* <img src='../public/nba_logo2.png' alt="nba-logo"></img> */}
               </Link>
             </div>
           </Grid.Row>    
@@ -154,17 +95,14 @@ class App extends Component {
             <Switch>
               <Redirect exact from="/" to="/app/matches" />
             </Switch>
-              {matchList}
+              {this.matchList}
               {this.match}
-            
-        </Grid.Row>  
-                      
-          <div className="App-footer">
-          </div>
+          </Grid.Row>  
+
+          <div className="App-footer"></div>
            
         </Grid> 
       </BrowserRouter>
-      
     );
   }
 

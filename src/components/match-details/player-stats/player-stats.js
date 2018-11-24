@@ -27,8 +27,6 @@ class PlayerStats extends Component {
 
 
     getPlayerStats = async (id) => {
-
-        console.log(this.getPlayerStatsURL(id));
         let playerstats = await axios.get(this.getPlayerStatsURL(id));
         return playerstats.data.league.standard.stats;
 
@@ -47,7 +45,6 @@ class PlayerStats extends Component {
         let stats = (
             <div className={styles.divider2}>
                 <Loader className={styles.loader} size='small' active />
-
             </div>
         ); 
         let players = Object.assign({},this.state.players);

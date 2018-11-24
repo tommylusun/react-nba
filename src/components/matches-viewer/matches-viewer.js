@@ -13,6 +13,13 @@ class MatchesViewer extends Component {
 
     
 
+  // baseURL = '/api?request=';
+  baseURL = 'https://data.nba.net';
+  
+
+    render() {
+        return (null);
+    }
 
 }
 

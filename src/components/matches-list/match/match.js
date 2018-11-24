@@ -12,10 +12,7 @@ class Match extends Component {
 
     componentDidMount() {
     }
-
-     
-
-
+    
     render() {
         let period = '';
         if (this.props.match.period.current===0){
@@ -38,33 +35,27 @@ class Match extends Component {
             //     }
             // }
         }
-        console.log(this.props.selected);
-
 
         return (
-            
-            <Link to={'/app/matches/' + this.props.date + '/' + this.props.match.gameId} style={{ textDecoration: 'none', color: 'black'}}>
-                <div className={[styles.container, this.props.selected ? styles.selected : ''].join(' ') }>
-                    <div className={styles.col}>
-                        <p className={styles.record}>{this.props.match.hTeam.win} - {this.props.match.hTeam.loss}</p>
-                        <h4 className={styles.heading}>{this.props.match.hTeam.triCode}</h4>
-                    </div>
-                    <div className={styles.colScoreH}>
-                        <p>{this.props.match.hTeam.score}</p>
-                    </div>
-                    <div className={styles.colMid}>
-                        <p>{period}</p>
-                    </div>
-                    <div className={styles.colScoreV}>
-                        <p>{this.props.match.vTeam.score}</p>
-                    </div>
-                    <div className={styles.col}>
-                        <p className={styles.record}>{this.props.match.vTeam.win} - {this.props.match.vTeam.loss}</p>
-                        <h4 className={styles.heading}>{this.props.match.vTeam.triCode}</h4>
-                    </div>
+            <div className={[styles.container, this.props.selected ? styles.selected : ''].join(' ') }>
+                <div className={styles.col}>
+                    <p className={styles.record}>{this.props.match.hTeam.win} - {this.props.match.hTeam.loss}</p>
+                    <h4 className={styles.heading}>{this.props.match.hTeam.triCode}</h4>
                 </div>
-            </Link>
-            
+                <div className={styles.colScoreH}>
+                    <p>{this.props.match.hTeam.score}</p>
+                </div>
+                <div className={styles.colMid}>
+                    <p>{period}</p>
+                </div>
+                <div className={styles.colScoreV}>
+                    <p>{this.props.match.vTeam.score}</p>
+                </div>
+                <div className={styles.col}>
+                    <p className={styles.record}>{this.props.match.vTeam.win} - {this.props.match.vTeam.loss}</p>
+                    <h4 className={styles.heading}>{this.props.match.vTeam.triCode}</h4>
+                </div>
+            </div>            
         );
     }
 }

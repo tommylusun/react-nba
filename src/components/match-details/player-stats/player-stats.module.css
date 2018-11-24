@@ -33,27 +33,26 @@
     flex-wrap: nowrap;
     min-width: 50px;
     width: 50px;
-    cursor: pointer;
 }
 
+.PlayersTable .playerRow label {
+    cursor: pointer;
+}
 
 .PlayersTable .players {
     min-width: 200px;
 }
+
+
 .PlayersTable .header {
     padding-top: 10px;
     border-radius: 5px;
 
-    background-color: rgba(0,0,0,0.1);
-}
-.PlayersTable .header:hover {
-    padding-top: 10px;
-    border-radius: 5px;
-
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0,0.2);
 }
 
 .PlayersTable .morestats {
+    
     font-style: italic;
     padding-bottom: 10px;
     padding-top: 0px;
@@ -65,8 +64,18 @@
     animation-name: example; 
     animation-duration: 0.2s;
 }
+.PlayersTable .playerRow {
+    font-size: 1rem;
+    transition: background-color 500ms ease-in-out;
+    border-radius: 5px;
+    cursor: pointer;
+}
 .PlayersTable .playerRow:hover {
-    background-color: rgba(0,0,0,0.05);
+    background-color: rgba(0,0,0,0.1);
+    transform: scale(1.05);
+    transition: transform 0.1s;
+    transition: background-color 100ms ease-in-out;
+    
     
 }
 
@@ -85,6 +94,8 @@
 }
 .PlayersTable .divider2{
     position: relative;
+    height: 0px;
+    padding: 0px
   }
 
 .PlayersTable .loader {

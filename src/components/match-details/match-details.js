@@ -11,13 +11,13 @@ import axios from 'axios';
 
 class gameDetails extends Component {
 
-    loading = (<Loader className={styles.loading} inline='centered' active content='Loading' />);
-    // game = 'loading';
-    getGameDetailsURL = (formattedDate, gameId) => `/prod/v1/${formattedDate}/${gameId}_boxscore.json`;
     baseURL = '/api?request=';
     // baseURL = 'https://data.nba.net';
 
+    getGameDetailsURL = (formattedDate, gameId) => `/prod/v1/${formattedDate}/${gameId}_boxscore.json`;
+
     state = {game: 'loading'};
+    loading = (<Loader className={styles.loading} inline='centered' active content='Loading' />);
 
 
     async componentDidMount() {
