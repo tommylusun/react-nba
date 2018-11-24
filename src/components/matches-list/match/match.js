@@ -10,7 +10,10 @@ class Match extends Component {
     //     this.props = props;
     // }
 
+    componentDidMount() {
+    }
 
+     
 
 
     render() {
@@ -35,10 +38,13 @@ class Match extends Component {
             //     }
             // }
         }
+        console.log(this.props.selected);
+
 
         return (
+            
             <Link to={'/app/matches/' + this.props.date + '/' + this.props.match.gameId} style={{ textDecoration: 'none', color: 'black'}}>
-                <div className={styles.container}>
+                <div className={[styles.container, this.props.selected ? styles.selected : ''].join(' ') }>
                     <div className={styles.col}>
                         <p className={styles.record}>{this.props.match.hTeam.win} - {this.props.match.hTeam.loss}</p>
                         <h4 className={styles.heading}>{this.props.match.hTeam.triCode}</h4>

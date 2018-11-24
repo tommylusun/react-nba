@@ -15,17 +15,30 @@ class gameDetails extends Component {
     // game = 'loading';
     getGameDetailsURL = (formattedDate, gameId) => `/prod/v1/${formattedDate}/${gameId}_boxscore.json`;
     baseURL = '/api?request=';
+    // baseURL = 'https://data.nba.net';
+
     state = {game: 'loading'};
 
 
     async componentDidMount() {
         this.hPlayers = this.loading;
         this.vplayers = this.loading;
+        console.log("component mount");
         await this.getGameDetails(this.props.match.params.date,this.props.match.params.id);
+
+        setInterval( async () => {
+            const matchDetails = await axios.get(this.baseURL + this.getGameDetailsURL(this.props.match.params.date,this.props.match.params.id));
+            matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
+            matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
+            this.setState( {game: matchDetails.data});
+            return;
+          }, 5000);
+
     }
 
     async componentWillReceiveProps(nextProps) {
         if (this.props.match.params.id !== nextProps.match.params.id ){
+            console.log("route changed: "+ this.props.match.params.id + " " + nextProps.match.params.id);
             await this.getGameDetails(nextProps.match.params.date,nextProps.match.params.id);
         }
         
@@ -35,7 +48,6 @@ class gameDetails extends Component {
 
         try {
             this.setState( {game: 'loading'});
-            // this.game = 'loading';
             const matchDetails = await axios.get(this.baseURL + this.getGameDetailsURL(date,gameId));
             matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
             matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
@@ -62,8 +74,6 @@ class gameDetails extends Component {
     }
 
     render() {
-        // this.props.game = null;
-        // this.props.game = 'loading';
         if (this.state.game === 'loading' || !!!this.props.players){
             return (
                 <div className = {styles['container-placeholder']}>

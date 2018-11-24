@@ -9,6 +9,12 @@ import { Loader } from 'semantic-ui-react'
 class MatchesList extends Component {
 
 
+    state = {selected: null};
+
+    clickHandler = (id) => {
+        this.setState({selected: id});
+    }
+
     render() {
         const matches = this.props.games;
         if (matches===null || matches===undefined){
@@ -20,11 +26,13 @@ class MatchesList extends Component {
         }
         const matchesList = matches.map(match => {
             return ( 
-                <Match
-                date={this.props.date}
-                click={()=>this.props.selected(match.gameId)}
-                match={match} 
-                key={match.gameId}/> 
+                <div onClick={()=>this.clickHandler(match.gameId)} >
+                    <Match
+                    selected={this.state.selected === match.gameId ? true : false}
+                    date={this.props.date}
+                    match={match} 
+                    key={match.gameId}/> 
+                </div>
             );
         });
 

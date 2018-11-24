@@ -61,3 +61,7 @@
     height: 50px;
     margin: auto;
 }
+
+.selected {
+    background-color: rgba(0,0,0,0.1);
+}

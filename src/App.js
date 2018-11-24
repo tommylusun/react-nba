@@ -11,6 +11,7 @@ import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-rou
 
 class App extends Component {
   baseURL = '/api?request=';
+  // baseURL = 'https://data.nba.net';
   getTeamsURL = '/prod/v2/2018/teams.json';
   getPlayersURL = '/prod/v1/2018/players.json';
   
@@ -98,23 +99,26 @@ class App extends Component {
   getTeamName(teamId) {
     return this.state.teams.find( team => team.teamId === teamId);
   }
-
-  
-
-  render() {
-    let match = (
-      <Route exact path="/app/matches/:date/:id" component={ (props) => 
-          { return !!this.state.teams ? 
-            <Grid.Column textAlign='centered' width={12} className='App-Match-Details-Container'>
+  match = (
+    <Route exact path="/app/matches/:date/:id" component={ (props) => 
+        
+          <Grid.Column textAlign='centered' width={12} className='App-Match-Details-Container'>
             <MatchDetails 
             className='App-Match-Details-Container'
             {...props}
             players={this.state.players}
             teams={this.state.teams}
             />
-            </Grid.Column> : <div></div> } 
-          }/>         
-      );
+          </Grid.Column>
+        }/>
+    );
+  
+
+  render() { 
+
+    if (this.state.teams === null){
+      return null;
+    }
 
     let matchList = (
         <Route path="/app/matches" render={() => 
@@ -139,7 +143,7 @@ class App extends Component {
         <Grid className="App">
           <Grid.Row className="App-Grid-Header">
             <div className='App-Title'>
-              <Link style={{ textDecoration: 'none', color: 'black'}} to={'/matches'} onClick={() => {this.setState({ match: null, matchId: null})}}>
+              <Link style={{ textDecoration: 'none', color: 'black'}} to={'/app/matches'} onClick={() => {this.setState({ match: null, matchId: null})}}>
                 <h1 className='App-logo'>NBA Stats</h1>
                 {/* <img src='../public/nba_logo2.png' alt="nba-logo"></img> */}
               </Link>
@@ -151,7 +155,7 @@ class App extends Component {
               <Redirect exact from="/" to="/app/matches" />
             </Switch>
               {matchList}
-              {match}
+              {this.match}
             
         </Grid.Row>  
                       

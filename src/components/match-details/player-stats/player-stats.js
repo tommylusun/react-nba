@@ -15,7 +15,9 @@ import { Loader } from 'semantic-ui-react'
 
 class PlayerStats extends Component {
 
-    getPlayerStatsURL = (personId) => `/api?request=/prod/v1/2018/players/${personId}_profile.json`;
+    // baseURL = 'https://data.nba.net';
+    baseURL = '/api?request=';
+    getPlayerStatsURL = (personId) => `${this.baseURL}/prod/v1/2018/players/${personId}_profile.json`;
 
     componentDidMount() {
 
