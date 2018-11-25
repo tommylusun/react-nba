@@ -9,13 +9,12 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 class GameStats extends Component {
 
     url = (tricode) => `https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/${tricode.toLowerCase()}.png`;
-
+    state = {loaded: 0};
     componentDidMount() {
         this.data = this.props.stats;   
     }
 
     render() {
-
         this.currentPeriodString = null;
         this.progressBar = <LinearProgress className={styles.livebar}/>;
         this.data = this.props.stats;
@@ -94,7 +93,9 @@ class GameStats extends Component {
 
                     <Grid.Row>
                         <Grid.Column width={4}>
-                            <img className={styles.image} src={this.url(this.data.hTeam.triCode)} alt="team"></img>
+                            <div>
+                                <img className={styles.image} src={this.url(this.data.hTeam.triCode)} alt="team"></img>
+                            </div>
                             <p><b>{this.data.hTeam.win} - {this.data.hTeam.loss}</b></p>
                         </Grid.Column>
                         <Grid.Column width={2} verticalAlign="middle">
@@ -109,7 +110,9 @@ class GameStats extends Component {
                             <h1 className={styles.score}>{this.data.vTeam.score}</h1>
                         </Grid.Column>
                         <Grid.Column width={4}>
-                            <img className={styles.image} src={this.url(this.data.vTeam.triCode)} alt="team"></img>
+                            <div>
+                                <img className={styles.image} src={this.url(this.data.vTeam.triCode)} alt="team"></img>
+                            </div>
                             <p><b>{this.data.vTeam.win} - {this.data.vTeam.loss}</b></p>
                         </Grid.Column>
                     </Grid.Row>

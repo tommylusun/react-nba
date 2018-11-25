@@ -12,7 +12,7 @@ class MatchesList extends Component {
 
     baseURL = '/api?request=';
     // baseURL = 'https://data.nba.net';
-    
+
     formatDate = date => date.getFullYear() + ('0' + (date.getMonth()+1)).slice(-2) + ('0' + (date.getDate())).slice(-2);
     getDayGamesURL = formattedDate => `/prod/v2/${formattedDate}/scoreboard.json`;
 
@@ -53,14 +53,14 @@ class MatchesList extends Component {
         let gamesList = null;
 
         if (this.state.games===null || this.state.games===undefined){
-            gamesList = (    
-                <div className={styles.divider}>
-                    <Loader className='loader' size='large' active content='Fetching games...' />
-                </div>);
+            gamesList = (  <div></div> );  
+                // <div className={styles.divider}>
+                //     <Loader className='loader' size='large' active content='Fetching games...' />
+                // </div>);
         } else {
             gamesList = this.state.games.map(match => {
                 return ( 
-                    <div onClick={() => this.setState({selected: match.gameId})}>
+                    <div className={styles.Match} onClick={() => this.setState({selected: match.gameId})}>
                         <Link to={'/app/matches/' + this.formatDate(this.state.date) + '/' + match.gameId} style={{ textDecoration: 'none', color: 'black'}}>
                             <Match
                             selected={this.state.selected === match.gameId ? true : false}
@@ -81,16 +81,18 @@ class MatchesList extends Component {
         }
 
         return ( 
-            <>
-                <Button.Group>
-                    <Button onClick={() => this.dayHandler(-1)}>Prev Day</Button>
-                    <Button onClick={() => this.dayHandler(1)}>Next Day</Button>
-                </Button.Group>
-                <h1 style={{margin: '25px'}}>{this.state.date.toDateString()}</h1>
+            <div className={styles.MatchesList}>
                 <div>
+                    <Button.Group>
+                        <Button onClick={() => this.dayHandler(-1)}>Prev Day</Button>
+                        <Button onClick={() => this.dayHandler(1)}>Next Day</Button>
+                    </Button.Group>
+                    <h3 style={{margin: '25px'}}>{this.state.date.toDateString()}</h3>  
+                </div>
+                <div className={styles.list}>
                     {gamesList} 
                 </div>
-            </>
+            </div>
         );
     }
 }

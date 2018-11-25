@@ -6,13 +6,6 @@ import { Table } from 'semantic-ui-react'
 import axios from 'axios';
 import { Loader } from 'semantic-ui-react'
 
-
-// import Table2 from '@material-ui/core/Table';
-// import TableBody from '@material-ui/core/TableBody';
-// import TableCell from '@material-ui/core/TableCell';
-// import TableHead from '@material-ui/core/TableHead';
-// import TableRow from '@material-ui/core/TableRow';
-
 class PlayerStats extends Component {
 
     // baseURL = 'https://data.nba.net';
@@ -20,19 +13,16 @@ class PlayerStats extends Component {
     getPlayerStatsURL = (personId) => `${this.baseURL}/prod/v1/2018/players/${personId}_profile.json`;
 
     componentDidMount() {
-
         this.setState({players: {}});
-        
     }
 
 
     getPlayerStats = async (id) => {
         let playerstats = await axios.get(this.getPlayerStatsURL(id));
         return playerstats.data.league.standard.stats;
-
     }
+
     getMoreStats = async (player) => {
-        console.log(player);
 
         if (this.state !== undefined && this.state.players){
             if (!!this.state.players[player.personId]) {
@@ -52,7 +42,6 @@ class PlayerStats extends Component {
         this.setState({players: players});
 
         let playerstats = await this.getPlayerStats(player.personId);
-        console.log(playerstats);
 
         if (playerstats !== undefined){
             let stats = (
@@ -92,8 +81,8 @@ class PlayerStats extends Component {
         } else {
             return this.state.players[personId];
         }
-
     }
+
     renderPlayerList = () => {
         return this.props.playerList.map( player => {
             if (player.teamId === this.props.teamId){
@@ -114,9 +103,8 @@ class PlayerStats extends Component {
                     </li>
                     {this.showStats(player.personId)}
                     </>
-                    );
+                );
             }
-            
         });
     }
     
@@ -135,7 +123,6 @@ class PlayerStats extends Component {
                     {this.renderPlayerList()}
                 </ul>
             </div>
-
         );
     }
 }

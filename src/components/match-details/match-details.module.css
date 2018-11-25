@@ -1,13 +1,13 @@
  .container {
-    animation-name: example; 
-    animation-duration: 0.2s;
+    animation-name: fade-in; 
+    animation-duration: 0.3s;
     margin: 0;
 }
 
-@keyframes example {
+@keyframes fade-in {
     0%   {
-        opacity: 0.5;
-        transform: scale(0.99) translateY(15px);
+        opacity: 0.1;
+        transform: scale(0.990);
     }
     100% {
         opacity: 1;

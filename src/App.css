@@ -2,7 +2,7 @@
   position: fixed; 
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow: auto;
   margin: 0px !important;
 
 }
@@ -36,7 +36,6 @@
   background-color: rgb(255, 255, 255); 
   min-height: 85%;
   max-height: 85%;
-  /* height: 85%; */
   flex-wrap: nowrap !important;
 }
 body ::-webkit-scrollbar {
@@ -44,18 +43,13 @@ body ::-webkit-scrollbar {
 }
 
 .MatchesList-container {
-  padding-top: 25px;
-  /* overflow-y: auto; */
-  min-height: 100%;
+
   width: 20% !important;
-  min-width: 280px;
+  min-width: 270px;
   align-content: flex-start;
-  overflow: auto;
 }
+
 .App-Match-Details-Container {
-  /* overflow: auto; */
-  /* min-height: 100%; */
-  /* width: 80% !important; */
   min-width: 700px !important;
   overflow: auto;
 }
@@ -67,10 +61,7 @@ body ::-webkit-scrollbar {
 
 .App-footer{
   padding: 0px;
-  /* top: 0px; */
   width: 100%;
-  height: 50px;
-  /* margin-bottom: -50px; */
-  /* border: solid 2px rgba(0,0,0,0.25); */
+  height: calc(15% - 90px);
   background-color: rgba(0,0,0,0.85);
 } 

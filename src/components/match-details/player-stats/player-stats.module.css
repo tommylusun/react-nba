@@ -40,9 +40,8 @@
 }
 
 .PlayersTable .players {
-    min-width: 200px;
+    min-width: 180px;
 }
-
 
 .PlayersTable .header {
     padding-top: 10px;
@@ -75,8 +74,6 @@
     transform: scale(1.05);
     transition: transform 0.1s;
     transition: background-color 100ms ease-in-out;
-    
-    
 }
 
 @keyframes example {

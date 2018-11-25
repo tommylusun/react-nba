@@ -23,7 +23,6 @@ class gameDetails extends Component {
     async componentDidMount() {
         this.hPlayers = this.loading;
         this.vplayers = this.loading;
-        console.log("component mount");
         await this.getGameDetails(this.props.match.params.date,this.props.match.params.id);
 
         setInterval( async () => {
@@ -33,26 +32,22 @@ class gameDetails extends Component {
             this.setState( {game: matchDetails.data});
             return;
           }, 5000);
-
     }
 
     async componentWillReceiveProps(nextProps) {
         if (this.props.match.params.id !== nextProps.match.params.id ){
-            console.log("route changed: "+ this.props.match.params.id + " " + nextProps.match.params.id);
+            this.setState( {game: 'loading'});
             await this.getGameDetails(nextProps.match.params.date,nextProps.match.params.id);
         }
-        
     }
 
     async getGameDetails(date, gameId) {
 
         try {
-            this.setState( {game: 'loading'});
             const matchDetails = await axios.get(this.baseURL + this.getGameDetailsURL(date,gameId));
             matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
             matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
             this.setState( {game: matchDetails.data});
-            console.log(this.game);
             return;
 
           } 
@@ -88,7 +83,6 @@ class gameDetails extends Component {
             this.away = this.basicGameData.vTeam;
             this.activePlayers = this.game.activePlayers;
             
-                
             if (this.game !== 'loading') {
                 this.hPlayers = <PlayerStats playerList={this.activePlayers} players={this.props.players} teamId={this.home.teamId}/>;
                 this.vplayers = <PlayerStats playerList={this.activePlayers} players={this.props.players} teamId={this.away.teamId}/>;
@@ -96,11 +90,10 @@ class gameDetails extends Component {
             
             return ( 
                 <div className={styles.container}>
-                <Grid>
+                    <Grid className={styles.container}>
                         <Grid.Row>
                             <GameStats stats={this.basicGameData}/>
                         </Grid.Row>
-                        {/* <div className={styles.playerstats}> */}
                         <Grid.Row centered>
                             <Grid.Column className={styles.playerscol}>
                                     {this.hPlayers}
@@ -110,9 +103,7 @@ class gameDetails extends Component {
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-                    {/* </div> */}
                 </div>
-                
             );
         } else {
             return (
