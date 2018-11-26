@@ -2,7 +2,7 @@ import React, {
     Component
 } from 'react';
 import styles from './game-stats.module.css';
-import { Table, Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { urlConstants } from '../../../constants/url-constants';
 

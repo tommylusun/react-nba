@@ -1,0 +1,13 @@
+.navbar {
+    margin-top: 0px;
+    padding-top: 0px;
+    margin-right: 7%; 
+    margin-left: 7%;
+    outline: none;
+    /* background: linear-gradient(45deg, #cccccc 75%, #0004ffc5 95%); */
+  
+  }
+  
+  .navbar :focus {
+    outline:none;
+  }

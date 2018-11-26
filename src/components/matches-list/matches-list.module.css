@@ -1,7 +1,7 @@
 .list {
     /* height: 100%; */
     /* margin: 15px; */
-    height: calc(100% - 110px);
+    height: calc(100% - 115px);
     overflow-y: auto;
     width: 100%;
     text-align: center;
@@ -22,6 +22,7 @@
     padding-top: 25px !important;
     height: 100%;
     min-width: 260px;
+    text-align: center;
 }
 .Match {
     /* height: 90%; */

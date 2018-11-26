@@ -6,12 +6,11 @@ import MatchesList from './components/matches-list/matches-list';
 import LeaderBoards from './components/leaderboards/leaderboards';
 import axios from 'axios';
 import HeaderNav from './components/header-nav/header-nav';
-import { Loader, Grid, Button } from 'semantic-ui-react'
-import { withRouter, BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import { Grid } from 'semantic-ui-react'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 class App extends Component {
   
-  // baseURL = '/api?request=';
   baseURL = urlConstants.BASE_URL;
   getTeamsURL = urlConstants.GET_ALL_TEAMS;
   getPlayersURL = urlConstants.GET_ALL_PLAYERS;
@@ -55,7 +54,7 @@ class App extends Component {
 
   match = (
     <Route exact path="/app/matches/:date/:id" component={ (props) => 
-          <Grid.Column textAlign='centered' width={12} className='App-Match-Details-Container'>
+          <Grid.Column width={12} className='App-Match-Details-Container'>
             <MatchDetails 
             className='App-Match-Details-Container'
             {...props}
@@ -68,7 +67,7 @@ class App extends Component {
 
   matchList = (
     <Route path="/app/matches" render={() => 
-      <Grid.Column textAlign='centered' width={4} className='MatchesList-container'>
+      <Grid.Column width={4} className='MatchesList-container'>
         <MatchesList/>
       </Grid.Column>
       }/> 
@@ -93,19 +92,14 @@ class App extends Component {
         <Grid className="App">
           <Grid.Row className="App-Grid-Header">
             <div className='App-Title'>
-              {/* <Link style={{ textDecoration: 'none', color: 'black'}} to={'/app/matches'} onClick={() => {this.setState({ match: null, matchId: null})}}> */}
                 <h1 className='App-logo'>NBA Stats</h1>
-              {/* </Link> */}
             </div>
           </Grid.Row>    
           <Grid.Row className='App-Navbar'>
-
-            <div className='App-Nav'>
             <HeaderNav/>
-            </div>
           </Grid.Row>
             
-          <Grid.Row textAlign='centered' className="App-body">
+          <Grid.Row centered className="App-body">
             <Switch>
               <Redirect exact from="/" to="/app/matches" />
             </Switch>

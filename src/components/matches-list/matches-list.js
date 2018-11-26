@@ -3,9 +3,9 @@ import React, {
 } from 'react';
 import Match from './match/match';
 import styles from './matches-list.module.css';
-import { Loader, Grid, Button } from 'semantic-ui-react'
+import { Button } from 'semantic-ui-react'
 import axios from 'axios';
-import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { urlConstants } from '../../constants/url-constants';
 
 

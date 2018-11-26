@@ -4,50 +4,32 @@
   width: 100%;
   overflow: auto;
   margin: 0px !important;
-  /* background: linear-gradient(45deg, #fe6b8b 30%, #ff8e53 90%); */
-
 }
 .App-Title {
-  margin-top: 10px;
+  margin-top: 5px;
   margin-right: 7%;
   margin-left: 7%;
 }
-.App-Navbar {
-    background: linear-gradient(45deg, #cccccc 40%, #616161 95%);
-    margin: 0;
-    padding: 0px !important;
-    height: 50px;
-
-}
-.App-Nav {
-  margin-top: 0px;
-  padding-top: 0px;
-  margin-right: 7%; 
-  margin-left: 7%;
-  outline: none;
-  /* background: linear-gradient(45deg, #cccccc 75%, #0004ffc5 95%); */
-
-}
-
-.App-Nav :focus {
-  outline:none;
-}
-
 .App-logo {
   margin: auto;
   background: #cccccc;
   color:transparent;
   background-clip: text;
-
-  
 }
 .App-Grid-Header {
   margin: 0px !important;
+  padding: 0px !important;
   width: 100%;
   text-align: start;
-  height: 90px;
+  height: 50px;
   background-color: rgba(0,0,0,0.85);
-  
+}
+
+.App-Navbar {
+  background: linear-gradient(45deg, #cccccc 40%, #616161 95%);
+  margin: 0;
+  padding: 0px !important;
+  height: 50px;
 }
 
 .App-body { 
@@ -62,32 +44,28 @@
   min-height: 85%;
   max-height: 85%;
   flex-wrap: nowrap !important;
-  
 }
 body ::-webkit-scrollbar {
   width: 0px;
 }
 
 .MatchesList-container {
-
   width: 20% !important;
   min-width: 270px;
-  align-content: flex-start;
 }
-
 .App-Match-Details-Container {
   min-width: 700px !important;
   overflow: auto;
+}
+
+.App-footer{
+  padding: 0px;
+  width: 100%;
+  height: calc(15% - 100px);
+  background-color: rgba(0,0,0,0.85);
 }
 
 .loading {
   top: 50%;
   margin-top: 100px;
 }
-
-.App-footer{
-  padding: 0px;
-  width: 100%;
-  height: calc(15% - 90px);
-  background-color: rgba(0,0,0,0.85);
-} 

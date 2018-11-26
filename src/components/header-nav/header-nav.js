@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 
-import axios from 'axios';
-import { Loader, Grid, Button } from 'semantic-ui-react'
-import { withRouter, BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import styles from './header-nav.module.css';
+import { withRouter } from 'react-router-dom';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 class HeaderNav extends Component {
 
+    state = {};
 
-    state = {
-        };
     componentDidMount() {
         if (this.props.location.pathname.includes('/app/matches')){
             this.setState({value: 0});
@@ -41,10 +39,13 @@ class HeaderNav extends Component {
     render() {
         let value = this.state.value;
         return (
-            <Tabs value={value} onChange={this.handleChange} indicatorColor="primary">
-                <Tab label="Matches"/>
-                <Tab label="LeaderBoards" />
-            </Tabs>);
+            <div className={styles.navbar}>
+                <Tabs value={value} onChange={this.handleChange} indicatorColor="primary">
+                    <Tab label="Matches"/>
+                    <Tab label="LeaderBoards" />
+                </Tabs>
+            </div>
+            );
     }
 
 }

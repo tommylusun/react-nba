@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import styles from './leaderboards.module.css';
-import axios from 'axios';
-import { Loader, Grid, Button } from 'semantic-ui-react'
-import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+// import styles from './leaderboards.module.css';
+// import axios from 'axios';
+// import { Loader, Grid, Button } from 'semantic-ui-react'
+// import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
 
 
 class LeaderBoards extends Component {

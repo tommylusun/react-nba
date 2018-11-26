@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import styles from './match.module.css';
-import { Link } from 'react-router-dom';
 
 class Match extends Component {
-
-
-    // constructor(props){
-    //     super(props);
-    //     this.props = props;
-    // }
 
     componentDidMount() {
     }

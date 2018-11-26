@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import styles from './match-details.module.css';
 // import styles from './gamees-list.module.css';
-import { Loader, Dimmer, Grid } from 'semantic-ui-react'
+import { Loader, Grid } from 'semantic-ui-react'
 import PlayerStats from './player-stats/player-stats';
 import GameStats from './game-stats/game-stats';
 import axios from 'axios';

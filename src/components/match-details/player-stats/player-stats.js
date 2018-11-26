@@ -2,7 +2,6 @@ import React, {
     Component
 } from 'react';
 import styles from './player-stats.module.css';
-import { Table } from 'semantic-ui-react'
 import axios from 'axios';
 import { Loader } from 'semantic-ui-react';
 import { urlConstants } from '../../../constants/url-constants';
@@ -103,7 +102,8 @@ class PlayerStats extends Component {
                     {this.showStats(player.personId)}
                     </>
                 );
-            }
+            } 
+            return null;
         });
     }
     
