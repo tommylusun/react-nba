@@ -10,6 +10,7 @@ class HeaderNav extends Component {
     state = {};
 
     componentDidMount() {
+        this.setState( {value: -1});
         if (this.props.location.pathname.includes('/app/matches')){
             this.setState({value: 0});
         }

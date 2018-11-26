@@ -4,6 +4,7 @@ import { urlConstants } from './constants/url-constants';
 import MatchDetails from './components/match-details/match-details';
 import MatchesList from './components/matches-list/matches-list';
 import LeaderBoards from './components/leaderboards/leaderboards';
+import HomePage from './components/homepage/homepage';
 import axios from 'axios';
 import HeaderNav from './components/header-nav/header-nav';
 import { Grid } from 'semantic-ui-react'
@@ -52,6 +53,12 @@ class App extends Component {
     return this.state;
   }
 
+  homePage = (
+    <Route exact path="/" component={ (props) => 
+      <HomePage/>
+    } />
+  );
+
   match = (
     <Route exact path="/app/matches/:date/:id" component={ (props) => 
           <Grid.Column width={12} className='App-Match-Details-Container'>
@@ -81,8 +88,6 @@ class App extends Component {
     }/>
   );
 
-
-
   render() { 
     if (this.state.teams === null){
       return null;
@@ -106,6 +111,7 @@ class App extends Component {
               {this.matchList}
               {this.match}
               {this.leaderBoards}
+              {this.homePage}
           </Grid.Row>  
 
           <div className="App-footer"></div>

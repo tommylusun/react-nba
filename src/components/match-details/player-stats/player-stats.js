@@ -46,7 +46,7 @@ class PlayerStats extends Component {
                 <li className={styles.morestats}>
                     <li>
                         <label></label>
-                        <label className={styles.players}>2018 Season</label>
+                        <label className={styles.players}>2018 Season avg</label>
                         <label>{playerstats.latest.ppg}</label>
                         <label>{playerstats.latest.apg}</label>
                         <label>{playerstats.latest.rpg}</label>
@@ -55,7 +55,7 @@ class PlayerStats extends Component {
                     </li>
                     <li>
                         <label></label>
-                        <label className={styles.players}>Career</label>
+                        <label className={styles.players}>Career avg</label>
                         <label>{playerstats.careerSummary.ppg}</label>
                         <label>{playerstats.careerSummary.apg}</label>
                         <label>{playerstats.careerSummary.rpg}</label>
@@ -91,15 +91,15 @@ class PlayerStats extends Component {
                 const selected = (!!this.state && !!this.state.players[player.personId]) ? styles.highlight : '';
                 return (
                     <>
-                    <li key={player.personId} className={[styles.playerRow, selected].join(' ')} onClick={() => this.getMoreStats(player)}>
-                        <label>{player.pos}</label>
-                        <label className={styles.players}>{playerDetails.firstName} {playerDetails.lastName}</label>
-                        <label>{player.points}</label>
-                        <label>{player.assists}</label>
-                        <label>{player.totReb}</label>
-                        <label>{player.min}</label>
-                    </li>
-                    {this.showStats(player.personId)}
+                        <li key={player.personId} className={[styles.playerRow, selected].join(' ')} onClick={() => this.getMoreStats(player)}>
+                            <label>{player.pos}</label>
+                            <label className={styles.players}>{playerDetails.firstName} {playerDetails.lastName}</label>
+                            <label>{player.points}</label>
+                            <label>{player.assists}</label>
+                            <label>{player.totReb}</label>
+                            <label>{player.min}</label>
+                        </li>
+                        {this.showStats(player.personId)}
                     </>
                 );
             } 

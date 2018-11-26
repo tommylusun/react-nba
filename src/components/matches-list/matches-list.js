@@ -67,14 +67,14 @@ class MatchesList extends Component {
                     </div>
                 );
             });
+            if (gamesList.length===0) {
+                gamesList =  (
+                    <div className={styles.divider}>
+                        <h3>No Games Today</h3>
+                    </div>);
+        }
         }
         
-        if (gamesList.length===0) {
-            gamesList =  (
-                <div className={styles.divider}>
-                    <h3>No Games Today</h3>
-                </div>);
-        }
 
         return ( 
             <div className={styles.MatchesList}>
