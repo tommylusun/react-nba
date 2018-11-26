@@ -7,14 +7,13 @@ import { Loader, Dimmer, Grid } from 'semantic-ui-react'
 import PlayerStats from './player-stats/player-stats';
 import GameStats from './game-stats/game-stats';
 import axios from 'axios';
+import {urlConstants} from '../../constants/url-constants';
 
 
 class gameDetails extends Component {
 
-    baseURL = '/api?request=';
-    // baseURL = 'https://data.nba.net';
+    baseURL = urlConstants.BASE_URL;
 
-    getGameDetailsURL = (formattedDate, gameId) => `/prod/v1/${formattedDate}/${gameId}_boxscore.json`;
 
     state = {game: 'loading'};
     loading = (<Loader className={styles.loading} inline='centered' active content='Loading' />);
@@ -26,11 +25,7 @@ class gameDetails extends Component {
         await this.getGameDetails(this.props.match.params.date,this.props.match.params.id);
 
         setInterval( async () => {
-            const matchDetails = await axios.get(this.baseURL + this.getGameDetailsURL(this.props.match.params.date,this.props.match.params.id));
-            matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
-            matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
-            this.setState( {game: matchDetails.data});
-            return;
+            await this.getGameDetails(this.props.match.params.date,this.props.match.params.id);
           }, 5000);
     }
 
@@ -42,14 +37,12 @@ class gameDetails extends Component {
     }
 
     async getGameDetails(date, gameId) {
-
         try {
-            const matchDetails = await axios.get(this.baseURL + this.getGameDetailsURL(date,gameId));
+            const matchDetails = await axios.get(this.baseURL + urlConstants.GET_GAME_DETAILS(date,gameId));
             matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
             matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
             this.setState( {game: matchDetails.data});
             return;
-
           } 
           catch (e) {
             console.log(e);
@@ -59,7 +52,7 @@ class gameDetails extends Component {
 
     getTeamName(teamId) {
         return this.props.teams.find( team => team.teamId === teamId);
-      }
+    }
     
 
     gameStats = (stats) => {

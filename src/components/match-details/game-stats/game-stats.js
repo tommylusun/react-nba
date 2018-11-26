@@ -4,12 +4,11 @@ import React, {
 import styles from './game-stats.module.css';
 import { Table, Grid } from 'semantic-ui-react'
 import LinearProgress from '@material-ui/core/LinearProgress';
+import { urlConstants } from '../../../constants/url-constants';
 
 
 class GameStats extends Component {
-
-    url = (tricode) => `https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/${tricode.toLowerCase()}.png`;
-    state = {loaded: 0};
+    
     componentDidMount() {
         this.data = this.props.stats;   
     }
@@ -94,7 +93,7 @@ class GameStats extends Component {
                     <Grid.Row>
                         <Grid.Column width={4}>
                             <div>
-                                <img className={styles.image} src={this.url(this.data.hTeam.triCode)} alt="team"></img>
+                                <img className={styles.image} src={urlConstants.GET_TEAM_LOGO(this.data.hTeam.triCode)} alt="team"></img>
                             </div>
                             <p><b>{this.data.hTeam.win} - {this.data.hTeam.loss}</b></p>
                         </Grid.Column>
@@ -111,7 +110,7 @@ class GameStats extends Component {
                         </Grid.Column>
                         <Grid.Column width={4}>
                             <div>
-                                <img className={styles.image} src={this.url(this.data.vTeam.triCode)} alt="team"></img>
+                                <img className={styles.image} src={urlConstants.GET_TEAM_LOGO(this.data.vTeam.triCode)} alt="team"></img>
                             </div>
                             <p><b>{this.data.vTeam.win} - {this.data.vTeam.loss}</b></p>
                         </Grid.Column>

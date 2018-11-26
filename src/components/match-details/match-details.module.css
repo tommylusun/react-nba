@@ -7,7 +7,7 @@
 @keyframes fade-in {
     0%   {
         opacity: 0.1;
-        transform: scale(0.990);
+        /* transform: scale(0.990); */
     }
     100% {
         opacity: 1;

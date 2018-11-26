@@ -4,13 +4,12 @@ import React, {
 import styles from './player-stats.module.css';
 import { Table } from 'semantic-ui-react'
 import axios from 'axios';
-import { Loader } from 'semantic-ui-react'
+import { Loader } from 'semantic-ui-react';
+import { urlConstants } from '../../../constants/url-constants';
 
 class PlayerStats extends Component {
 
-    // baseURL = 'https://data.nba.net';
-    baseURL = '/api?request=';
-    getPlayerStatsURL = (personId) => `${this.baseURL}/prod/v1/2018/players/${personId}_profile.json`;
+    baseURL = urlConstants.BASE_URL;
 
     componentDidMount() {
         this.setState({players: {}});
@@ -18,7 +17,7 @@ class PlayerStats extends Component {
 
 
     getPlayerStats = async (id) => {
-        let playerstats = await axios.get(this.getPlayerStatsURL(id));
+        let playerstats = await axios.get(urlConstants.BASE_URL + urlConstants.GET_PLAYER_STATS(id));
         return playerstats.data.league.standard.stats;
     }
 

@@ -6,15 +6,12 @@ import styles from './matches-list.module.css';
 import { Loader, Grid, Button } from 'semantic-ui-react'
 import axios from 'axios';
 import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import { urlConstants } from '../../constants/url-constants';
 
 
 class MatchesList extends Component {
 
-    baseURL = '/api?request=';
-    // baseURL = 'https://data.nba.net';
-
-    formatDate = date => date.getFullYear() + ('0' + (date.getMonth()+1)).slice(-2) + ('0' + (date.getDate())).slice(-2);
-    getDayGamesURL = formattedDate => `/prod/v2/${formattedDate}/scoreboard.json`;
+    baseURL = urlConstants.BASE_URL;
 
     constructor(props) {
         super(props);
@@ -39,8 +36,7 @@ class MatchesList extends Component {
     
     async getNBAGamesToday() {
         // this.setState({games: null});
-        const dateFormatted = this.formatDate(this.state.date);
-        const res2 = await axios.get(this.baseURL + this.getDayGamesURL(dateFormatted));
+        const res2 = await axios.get(this.baseURL + urlConstants.GET_GAMES_BY_DAY(urlConstants.FORMAT_DATE(this.state.date)));
         const games = await res2.data.games;
         this.setState({
           games: games
@@ -61,7 +57,7 @@ class MatchesList extends Component {
             gamesList = this.state.games.map(match => {
                 return ( 
                     <div className={styles.Match} onClick={() => this.setState({selected: match.gameId})}>
-                        <Link to={'/app/matches/' + this.formatDate(this.state.date) + '/' + match.gameId} style={{ textDecoration: 'none', color: 'black'}}>
+                        <Link to={'/app/matches/' + urlConstants.FORMAT_DATE(this.state.date) + '/' + match.gameId} style={{ textDecoration: 'none', color: 'black'}}>
                             <Match
                             selected={this.state.selected === match.gameId ? true : false}
                             date={this.state.date}

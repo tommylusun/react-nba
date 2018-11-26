@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-import nbalogo from './nba-icon.jpg';
 import './App.css';
+import { urlConstants } from './constants/url-constants';
 import MatchDetails from './components/match-details/match-details';
 import MatchesList from './components/matches-list/matches-list';
 import axios from 'axios';
@@ -11,13 +10,10 @@ import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-rou
 
 class App extends Component {
   
-  baseURL = '/api?request=';
-  // baseURL = 'https://data.nba.net';
-  getTeamsURL = '/prod/v2/2018/teams.json';
-  getPlayersURL = '/prod/v1/2018/players.json';
-  
-  formatDate = date => date.getFullYear() + ('0' + (date.getMonth()+1)).slice(-2) + ('0' + (date.getDate())).slice(-2);
-  getDayGamesURL = formattedDate => `/prod/v2/${formattedDate}/scoreboard.json`;
+  // baseURL = '/api?request=';
+  baseURL = urlConstants.BASE_URL;
+  getTeamsURL = urlConstants.GET_ALL_TEAMS;
+  getPlayersURL = urlConstants.GET_ALL_PLAYERS;
 
   constructor(props) {
     super(props);
@@ -38,8 +34,8 @@ class App extends Component {
 
 
   async getPlayers() {
-    const res3 = await axios.get(this.baseURL + this.getPlayersURL);
-    const players = await res3.data.league.standard;
+    const res = await axios.get(this.baseURL + this.getPlayersURL);
+    const players = await res.data.league.standard;
     this.setState({
       players: players,
     });
