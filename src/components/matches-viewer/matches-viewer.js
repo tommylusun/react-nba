@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import nbalogo from './nba-icon.jpg';
-import './App.css';
 import MatchDetails from './components/match-details/match-details';
 import MatchesList from './components/matches-list/matches-list';
 import axios from 'axios';
@@ -11,11 +10,8 @@ import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-rou
 
 class MatchesViewer extends Component {
 
-    
 
-  // baseURL = '/api?request=';
-  baseURL = 'https://data.nba.net';
-  
+    
 
     render() {
         return (null);
