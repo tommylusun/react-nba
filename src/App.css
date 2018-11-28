@@ -24,7 +24,7 @@
 }
 
 .App-Navbar {
-  position: absolute;
+  /* position: absolute; */
   background: linear-gradient(45deg, #cccccc70 40%, #61616193 95%);
   margin: 0;
   padding: 0px !important;
@@ -33,41 +33,72 @@
   z-index: 1;
 }
 
-.App-body { 
-  display: block;
-  padding-top: 0px !important;
-  padding-bottom: 0px !important;
-  margin-left: 0%;
-  margin-right: 0%;
-  min-height: 400px;
-  width: 100%;
-  /* background: linear-gradient(90deg, #0026ff 20%, #c300ff 80%); */
-
-  min-height: 85%;
-  max-height: 85%;
-  flex-wrap: nowrap !important;
-}
 body ::-webkit-scrollbar {
-  width: 0px;
+  width: 6px;
+  
 }
 
-.MatchesList-container {
-  width: 20% !important;
-  min-width: 270px;
-}
-.App-Match-Details-Container {
-  min-width: 700px !important;
-  overflow: auto;
-}
-
-.App-footer{
-  padding: 0px;
-  width: 100%;
-  height: calc(15% - 100px);
-  background-color: rgba(0,0,0,0.85);
+body ::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 .loading {
   top: 50%;
   margin-top: 100px;
+}
+
+.containerCard {
+  background-color: #00000010;
+  box-shadow: 0 10px 20px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+@media (min-width: 770px) {
+  .App-body { 
+    display: block;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 100%;
+    min-height: 85%;
+    max-height: 85%;
+    flex-wrap: nowrap !important;
+  }
+  .MatchesList-container {
+    width: 25% !important;
+    min-width: 270px;
+  }
+  .App-Match-Details-Container {
+    width: 75% !important;
+    min-width: 500px  !important;
+    overflow: auto;
+  }
+  .App-footer{
+    padding: 0px;
+    width: 100%;
+    height: calc(15% - 100px);
+    background-color: rgba(0,0,0,0.85);
+  }
+}
+
+@media (max-width: 770px) {
+  .MatchesList-container {
+    width: 90% !important;
+    height: 70%;
+  }
+  .App-body { 
+    display: block;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    margin-left: 0%;
+    margin-right: 0%;
+    width: 100% !important;  
+    min-height: 90%;
+    max-height: 90%;
+  }
+  .App-Match-Details-Container {
+    overflow: auto;
+    width: 100% !important;
+  }
 }

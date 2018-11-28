@@ -105,7 +105,7 @@ class GameStats extends Component {
                             <p><b>{this.data.hTeam.win} - {this.data.hTeam.loss}</b></p>
                         </Grid.Column>
                         <Grid.Column width={2} verticalAlign="middle">
-                            <h1 className={styles.score}> {this.data.hTeam.score}</h1>
+                            <h2 className={styles.score}> {this.data.hTeam.score}</h2>
                         </Grid.Column>
 
                         <Grid.Column width={2} verticalAlign="middle" className={styles.middleCol}>
@@ -113,7 +113,7 @@ class GameStats extends Component {
                         </Grid.Column>
 
                         <Grid.Column width={2} verticalAlign="middle">
-                            <h1 className={styles.score}>{this.data.vTeam.score}</h1>
+                            <h2 className={styles.score}>{this.data.vTeam.score}</h2>
                         </Grid.Column>
                         <Grid.Column width={4}>
                             <div>

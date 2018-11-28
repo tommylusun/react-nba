@@ -75,16 +75,13 @@ class gameDetails extends Component {
     }
 
     render() {
-        const background = { 
-            // background: `linear-gradient(90deg, ${this.state.team1Color}80 25%, ${this.state.team2Color}80 75%)`
-            background: `linear-gradient(180deg, #00000010 25%, #0000001a 75%)`
-        };
-        console.log(background);
 
         if (this.state.game === 'loading' || !!!this.props.players){
             return (
-                <div className = {styles['container-placeholder']}>
-                    {this.loading}
+                <div className={styles.container}>
+                    <div className = {styles['container-placeholder']}>
+                        {/* {this.loading} */}
+                    </div>
                 </div>
             );
         }
@@ -101,12 +98,12 @@ class gameDetails extends Component {
             }
             
             return ( 
-                <div  style={background} className={styles.container}>
+                <div className={styles.container}>
                     <Grid className={styles.grid}>
                         <Grid.Row centered className={styles.gameStats}>
                             <GameStats team1Color={this.state.team1Color} team2Color={this.state.team2Color} stats={this.basicGameData}/>
                         </Grid.Row>
-                        <Grid.Row centered>
+                        <Grid.Row centered className={styles.playerStats}>
                             <Grid.Column className={styles.playerscol}>
                                     {this.hPlayers}
                             </Grid.Column>
@@ -119,9 +116,12 @@ class gameDetails extends Component {
             );
         } else {
             return (
-                <div className = {styles['container-placeholder']}>
-                    <h3>Game Not Started</h3>
+                <div  className={styles.container}>
+                    <div className = {styles['container-placeholder']}>
+                        <h3>Game Not Started</h3>
+                    </div>
                 </div>
+                
             );
         }
         

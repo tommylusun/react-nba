@@ -61,7 +61,7 @@ class App extends Component {
 
   match = (
     <Route exact path="/app/matches/:date/:id" component={ (props) => 
-          <Grid.Column width={12} className='App-Match-Details-Container'>
+          <Grid.Column className='App-Match-Details-Container'>
             <MatchDetails 
             className='App-Match-Details-Container'
             {...props}
@@ -74,7 +74,7 @@ class App extends Component {
 
   matchList = (
     <Route path="/app/matches" render={() => 
-      <Grid.Column width={4} className='MatchesList-container'>
+      <Grid.Column className='MatchesList-container'>
         <MatchesList/>
       </Grid.Column>
       }/> 

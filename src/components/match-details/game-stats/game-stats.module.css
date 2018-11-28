@@ -26,8 +26,10 @@
     min-width: 20%;
 } 
 .image {
-    width: 150px;
-    height: 150px;
+    width:100%;
+    height:100%;
+    max-width: 150px;
+    max-height: 150px;
     animation-name: fade-in; 
     animation-duration: 0.75s;
 }
@@ -43,14 +45,14 @@
 }
 
 .score {
-    font-size: 30pt;
+    font-size: 2.5vw;
 }
 .GameScoreSummary ul {
     list-style-type: none;
     padding-left: 0px;
     text-align: start;
 }
-.GameScoreSummary li {
+.GameScoreSummary li {  
     padding-left : 15px;
     text-align: center;
     /* flex-wrap: nowrap; */
@@ -71,7 +73,4 @@
     padding-top: 10px;
     background-color: rgba(0,0,0,0.2);
     border-radius: 5px;
-    /* box-shadow: 0 5px 10px rgba(0,0,0,0.15), 0 5px 5px rgba(0,0,0,0.12);
-    margin-bottom: 5px; */
-
 }
