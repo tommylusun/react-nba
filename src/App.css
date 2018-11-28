@@ -41,7 +41,8 @@
   margin-right: 0%;
   min-height: 400px;
   width: 100%;
-  background-color: rgb(255, 255, 255); 
+  /* background: linear-gradient(90deg, #0026ff 20%, #c300ff 80%); */
+
   min-height: 85%;
   max-height: 85%;
   flex-wrap: nowrap !important;

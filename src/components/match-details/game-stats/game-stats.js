@@ -14,6 +14,12 @@ class GameStats extends Component {
     }
 
     render() {
+        const background = { 
+            background: `linear-gradient(90deg, ${this.props.team1Color}a0 25%, ${this.props.team2Color}a0 75%)`,
+            // background: `linear-gradient(90deg, #a0000010 25%, #0000001a 75%)`,
+            boxShadow: `0 6px 10px rgba(0,0,0,0.19), 0 3px 5px rgba(0,0,0,0.23)`
+
+        };
         this.currentPeriodString = null;
         this.progressBar = <LinearProgress className={styles.livebar}/>;
         this.data = this.props.stats;
@@ -24,6 +30,7 @@ class GameStats extends Component {
         if (this.data.hTeam.linescore.length === 0 || this.data.vTeam.linescore.length === 0){
             this.table = null;
         } else {
+            
             this.table = (
                 <div className={styles.GameScoreSummary}>
                     <ul>
@@ -90,7 +97,7 @@ class GameStats extends Component {
                         
                     </Grid.Row>
 
-                    <Grid.Row>
+                    <Grid.Row style={background}>
                         <Grid.Column width={4}>
                             <div>
                                 <img className={styles.image} src={urlConstants.GET_TEAM_LOGO(this.data.hTeam.triCode)} alt="team"></img>

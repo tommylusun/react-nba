@@ -7,6 +7,7 @@ export const urlConstants = {
     BASE_URL: '/api?request=',
     // BASE_URL : 'https://data.nba.net',
     GET_ALL_TEAMS: '/prod/v2/2018/teams.json',
+    GET_ALL_TEAMS_V2: '/prod/2018/teams_config.json',
     GET_ALL_PLAYERS: '/prod/v1/2018/players.json',
     GET_GAMES_BY_DAY: (formattedDate) => `/prod/v2/${formattedDate}/scoreboard.json`,
     FORMAT_DATE: date => date.getFullYear() + ('0' + (date.getMonth()+1)).slice(-2) + ('0' + (date.getDate())).slice(-2),

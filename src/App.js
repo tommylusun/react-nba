@@ -13,7 +13,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 class App extends Component {
   
   baseURL = urlConstants.BASE_URL;
-  getTeamsURL = urlConstants.GET_ALL_TEAMS;
+  getTeamsURL = urlConstants.GET_ALL_TEAMS_V2;
   getPlayersURL = urlConstants.GET_ALL_PLAYERS;
 
   constructor(props) {
@@ -46,7 +46,7 @@ class App extends Component {
 
   async getTeams() {
     const res = await axios.get(this.baseURL + this.getTeamsURL);
-    const teams = await res.data.league.standard;
+    const teams = await res.data.teams.config;
     this.setState({
       teams: teams,
     });

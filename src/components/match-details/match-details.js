@@ -15,7 +15,12 @@ class gameDetails extends Component {
     baseURL = urlConstants.BASE_URL;
 
 
-    state = {game: 'loading'};
+    state = {
+        game: 'loading', 
+        team1Color: '#ffffff',
+        team2Color: '#ffffff'
+    };
+
     loading = (<Loader className={styles.loading} inline='centered' active content='Loading' />);
 
 
@@ -23,6 +28,7 @@ class gameDetails extends Component {
         this.hPlayers = this.loading;
         this.vplayers = this.loading;
         await this.getGameDetails(this.props.match.params.date,this.props.match.params.id);
+
 
         setInterval( async () => {
             await this.getGameDetails(this.props.match.params.date,this.props.match.params.id);
@@ -39,9 +45,16 @@ class gameDetails extends Component {
     async getGameDetails(date, gameId) {
         try {
             const matchDetails = await axios.get(this.baseURL + urlConstants.GET_GAME_DETAILS(date,gameId));
-            matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).fullName;
-            matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).fullName;
-            this.setState( {game: matchDetails.data});
+            matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).ttsName;
+            matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).ttsName;
+            const team1Color = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).primaryColor;
+            const team2Color = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).primaryColor;
+            this.setState( 
+                {
+                    game: matchDetails.data,
+                    team1Color: team1Color,
+                    team2Color: team2Color
+                });
             return;
           } 
           catch (e) {
@@ -62,6 +75,12 @@ class gameDetails extends Component {
     }
 
     render() {
+        const background = { 
+            // background: `linear-gradient(90deg, ${this.state.team1Color}80 25%, ${this.state.team2Color}80 75%)`
+            background: `linear-gradient(180deg, #00000010 25%, #0000001a 75%)`
+        };
+        console.log(background);
+
         if (this.state.game === 'loading' || !!!this.props.players){
             return (
                 <div className = {styles['container-placeholder']}>
@@ -82,10 +101,10 @@ class gameDetails extends Component {
             }
             
             return ( 
-                <div className={styles.container}>
-                    <Grid className={styles.container}>
-                        <Grid.Row>
-                            <GameStats stats={this.basicGameData}/>
+                <div  style={background} className={styles.container}>
+                    <Grid className={styles.grid}>
+                        <Grid.Row centered className={styles.gameStats}>
+                            <GameStats team1Color={this.state.team1Color} team2Color={this.state.team2Color} stats={this.basicGameData}/>
                         </Grid.Row>
                         <Grid.Row centered>
                             <Grid.Column className={styles.playerscol}>

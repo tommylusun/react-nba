@@ -78,7 +78,7 @@ class MatchesList extends Component {
 
         return ( 
             <div className={styles.MatchesList}>
-                <div>
+                <div className={styles.header}>
                     <Button.Group>
                         <Button onClick={() => this.dayHandler(-1)}>Prev Day</Button>
                         <Button onClick={() => this.dayHandler(1)}>Next Day</Button>

@@ -2,6 +2,11 @@
     animation-name: fade-in; 
     animation-duration: 0.3s;
     margin: 0;
+    margin: 30px;
+    border-radius: 10px;
+    padding: 0px;
+    box-shadow: 0 10px 20px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
 }
 
 @keyframes fade-in {
@@ -32,6 +37,13 @@ label {
 .container-placeholder {
     margin-top: 200px;
     padding: 100px;
+}
+.grid {
+    margin: 0 !important;
+}
+.gameStats {
+    margin-left: 0px;
+    margin-right: 0px;
 }
 .playerstats {
     /* display: flex; */
