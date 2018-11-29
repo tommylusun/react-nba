@@ -1,28 +1,59 @@
 .container {
-    text-align: 'center';
-    display: 'flex';
-    height: 100%;
-    overflow: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* height: 85vh; */
     text-align: center;
-    align-content: center;
+    /* align-content: center; */
     width: 100%;
+    flex-wrap: nowrap !important;
+    /* padding: 15px; */
+    animation: fade-in 0.3s ease-in-out;
     
+}
+.containerHeader{
+    padding: 15px;
+    /* width: 100%; */
+}
+@keyframes fade-in {
+    0%   {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 .StandingsList {
     display: flex;
     flex-direction: row;
-    align-content: center;
+    text-align: center;
     flex-wrap: wrap;
-    /* margin: auto; */
-    width: 100%;
+    margin: auto;
+    height: 100%;
+    overflow: auto;
+    /* width: 40%; */
+    min-width: 520px;
+    padding-bottom: 30px;
+}
+.teamProfile {
+    width: 65%;
+    /* min-width: 20%; */
+    height: 100%;
+    margin: auto;
 }
 .listContainer {
-    margin: 15px;
     width: 40%;
-    padding: 25px;
+    padding: 20px;
     min-width: 500px;
     margin: auto;
+    margin-top: 30px;
 
+}
+.StandingsList .confHeader {
+    text-align: start;
+    padding-left: 5px;
+    border-bottom: 1px solid #00000030;
+    margin-bottom: 10px;
 }
 .StandingsList ul {
     list-style-type: none;
@@ -31,22 +62,42 @@
     /* margin: 10px; */
 }
 .StandingsList li {  
-    padding-left : 15px;
+    padding-left: 0px;
     text-align: center;
     vertical-align: middle;
+    padding-top: 5px;
+    padding-bottom: 5px;
     
 }
-.StandingsList label {
-    text-align: start;
+.StandingsList label { 
+    text-align: center;
     flex-wrap: nowrap;
-    min-width: 50px;    
-    width: 50px;
+    min-width: 55px;    
+    width: 55px;
+    cursor: pointer;
 }
 .StandingsList .teamName {
-    min-width: 250px;
+    /* -webkit-text-stroke: 0.5px black; */
+    /* text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000; */
+    color: black;
+    text-align: start;
+    /* width: 40%; */
+    width: calc(100% - 330px);
+    min-width: 80px;
 }
 .StandingsList .header {
-    padding-top: 10px;
-    background-color: rgba(0,0,0,0.2);
-    border-radius: 5px;
+    padding-top: 5px;
+    border-bottom: 1px solid #00000030;
+}
+.StandingsList .playerRow {
+    margin: auto; 
+    font-size: 1rem;
+    transition: all 500ms ease-in-out;
+    cursor: pointer;
+}
+.StandingsList .playerRow:hover {
+    background: #00000010;
+    box-shadow: 0 5px 5px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.15);
+    transform: scale(1.05);
+    transition: all 75ms ease-in-out;
 }

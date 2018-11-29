@@ -14,9 +14,6 @@
         height: calc(100% - 60px);
         min-width: 260px;
         text-align: center;
-        background-color: #00000010;
-        box-shadow: 0 10px 20px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        border-radius: 10px;
         margin-top: 30px;
         margin-bottom: 30px;
     }
@@ -35,14 +32,11 @@
 }
 
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (max-width: 770px) {
     .MatchesList {
         height: calc(100% - 60px);
         min-width: 260px;
         text-align: center;
-        background-color: #00000010;
-        box-shadow: 0 10px 20px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        border-radius: 10px;
         margin-top: 0px;
     }
     .header {

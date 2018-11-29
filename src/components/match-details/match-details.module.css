@@ -37,10 +37,7 @@
         margin: 30px;
         margin-left: 0px;
         margin-right: 0px;
-        border-radius: 10px;
         padding: 0px;
-        background: #00000010;
-        box-shadow: 0 10px 20px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     }
     .container-placeholder {
         height: calc(85vh - 60px);
@@ -57,10 +54,8 @@
         margin: 0;
         margin-left: 0px;
         margin-right: 0px;
-        border-radius: 10px;
         padding: 0px;
-        background: #00000010;
-        box-shadow: 0 10px 20px 5px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        
     }
     .container-placeholder {
         height: calc(85vh - 30px);

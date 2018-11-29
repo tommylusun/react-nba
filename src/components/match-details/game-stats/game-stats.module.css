@@ -8,9 +8,6 @@
     margin: auto;
     margin-top: 25px;
 }
-.middleCol {
-    /* min-width: 200px !important; */
-}
 .container{
     margin: 1rem;
     margin-bottom: 0px;
@@ -30,20 +27,17 @@
     height:100%;
     max-width: 150px;
     max-height: 150px;
-    animation-name: fade-in; 
-    animation-duration: 0.75s;
+    animation: fade-in 0.75s; 
 }
 
 @keyframes fade-in {
     0%   {
         opacity: 0;
-       
     }
     100% {
         opacity: 1;
     }
 }
-
 .score {
     font-size: 2.5vw;
 }
@@ -65,10 +59,11 @@
     width: 50px;
 }
 .GameScoreSummary .teamName {
-    min-width: 120px;
+    min-width: 150px;
+    padding-right: 15px;
 }
 .GameScoreSummary .header {
+    padding-bottom: 5px;
     padding-top: 10px;
-    background-color: rgba(0,0,0,0.2);
-    border-radius: 5px;
+    border-bottom: 1px solid #00000030;
 }

@@ -11,20 +11,22 @@ class HeaderNav extends Component {
 
     componentDidMount() {
         this.setState( {value: -1});
-        if (this.props.location.pathname.includes('/app/matches')){
-            this.setState({value: 0});
-        }
-        if (this.props.location.pathname.includes('/app/leaderboards')){
-            this.setState({value: 1});
-        }
-       }
+        this.updateActiveTab(this.props.location.pathname);
+    }
+
     componentWillReceiveProps() {
-        console.log(this.props.history.location);
-        if (this.props.history.location.pathname.includes('/app/matches')){
+        this.updateActiveTab(this.props.history.location.pathname);
+    }
+
+    updateActiveTab = (pathname) => {
+        if (pathname.includes('/app/matches')){
             this.setState({value: 0});
-        }
-        if (this.props.history.location.pathname.includes('/app/leaderboards')){
+        } 
+        else if (pathname.includes('/app/leaderboards')){
             this.setState({value: 1});
+        }
+        else if (pathname.includes('/app/players')){
+            this.setState({value: 2});
         }
     }
 
@@ -34,6 +36,8 @@ class HeaderNav extends Component {
             this.props.history.push('/app/matches');
         } else if (value===1) {
             this.props.history.push('/app/leaderboards');
+        } else if (value===2) {
+            this.props.history.push('/app/players');
         }
     };
 
@@ -41,8 +45,8 @@ class HeaderNav extends Component {
         let value = this.state.value;
         return (
             <div className={styles.navbar}>
-                <Tabs  fullWidth value={value} onChange={this.handleChange} indicatorColor="primary">
-                    <Tab className={styles.tabRoot} label="Matches"/>
+                <Tabs fullWidth value={value} onChange={this.handleChange} indicatorColor="primary">
+                    <Tab label="Matches"/>
                     <Tab label="LeaderBoards" />
                     <Tab label="Players" />
                 </Tabs>

@@ -1,12 +1,7 @@
-
-.tableContainer {
-    box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.25);
-}
-
 .PlayersTable .header {
     padding-top: 10px;
-    border-radius: 5px;
-    background-color: rgba(0,0,0,0.2);
+    padding-bottom: 5px;
+    border-bottom: 1px solid #00000030;
 }
 
 .PlayersTable .morestats {
@@ -14,24 +9,21 @@
     padding-bottom: 10px;
     padding-top: 0px;
     margin-top: 0px;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-    border-left: 1px solid rgba(0,0,0,0.2);
-    border-right: 1px solid rgba(0,0,0,0.2);
-    animation-name: example; 
-    animation-duration: 0.2s;
-    border-radius: 0px 0px 5px 5px !important;
-
+    border-bottom: 1px solid #00000030;
+    border-left: 1px solid #00000030;
+    border-right: 1px solid #00000030;
+    animation: example 0.2s ease-in-out;
 }
 .PlayersTable .playerRow {
     font-size: 1rem;
     transition: all 500ms ease-in-out;
-    border-radius: 5px;
     cursor: pointer;
 }
 .PlayersTable .playerRow:hover {
-    background-color: rgba(0,0,0,0.1);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.15), 0 5px 5px rgba(0,0,0,0.12);
-    transition: all 100ms ease-in-out;
+    background-color: #00000010;
+    transform: scale(1.02);
+    box-shadow: 0 5px 5px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.15);
+    transition: all 75ms ease-in-out;
 }
 
 @keyframes example {
@@ -45,26 +37,23 @@
     }
 }
 .highlight {
-    background-color: rgba(0,0,0,0.1);
-    border-radius: 5px 5px 0px 0px !important;
-
-    border-top: 1px solid rgba(0,0,0,0.2);
-    border-left: 1px solid rgba(0,0,0,0.2);
-    border-right: 1px solid rgba(0,0,0,0.2);
-
-
+    background-color: #00000010;
+    border-top: 1px solid #00000030;
+    border-left: 1px solid #00000030;
+    border-right: 1px solid #00000030;
 }
 .PlayersTable .divider2{
     position: relative;
     height: 0px;
     padding: 0px
-  }
+}
 
 .PlayersTable .loader {
     display: inline-block;
     top: -16px;
     position: relative;
 }
+
 @media (min-width: 770px) {
     .PlayersTable ul {
         list-style-type: none;

@@ -41,7 +41,6 @@ class MatchesList extends Component {
         this.setState({
           games: games
         });
-        console.log(this.state);
         return this.state;
     }
 
@@ -77,7 +76,7 @@ class MatchesList extends Component {
         
 
         return ( 
-            <div className={styles.MatchesList}>
+            <div className={[styles.MatchesList, 'containerCard'].join(' ')}>
                 <div className={styles.header}>
                     <Button.Group>
                         <Button onClick={() => this.dayHandler(-1)}>Prev Day</Button>

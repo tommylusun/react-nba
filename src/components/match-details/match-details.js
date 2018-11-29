@@ -98,7 +98,7 @@ class gameDetails extends Component {
             }
             
             return ( 
-                <div className={styles.container}>
+                <div className={[styles.container, 'containerCard'].join(' ')}>
                     <Grid className={styles.grid}>
                         <Grid.Row centered className={styles.gameStats}>
                             <GameStats team1Color={this.state.team1Color} team2Color={this.state.team2Color} stats={this.basicGameData}/>

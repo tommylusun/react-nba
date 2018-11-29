@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-content: stretch;
+    width: 95%;
+    margin: auto;
+    min-width: 520px;
+    min-height: 400px;
+    animation: fade-in 0.3s ease-in-out;
+    flex-wrap: wrap;
+}
+@keyframes fade-in {
+    0%   {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+.header {
+    width: 100%;
+    padding: 30px;
+}
+
+.body {
+    width: 100%;
+    padding: 30px;
+}

@@ -5,6 +5,7 @@ import MatchDetails from './components/match-details/match-details';
 import MatchesList from './components/matches-list/matches-list';
 import LeaderBoards from './components/leaderboards/leaderboards';
 import HomePage from './components/homepage/homepage';
+import Players from './components/players/players';
 import axios from 'axios';
 import HeaderNav from './components/header-nav/header-nav';
 import { Grid } from 'semantic-ui-react'
@@ -81,8 +82,17 @@ class App extends Component {
   );
 
   leaderBoards = (
-    <Route exact path="/app/leaderboards" component={ props => 
+    <Route path="/app/leaderboards" component={ props => 
       <LeaderBoards
+      teams={this.state.teams}
+      {...props}
+      />
+    }/>
+  );
+
+  playersTab = (
+    <Route exact path="/app/players" component={ props => 
+      <Players
       teams={this.state.teams}
       {...props}
       />
