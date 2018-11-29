@@ -53,7 +53,7 @@ body ::-webkit-scrollbar-track {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-@media (min-width: 770px) {
+@media (min-width: 100px) {
   .App-body { 
     display: block;
     padding-top: 0px !important;
@@ -64,6 +64,7 @@ body ::-webkit-scrollbar-track {
     min-height: 85%;
     max-height: 85%;
     flex-wrap: nowrap !important;
+    min-width: 770px;
   }
   .MatchesList-container {
     width: 25% !important;
@@ -82,7 +83,7 @@ body ::-webkit-scrollbar-track {
   }
 }
 
-@media (max-width: 770px) {
+@media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
   .MatchesList-container {
     width: 90% !important;
     height: 70%;

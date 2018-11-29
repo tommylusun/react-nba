@@ -55,8 +55,6 @@
 .GameScoreSummary li {  
     padding-left : 15px;
     text-align: center;
-    /* flex-wrap: nowrap; */
-    /* flex: none; */
     vertical-align: middle;
     
 }

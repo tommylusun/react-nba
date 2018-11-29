@@ -1,0 +1,52 @@
+.container {
+    text-align: 'center';
+    display: 'flex';
+    height: 100%;
+    overflow: auto;
+    text-align: center;
+    align-content: center;
+    width: 100%;
+    
+}
+.StandingsList {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: wrap;
+    /* margin: auto; */
+    width: 100%;
+}
+.listContainer {
+    margin: 15px;
+    width: 40%;
+    padding: 25px;
+    min-width: 500px;
+    margin: auto;
+
+}
+.StandingsList ul {
+    list-style-type: none;
+    padding-left: 0px;
+    text-align: start;
+    /* margin: 10px; */
+}
+.StandingsList li {  
+    padding-left : 15px;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+.StandingsList label {
+    text-align: start;
+    flex-wrap: nowrap;
+    min-width: 50px;    
+    width: 50px;
+}
+.StandingsList .teamName {
+    min-width: 250px;
+}
+.StandingsList .header {
+    padding-top: 10px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 5px;
+}

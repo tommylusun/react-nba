@@ -14,5 +14,6 @@ export const urlConstants = {
     GET_GAME_DETAILS: (formattedDate, gameId) => `/prod/v1/${formattedDate}/${gameId}_boxscore.json`,
     GET_TEAM_LOGO: (tricode) => `https://www.nba.com/.element/img/1.0/teamsites/logos/teamlogos_500x500/${tricode.toLowerCase()}.png`,
     GET_PLAYER_STATS: (personId) => `/prod/v1/2018/players/${personId}_profile.json`,
+    GET_TEAM_STANDINGS: `/prod/v1/current/standings_conference.json`
 
 };

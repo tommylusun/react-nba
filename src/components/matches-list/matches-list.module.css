@@ -35,7 +35,7 @@
 }
 
 
-@media (max-width: 770px) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .MatchesList {
         height: calc(100% - 60px);
         min-width: 260px;

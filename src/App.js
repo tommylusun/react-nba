@@ -83,6 +83,7 @@ class App extends Component {
   leaderBoards = (
     <Route exact path="/app/leaderboards" component={ props => 
       <LeaderBoards
+      teams={this.state.teams}
       {...props}
       />
     }/>
