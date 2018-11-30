@@ -13,7 +13,16 @@ class Players extends Component {
 
     render() {
 
-        return (<div> Players </div>);
+        return (
+            <div className={styles.container}> 
+                <div className={[styles.playersContainer,'containerCard'].join(' ')}>
+                        <h1>Players</h1> 
+                        <p>coming soon...</p>
+                    
+                </div>
+
+                
+            </div>);
     } 
 
 

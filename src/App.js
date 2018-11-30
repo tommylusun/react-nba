@@ -125,6 +125,7 @@ class App extends Component {
               {this.match}
               {this.leaderBoards}
               {this.homePage}
+              {this.playersTab}
           </Grid.Row>  
 
           <div className="App-footer"></div>
