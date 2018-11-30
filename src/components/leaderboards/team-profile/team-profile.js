@@ -49,9 +49,13 @@ class TeamProfile extends Component {
         const list = this.state.roster.map ( (player) => {
             return this.getPlayerStats(player.personId).then((playerStats) => {
                 let playerDetails = this.props.players.find( person => person.personId === player.personId);
+                let imgsrc = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player.personId}.png`
                 return (
                     <div className={[styles.playerContainer,'innerCard'].join(' ')}>
-                        <div style={{borderBottom: '1px solid #00000030'}}><h6>{playerDetails.firstName} {playerDetails.lastName}</h6></div>
+                        <div style={{borderBottom: '1px solid #00000030', height: '50px'}}>
+                            <h6 style={{'vertical-align': 'middle', 'line-height': 'normal', 'display': 'inline'}}>{playerDetails.firstName} {playerDetails.lastName}</h6>
+                        </div>
+                        <div><img style={{width: '100%'}} src={imgsrc} alt={playerDetails.lastName}/></div>
                         <li>PPG: {playerStats.latest.ppg}</li>
                         <li>RPG: {playerStats.latest.rpg}</li>
                         <li>APG: {playerStats.latest.apg}</li>
