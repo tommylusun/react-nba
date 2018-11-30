@@ -18,9 +18,11 @@
         margin-bottom: 30px;
     }
     .header {
-        padding-top: 20px;
-        padding-bottom: 0px;
-        border-radius: 10px 10px 5px 5px;
+        padding-top: 10px;
+        padding-bottom: 15px;
+        margin-bottom: 0px !important;
+        border-bottom: 1px solid #00000030;
+
     }
     .list {
         height: calc(100% - 150px);
@@ -29,6 +31,10 @@
         text-align: center;
         padding: 10px;
     }
+}
+.Match {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 

@@ -77,14 +77,14 @@ class MatchesList extends Component {
 
         return ( 
             <div className={[styles.MatchesList, 'containerCard'].join(' ')}>
-                <div className={styles.header}>
+                <div className={[styles.header].join(' ')}>
+                    <h3 style={{margin: '20px'}}>{this.state.date.toDateString()}</h3>  
                     <Button.Group>
                         <Button onClick={() => this.dayHandler(-1)}>Prev Day</Button>
                         <Button onClick={() => this.dayHandler(1)}>Next Day</Button>
                     </Button.Group>
-                    <h3 style={{margin: '25px'}}>{this.state.date.toDateString()}</h3>  
                 </div>
-                <div className={styles.list}>
+                <div className={[styles.list].join(' ')}>
                     {gamesList} 
                 </div>
             </div>

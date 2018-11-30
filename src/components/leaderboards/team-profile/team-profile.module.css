@@ -4,7 +4,8 @@
     text-align: center;
     align-content: stretch;
     width: 95%;
-    margin: auto;
+    margin-right: auto;
+    margin-left: auto;
     min-width: 520px;
     min-height: 400px;
     animation: fade-in 0.3s ease-in-out;
@@ -19,7 +20,23 @@
     }
 }
 
+.playerContainer {
+    animation: fade-in 0.3s ease-in-out;
+    width: 20%;
+    padding: 10px;
+}
 
+.playerContainer li { 
+    list-style-type: none;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    padding-left: 0px;
+    /* text-align: center; */
+    vertical-align: middle;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    
+}
 
 .header {
     width: 100%;
@@ -29,4 +46,6 @@
 .body {
     width: 100%;
     padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
 }

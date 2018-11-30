@@ -39,18 +39,17 @@ class LeaderBoards extends Component {
     }
 
     clickHandler = (teamId) => {
-        console.log(this.props);
         this.props.history.push("/app/leaderboards/"+teamId);
     }
 
     makeList = (conference) => {
         return (
-            <ul>
+            <ul className={styles.list}>
                 <li className={styles.header}>
                     <label><b>Rank</b></label>
                     <label className={styles.teamName}><b>Team</b></label>
-                    <label><b>Wins</b></label>
-                    <label><b>Losses</b></label>
+                    <label><b>Win</b></label>
+                    <label><b>Loss</b></label>
                     <label><b>Home</b></label>
                     <label><b>Away</b></label>
                     <label><b>Last 10</b></label>
@@ -89,34 +88,46 @@ class LeaderBoards extends Component {
             let east = this.makeList(this.state.east);
             let west = this.makeList(this.state.west);
             let width = { width: '35%' };
+            let innerWidth = { width: '90%'};
             if (this.props.location.pathname==='/app/leaderboards'){
                 width = { width: '100%'};
-                console.log(styles.StandingsList);
+                innerWidth = { width: '70%'};
             }
             return (
                 <div className={styles.container}>
                     {/* <div className={styles.containerHeader}>
                         <h1>Leaderboards</h1>
                     </div>       */}
-                    <div style={width} className={styles.StandingsList}>
-                        <div className={[styles.listContainer, 'containerCard'].join(' ')}>
-                            <div className={styles.confHeader}>
-                                <h1>West</h1>
+                    <div style={width} className={[styles.StandingsContainer]}>
+                        <div style={innerWidth} className={[styles.StandingsCard, 'containerCard'].join(' ')}>
+                        
+                            <div className={styles.standingsHeader}>
+                                <h3>Season 2018 Standings</h3>
                             </div>
-                            
-                            {west}
-                        </div>
-                        <div className={[styles.listContainer, 'containerCard'].join(' ')}>
-                            <div className={styles.confHeader}>
-                                <h1>East</h1>
+                            <div className={[styles.listContainer, 'innerCard'].join(' ')}>
+                                <div className={styles.confHeader}>
+                                    <h1>West</h1>
+                                </div>
+                                {west}
                             </div>
-                            {east}
+                            <div className={[styles.listContainer, 'innerCard'].join(' ')}>
+                                <div className={styles.confHeader}>
+                                    <h1>East</h1>
+                                </div>
+                                {east}
+                            </div>
                         </div>
                     </div>
+
+                    
                         <Route path="/app/leaderboards/:teamId" component={ (props) => {
                             return (
                                 <div className={styles.teamProfile}>
-                                    <TeamProfile {...props}></TeamProfile>
+                                    <TeamProfile 
+                                    players={this.props.players}
+                                    teams={this.props.teams}
+                                    {...props}>
+                                    </TeamProfile>
                                 </div>);
                         }}/>
                 </div>

@@ -30,7 +30,7 @@ class Match extends Component {
         }
 
         return (
-            <div className={[styles.container, this.props.selected ? styles.selected : ''].join(' ') }>
+            <div className={[styles.container, 'innerCard', this.props.selected ? styles.selected : ''].join(' ') }>
                 <div className={styles.col}>
                     <p className={styles.record}>{this.props.match.hTeam.win} - {this.props.match.hTeam.loss}</p>
                     <h4 className={styles.heading}>{this.props.match.hTeam.triCode}</h4>

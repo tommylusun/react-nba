@@ -10,39 +10,81 @@ class TeamProfile extends Component {
 
     baseURL = urlConstants.BASE_URL;
     getTeamRosterURL = urlConstants.GET_TEAM_ROSTER;
+    getPlayerStatsURL = urlConstants.GET_PLAYER_STATS;
 
     state = {
-        roster: null
-    }
+        roster: [],
+        list: null,
+        teamDetails: {}
+    };
     async componentDidMount() {
-        await this.getTeamRoster(this.props.match.params.teamId);
-
+        await this.getTeamData(this.props.match.params.teamId);
+        await this.playersList();
     }
 
-
-    async getTeamRoster(teamId) {
+    async getTeamData(teamId) {
         const data = await axios.get(this.baseURL + this.getTeamRosterURL(teamId));
-        console.log(data);
         const roster = await data.data.league.standard.players;
-        this.setState( {
-            roster: roster
+        const teamDetails = await this.props.teams.find( team => team.teamId === teamId);
+        this.setState({
+            roster: roster,
+            teamDetails: teamDetails
         });
         return data;
     }
-    render() {
-        let players = null;
-        if (this.state.roster !== null) {
-            players = this.state.roster.map ( (player) => {
-                return <div><label>{player.personId}</label></div>
+
+    getPlayerStats(personId) {
+        return axios.get(this.baseURL + this.getPlayerStatsURL(personId)).then((data)=> {
+            return data.data.league.standard.stats;
+        });
+        // console.log(await axios.get(this.baseURL + this.getPlayerStatsURL(personId)));
+        // const stats = await data.league.standard.stats;
+        // return data;
+    }
+
+    playersList = async () => {
+        const list = this.state.roster.map ( (player) => {
+            return this.getPlayerStats(player.personId) 
+            .then((playerStats) => {
+                let playerDetails = this.props.players.find( person => person.personId === player.personId);
+                return (
+                    <div className={[styles.playerContainer,'innerCard'].join(' ')}>
+                        <div><h6>{playerDetails.firstName} {playerDetails.lastName}</h6></div>
+                        <li>PPG: {playerStats.latest.ppg}</li>
+                        <li>RPG: {playerStats.latest.rpg}</li>
+                        <li>APG: {playerStats.latest.apg}</li>
+                    </div>
+                );
             });
+        });
+        const result = await Promise.all(list);
+        this.setState({
+            list: result
+        });
+        return result;
+    }
+
+    render() {
+        if (this.state.roster === null && this.state.list === null) {
+            return (
+                <div className={[styles.container,'containerCard'].join(' ')}>
+                </div>
+            );
         }
         return (
             <div className={[styles.container,'containerCard'].join(' ')}>
                 <div className={styles.header}>
-                    <h1>Team Profile</h1>
+                    <h1>{this.state.teamDetails.ttsName}</h1>
                 </div>
-                <div className={styles.body}>
-                    {players}
+                <div>
+
+                </div>
+                <div className={'innerCard'}>
+                    <h5>Player Stats </h5>
+                
+                    <div className={styles.body}>
+                        {this.state.list}
+                    </div>
                 </div>
                 
             </div>);

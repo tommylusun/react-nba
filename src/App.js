@@ -85,6 +85,7 @@ class App extends Component {
     <Route path="/app/leaderboards" component={ props => 
       <LeaderBoards
       teams={this.state.teams}
+      players={this.state.players}
       {...props}
       />
     }/>
@@ -94,6 +95,7 @@ class App extends Component {
     <Route exact path="/app/players" component={ props => 
       <Players
       teams={this.state.teams}
+      players={this.state.players}
       {...props}
       />
     }/>

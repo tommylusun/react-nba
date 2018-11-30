@@ -100,14 +100,14 @@ class gameDetails extends Component {
             return ( 
                 <div className={[styles.container, 'containerCard'].join(' ')}>
                     <Grid className={styles.grid}>
-                        <Grid.Row centered className={styles.gameStats}>
+                        <Grid.Row centered className={[styles.gameStats,''].join(' ')}>
                             <GameStats team1Color={this.state.team1Color} team2Color={this.state.team2Color} stats={this.basicGameData}/>
                         </Grid.Row>
                         <Grid.Row centered className={styles.playerStats}>
-                            <Grid.Column className={styles.playerscol}>
+                            <Grid.Column className={[styles.playerscol,'innerCard'].join(' ')}>
                                     {this.hPlayers}
                             </Grid.Column>
-                            <Grid.Column className={styles.playerscol}>
+                            <Grid.Column className={[styles.playerscol,'innerCard'].join(' ')}>
                                     {this.vplayers}
                             </Grid.Column>
                         </Grid.Row>
@@ -116,7 +116,7 @@ class gameDetails extends Component {
             );
         } else {
             return (
-                <div  className={styles.container}>
+                <div  className={[styles.container, 'containerCard'].join(' ')}>
                     <div className = {styles['container-placeholder']}>
                         <h3>Game Not Started</h3>
                     </div>

@@ -29,7 +29,7 @@
   margin: 0;
   padding: 0px !important;
   height: 50px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 4px 4px rgba(0,0,0,0.23);
   z-index: 1;
 }
 
@@ -47,11 +47,21 @@ body ::-webkit-scrollbar-track {
 
 .containerCard {
   background-color: #ffffff;
-  box-shadow: 0 5px 5px 0px rgba(0,0,0,0.19), 0 1px 2px rgba(0,0,0,0.23);
-  margin-top: 30px !important;
+  box-shadow: 0 5px 5px 0px rgba(0,0,0,0.19), 0 1px 2px rgba(0,0,0,0.25);
+  margin-top: 30px;
   margin-bottom: 30px;
   border-radius: 5px;
 }
+.innerCard {
+  background-color: #ffffff;
+  box-shadow: 0 9px 3px -5px rgba(0,0,0,0.15), 0 7px 1px -5px rgba(0,0,0,0.25);
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+  border: 0.5px solid rgba(0,0,0,0.1);
+
+}
+
 @media (min-width: 100px) {
   .App-body { 
     display: block;
@@ -72,7 +82,7 @@ body ::-webkit-scrollbar-track {
     min-width: 270px;
   }
   .App-Match-Details-Container {
-    width: 75% !important;
+    width: 65% !important;
     min-width: 500px  !important;
     overflow: auto;
   }

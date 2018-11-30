@@ -19,17 +19,23 @@
 .grid {
     margin: 0 !important;   
     animation: fade-in 0.5s; 
+
 }
 .gameStats {
     margin-left: 0px;
     margin-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 .playerStats {
     margin: 0;
+    margin-bottom: 20px;
 }
 @media (min-width: 770px) {
     .playerscol {
+        margin-top: 0px;
         padding: 15px;
+        margin: auto;
         min-width: 470px;
     }
     .container {
