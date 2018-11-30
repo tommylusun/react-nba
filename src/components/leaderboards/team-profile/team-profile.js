@@ -14,7 +14,7 @@ class TeamProfile extends Component {
 
     state = {
         roster: [],
-        list: null,
+        list: (<div>Loading...</div>),
         teamDetails: {}
     };
     async componentDidMount() {
@@ -43,13 +43,15 @@ class TeamProfile extends Component {
     }
 
     playersList = async () => {
+        this.setState({
+            list: <div>Loading...</div>
+        });
         const list = this.state.roster.map ( (player) => {
-            return this.getPlayerStats(player.personId) 
-            .then((playerStats) => {
+            return this.getPlayerStats(player.personId).then((playerStats) => {
                 let playerDetails = this.props.players.find( person => person.personId === player.personId);
                 return (
                     <div className={[styles.playerContainer,'innerCard'].join(' ')}>
-                        <div><h6>{playerDetails.firstName} {playerDetails.lastName}</h6></div>
+                        <div style={{borderBottom: '1px solid #00000030'}}><h6>{playerDetails.firstName} {playerDetails.lastName}</h6></div>
                         <li>PPG: {playerStats.latest.ppg}</li>
                         <li>RPG: {playerStats.latest.rpg}</li>
                         <li>APG: {playerStats.latest.apg}</li>
@@ -76,12 +78,17 @@ class TeamProfile extends Component {
                 <div className={styles.header}>
                     <h1>{this.state.teamDetails.ttsName}</h1>
                 </div>
-                <div>
-
+                <div className={[styles.teamStatsContainer,'innerCard'].join(' ')}>
+                    <div className={styles.header}>
+                        <h4>Team Stats</h4>
+                    </div>
+                    <div className={styles.header}>
+                        <p>coming soon...</p>
+                    </div>
                 </div>
-                <div className={'innerCard'}>
-                    <h5>Player Stats </h5>
-                
+                <div className={[styles.playerStatsContainer,'innerCard'].join(' ')}>
+                    <h4>Player Stats </h4>
+                    
                     <div className={styles.body}>
                         {this.state.list}
                     </div>

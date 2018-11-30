@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     text-align: center;
-    align-content: stretch;
     width: 95%;
     margin-right: auto;
     margin-left: auto;
@@ -10,6 +9,7 @@
     min-height: 400px;
     animation: fade-in 0.3s ease-in-out;
     flex-wrap: wrap;
+    overflow: auto;
 }
 @keyframes fade-in {
     0%   {
@@ -19,11 +19,29 @@
         opacity: 1;
     }
 }
+.teamStatsContainer {
+    /* padding: 25px; */
+    margin: auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    width: 80%;
+    animation: fade-in 0.3s ease-in-out;
+}
+.playerStatsContainer {
+    padding: 25px;
+    margin: auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    width: 80%;
+    animation: fade-in 0.3s ease-in-out;
 
+}
 .playerContainer {
     animation: fade-in 0.3s ease-in-out;
-    width: 20%;
+    text-align: start;
     padding: 10px;
+    width: 150px;
+    margin: 15px;
 }
 
 .playerContainer li { 
@@ -45,7 +63,9 @@
 
 .body {
     width: 100%;
-    padding: 30px;
+    /* padding: 30px; */
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;    
 }

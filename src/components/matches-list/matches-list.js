@@ -48,7 +48,14 @@ class MatchesList extends Component {
         let gamesList = null;
 
         if (this.state.games===null || this.state.games===undefined){
-            gamesList = (  <div></div> );  
+            gamesList = (  
+                <div className={styles.list}>
+                    <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
+                    <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
+                    <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
+                    <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
+                    <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
+                </div>);  
                 // <div className={styles.divider}>
                 //     <Loader className='loader' size='large' active content='Fetching games...' />
                 // </div>);
@@ -84,7 +91,7 @@ class MatchesList extends Component {
                         <Button onClick={() => this.dayHandler(1)}>Next Day</Button>
                     </Button.Group>
                 </div>
-                <div className={[styles.list].join(' ')}>
+                <div className={styles.list}>
                     {gamesList} 
                 </div>
             </div>

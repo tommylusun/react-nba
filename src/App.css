@@ -34,7 +34,7 @@
 }
 
 body ::-webkit-scrollbar {
-  width: 6px;
+  width: 0px;
 }
 body ::-webkit-scrollbar-track {
   background-color: transparent;
@@ -80,6 +80,7 @@ body ::-webkit-scrollbar-track {
   .MatchesList-container {
     width: 25% !important;
     min-width: 270px;
+    overflow: auto;
   }
   .App-Match-Details-Container {
     width: 65% !important;

@@ -1,8 +1,16 @@
 
 .divider{
-    margin-top: 100px;
+    margin-top: 200px;
+    margin-bottom: 200px;
     position: relative;
     display: block;
+}
+.placeholder{
+    height: 100px;
+    padding-top: 30px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .selected {
@@ -11,11 +19,12 @@
 
 @media (min-width: 770px) {
     .MatchesList {
-        height: calc(100% - 60px);
+        /* height: calc(100% - 60px); */
         min-width: 260px;
         text-align: center;
         margin-top: 30px;
         margin-bottom: 30px;
+        overflow: auto;
     }
     .header {
         padding-top: 10px;
@@ -25,7 +34,7 @@
 
     }
     .list {
-        height: calc(100% - 150px);
+        /* height: calc(100% - 150px); */
         overflow-y: auto;
         width: 100%;
         text-align: center;
