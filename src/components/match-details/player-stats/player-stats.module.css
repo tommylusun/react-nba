@@ -82,6 +82,7 @@
     
     .PlayersTable .players {
         min-width: 150px;
+        /* width: calc(100% - 330px); */
     }
 }
 @media (max-width: 770px) {
@@ -91,6 +92,7 @@
         padding-left: 0px;
         text-align: start;
         width: 100%;
+        
     }
     .PlayersTable li {
         text-align: center;
@@ -102,6 +104,8 @@
     .PlayersTable label {
         text-align: start;
         min-width: 50px;
+        font-size: 1.25rem;
+
     }
     
     .PlayersTable .playerRow label {
@@ -109,6 +113,7 @@
     }
     
     .PlayersTable .players {
-        min-width: 150px;
+        min-width: calc(100% - 350px);
+        width: calc(100% - 300px);
     }
 }

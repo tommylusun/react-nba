@@ -62,7 +62,7 @@ body ::-webkit-scrollbar-track {
 
 }
 
-@media (min-width: 100px) {
+@media (min-width: 770px) {
   .App-body { 
     display: block;
     padding-top: 0px !important;
@@ -95,7 +95,7 @@ body ::-webkit-scrollbar-track {
   }
 }
 
-/* @media (-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+@media (max-width: 770px) {
   .MatchesList-container {
     width: 90% !important;
     height: 70%;
@@ -114,4 +114,4 @@ body ::-webkit-scrollbar-track {
     overflow: auto;
     width: 100% !important;
   }
-} */
+}
