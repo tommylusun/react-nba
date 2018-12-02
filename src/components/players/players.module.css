@@ -16,4 +16,37 @@
     width: 70%;
     margin-left: auto;
     margin-right: auto; 
+    
+}
+.playersSearchContainer {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: calc(100% - 150px);
+    overflow: auto;
+    justify-content: center;
+}
+.playerListItem {
+    width: 200px;
+    padding: 15px;
+    margin: 10px;
+}
+.searchBar {
+    padding: 5px;
+    font-size: 1.5rem;
+    transition: all ease-in-out 0.2s;
+    
+}
+.searchBar:focus {
+    outline: none;
+    transform: scale(1.05);
+    box-shadow: 0 10px 4px -4px rgba(0,0,0,0.15), 0 6px 2px -3px rgba(0,0,0,0.25);
+
+}
+.searchHeader {
+    padding-left: 25px;
+    padding-bottom: 15px;
+    text-align: start;
+    border-bottom: 1px solid #00000030;
 }

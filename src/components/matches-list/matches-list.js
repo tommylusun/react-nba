@@ -24,6 +24,9 @@ class MatchesList extends Component {
 
     async componentDidMount() {
         await this.getNBAGamesToday();
+        setInterval( async () => {
+            await this.getNBAGamesToday();
+          }, 5000);
     }
 
 
