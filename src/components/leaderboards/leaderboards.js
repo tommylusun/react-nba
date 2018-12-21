@@ -102,17 +102,17 @@ class LeaderBoards extends Component {
                         <div style={innerWidth} className={[styles.StandingsCard, 'containerCard'].join(' ')}>
                         
                             <div className={styles.standingsHeader}>
-                                <h3>Season 2018 Standings</h3>
+                                <h2>Season 2018 Standings</h2>
                             </div>
                             <div className={[styles.listContainer, 'innerCard'].join(' ')}>
                                 <div className={styles.confHeader}>
-                                    <h1>West</h1>
+                                    <h3>West</h3>
                                 </div>
                                 {west}
                             </div>
                             <div className={[styles.listContainer, 'innerCard'].join(' ')}>
                                 <div className={styles.confHeader}>
-                                    <h1>East</h1>
+                                    <h3>East</h3>
                                 </div>
                                 {east}
                             </div>

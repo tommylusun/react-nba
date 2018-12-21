@@ -52,14 +52,13 @@
     padding-left: 0px;
     /* text-align: center; */
     vertical-align: middle;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    
+    /* padding-top: 5px; */
+    /* padding-bottom: 5px; */
 }
 .playerContainer label {
     text-align: end;
     min-width: 55px;
-    border-bottom: 1px solid #00000030;
+    /* border-bottom: 1px solid #00000030; */
     
 }
 .playerContainer .statDesc{

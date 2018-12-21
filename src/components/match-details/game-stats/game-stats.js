@@ -128,8 +128,7 @@ class GameStats extends Component {
 
                     <Grid.Row centered>
                             {this.table}
-                    </Grid.Row>
-                    
+                    </Grid.Row>                  
                 </Grid>
                 <div className={styles.bar}>
                     {this.progressBar}                

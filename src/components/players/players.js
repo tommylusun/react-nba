@@ -102,7 +102,7 @@ class Players extends Component {
         return (
             <div className={styles.container}> 
                 <div className={[styles.playersContainer,'containerCard'].join(' ')}>
-                    <h1>Players</h1> 
+                    <h1>2018 Active Players</h1> 
 
                     <div className={styles.searchHeader}>
                         <input placeholder='Enter name' className={[styles.searchBar,'innerCard'].join(' ')} type='text' value={this.state.searchValue} onKeyPress={(e) => this.onInputChange(e)} onChange={(event)=> this.setState({searchValue: event.target.value})}/>

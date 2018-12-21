@@ -15,18 +15,15 @@ class Match extends Component {
         } else{
             period = 'P' + this.props.match.period.current + ' ' + this.props.match.clock;
         }
-
+        let Hcolor = 'black';
+        let Vcolor = 'black';
         if (this.props.match.statusNum===3){
             period = "End";
-            // if (this.props.match.hTeam.score < this.props.match.vTeam.score) {
-            //     styles.colScoreH = {
-            //         fontSize: '600'
-            //     }
-            // } else {
-            //     styles.colScoreV = {
-            //         fontSize: '600'
-            //     }
-            // }
+            if (Number(this.props.match.vTeam.score) < Number(this.props.match.hTeam.score)) {
+                Hcolor = 'green';
+            } else {
+                Vcolor= 'green';
+            }
         }
 
         return (
@@ -35,13 +32,13 @@ class Match extends Component {
                     <p className={styles.record}>{this.props.match.hTeam.win} - {this.props.match.hTeam.loss}</p>
                     <h4 className={styles.heading}>{this.props.match.hTeam.triCode}</h4>
                 </div>
-                <div className={styles.colScoreH}>
+                <div style={{color: Hcolor}} className={styles.colScoreH}>
                     <p>{this.props.match.hTeam.score}</p>
                 </div>
                 <div className={styles.colMid}>
                     <p>{period}</p>
                 </div>
-                <div className={styles.colScoreV}>
+                <div style={{color: Vcolor}} className={styles.colScoreV}>
                     <p>{this.props.match.vTeam.score}</p>
                 </div>
                 <div className={styles.col}>

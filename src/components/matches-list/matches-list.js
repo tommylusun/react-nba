@@ -19,6 +19,7 @@ class MatchesList extends Component {
             selected: null,
             games: [],
             date: new Date(),
+            today: new Date()
         };
     }
 
@@ -49,7 +50,6 @@ class MatchesList extends Component {
 
     render() {
         let gamesList = null;
-
         if (this.state.games===null || this.state.games===undefined){
             gamesList = (  
                 <div className={styles.list}>
@@ -81,18 +81,33 @@ class MatchesList extends Component {
                     <div className={styles.divider}>
                         <h3>No Games Today</h3>
                     </div>);
+            }
         }
+        let today = null;
+        if (this.state.date > this.state.today) {
+            today =  "Upcoming Matches";
+        } else if (this.state.date < this.state.today) {
+            today = "Past Matches";
+        } else {
+            today = "Today's Matches";
         }
-        
 
         return ( 
             <div className={[styles.MatchesList, 'containerCard'].join(' ')}>
+
                 <div className={[styles.header].join(' ')}>
-                    <h3 style={{margin: '20px'}}>{this.state.date.toDateString()}</h3>  
-                    <Button.Group>
-                        <Button onClick={() => this.dayHandler(-1)}>Prev Day</Button>
-                        <Button onClick={() => this.dayHandler(1)}>Next Day</Button>
-                    </Button.Group>
+                    <div className={styles.dateHeader}>
+                        <div onClick={() => this.dayHandler(-1)} className={styles.arrowContainer}>
+                            <i style={{margin: 'auto'}} className="fas fa-angle-left"></i>
+                        </div>   
+                        <h3 className={styles.date}>{this.state.date.toDateString()}</h3>  
+                        <div onClick={() => this.dayHandler(1)} className={styles.arrowContainer}>
+                            <i style={{margin: 'auto'}} className="fas fa-angle-right"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div className={styles.todayHeader}>{today}</div>
+                    </div>
                 </div>
                 <div className={styles.list}>
                     {gamesList} 
