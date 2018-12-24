@@ -76,7 +76,7 @@ class App extends Component {
   matchList = (
     <Route path="/app/matches" render={() => 
       <Grid.Column className='MatchesList-container'>
-        <MatchesList/>
+        <MatchesList teams={this.state.teams}/>
       </Grid.Column>
       }/> 
   );

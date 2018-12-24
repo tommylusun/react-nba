@@ -48,6 +48,10 @@ class MatchesList extends Component {
         return this.state;
     }
 
+    getTeamName(teamId) {
+        return this.props.teams.find( team => team.teamId === teamId);
+    }
+
     render() {
         let gamesList = null;
         if (this.state.games===null || this.state.games===undefined){
@@ -64,6 +68,10 @@ class MatchesList extends Component {
                 // </div>);
         } else {
             gamesList = this.state.games.map(match => {
+                match.hTeam['fullName'] = this.getTeamName(match.hTeam.teamId).ttsName;
+                match.vTeam['fullName'] = this.getTeamName(match.vTeam.teamId).ttsName;
+           
+                
                 return ( 
                     <div className={styles.Match} onClick={() => this.setState({selected: match.gameId})}>
                         <Link to={'/app/matches/' + urlConstants.FORMAT_DATE(this.state.date) + '/' + match.gameId} style={{ textDecoration: 'none', color: 'black'}}>
