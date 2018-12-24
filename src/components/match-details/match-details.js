@@ -8,6 +8,8 @@ import PlayerStats from './player-stats/player-stats';
 import GameStats from './game-stats/game-stats';
 import axios from 'axios';
 import {urlConstants} from '../../constants/url-constants';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 
 class gameDetails extends Component {
@@ -18,7 +20,9 @@ class gameDetails extends Component {
     state = {
         game: 'loading', 
         team1Color: '#ffffff',
-        team2Color: '#ffffff'
+        team2Color: '#ffffff',
+        showTeam: 'h',
+        mobileNavValue: 0
     };
 
     loading = (<Loader className={styles.loading} inline='centered' active content='Loading' />);
@@ -94,8 +98,41 @@ class gameDetails extends Component {
             
             if (this.game !== 'loading') {
                 this.hPlayers = <PlayerStats playerList={this.activePlayers} players={this.props.players} teamId={this.home.teamId}/>;
-                this.vplayers = <PlayerStats playerList={this.activePlayers} players={this.props.players} teamId={this.away.teamId}/>;
+                this.vPlayers = <PlayerStats playerList={this.activePlayers} players={this.props.players} teamId={this.away.teamId}/>;
             }
+
+            let playerListSection = (<Grid.Row centered className={styles.playerStats}>
+                <Grid.Column className={[styles.playerscol,'innerCard'].join(' ')}>
+                        {this.hPlayers}
+                </Grid.Column>
+                <Grid.Column className={[styles.playerscol,'innerCard'].join(' ')}>
+                        {this.vPlayers}
+                </Grid.Column>
+            </Grid.Row>);
+
+            if (window.innerWidth < 770) {
+                let playerStatsList = null;
+                if (this.state.mobileNavValue === 0){
+                    playerStatsList= this.hPlayers;
+                } else {
+                    playerStatsList= this.vPlayers;
+                }
+                
+                playerListSection = 
+                    (<Grid.Row centered className={styles.playerStats}>
+                        <Tabs fullWidth value={this.state.mobileNavValue} onChange={(event,value) => this.setState({mobileNavValue: value})} indicatorColor="primary">
+                            <Tab label="Home"/>
+                            <Tab label="Away" />
+                        </Tabs>
+                        <Grid.Column className={[styles.playerscol,'innerCard'].join(' ')}>
+                                {playerStatsList}
+                        </Grid.Column>
+                    </Grid.Row>);
+            }
+               
+
+
+            
             
             return ( 
                 <div className={[styles.container, 'containerCard'].join(' ')}>
@@ -103,14 +140,8 @@ class gameDetails extends Component {
                         <Grid.Row centered className={[styles.gameStats,''].join(' ')}>
                             <GameStats team1Color={this.state.team1Color} team2Color={this.state.team2Color} stats={this.basicGameData}/>
                         </Grid.Row>
-                        <Grid.Row centered className={styles.playerStats}>
-                            <Grid.Column className={[styles.playerscol,'innerCard'].join(' ')}>
-                                    {this.hPlayers}
-                            </Grid.Column>
-                            <Grid.Column className={[styles.playerscol,'innerCard'].join(' ')}>
-                                    {this.vplayers}
-                            </Grid.Column>
-                        </Grid.Row>
+                        {playerListSection}
+                        
                     </Grid>
                 </div>
             );

@@ -15,9 +15,11 @@ class TeamProfile extends Component {
     state = {
         roster: [],
         list: (<div>Loading...</div>),
-        teamDetails: {}
+        teamDetails: {},
+        teamStats: null
     };
     async componentDidMount() {
+        console.log(this.props);
         await this.getTeamData(this.props.match.params.teamId);
         await this.playersList();
     }
@@ -26,6 +28,13 @@ class TeamProfile extends Component {
         const data = await axios.get(this.baseURL + this.getTeamRosterURL(teamId));
         const roster = await data.data.league.standard.players;
         const teamDetails = await this.props.teams.find( team => team.teamId === teamId);
+        if (!!this.props.teamStats){
+            const teamStats = await this.props.teamStats.find( team => team.teamId === teamId);
+            this.setState({
+                teamStats: teamStats
+            });
+        }
+        
         this.setState({
             roster: roster,
             teamDetails: teamDetails
@@ -41,6 +50,7 @@ class TeamProfile extends Component {
         // const stats = await data.league.standard.stats;
         // return data;
     }
+
 
     playersList = async () => {
         this.setState({
@@ -93,12 +103,27 @@ class TeamProfile extends Component {
     }
 
     render() {
-        if (this.state.roster === null && this.state.list === null) {
+        let teamStats = null
+        if (this.state.roster === null && this.state.list === null && this.state.teamStats === null) {
             return (
                 <div className={[styles.container,'containerCard'].join(' ')}>
                 </div>
             );
         }
+        if (!!this.state.teamStats){
+            teamStats = (<div>{this.state.teamStats.apg.avg}
+
+            {Object.keys(this.state.teamStats).map( key => {
+                return (<li>
+                            <label>{key}</label>
+                            <label>{this.state.teamStats[key].avg}</label>
+                        </li>);
+            })}
+            
+            </div>);
+
+        }
+
         return (
             <div className={[styles.container,'containerCard'].join(' ')}>
                 <div className={styles.header}>
@@ -109,7 +134,7 @@ class TeamProfile extends Component {
                         <h4>Team Stats</h4>
                     </div>
                     <div className={styles.header}>
-                        <p>coming soon...</p>
+                        {teamStats}
                     </div>
                 </div>
                 <div className={[styles.playerStatsContainer,'innerCard'].join(' ')}>

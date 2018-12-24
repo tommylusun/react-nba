@@ -3,13 +3,14 @@
     padding-top: 0px;
     margin-right: 7%; 
     margin-left: 7%;  
+    border-radius: 25px;
 }
 
 .navbar :focus {
   outline:none;
 }
 
-@media (min-width: 750px) {
+@media (min-width: 770px) {
   .navbar {
     margin-top: 0px;
     padding-top: 0px;
@@ -19,7 +20,7 @@
 }
 
 
-@media (max-width: 750px) {
+@media (max-width: 770px) {
   .navbar {
     margin-top: 0px;
     padding-top: 0px;

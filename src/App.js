@@ -74,9 +74,9 @@ class App extends Component {
   );
 
   matchList = (
-    <Route path="/app/matches" render={() => 
+    <Route path="/app/matches" render={(props) => 
       <Grid.Column className='MatchesList-container'>
-        <MatchesList teams={this.state.teams}/>
+        <MatchesList teams={this.state.teams} {...props}/>
       </Grid.Column>
       }/> 
   );
@@ -105,6 +105,15 @@ class App extends Component {
     if (this.state.teams === null){
       return null;
     }
+    if (window.innerWidth < 770) {
+      this.matchList = (
+        <Route exact path="/app/matches" render={(props) => 
+          <Grid.Column className='MatchesList-container'>
+            <MatchesList teams={this.state.teams} {...props}/>
+          </Grid.Column>
+          }/> 
+      );
+    }    
     return (
       <BrowserRouter>
         <Grid className="App">

@@ -24,23 +24,31 @@ class MatchesList extends Component {
     }
 
     async componentDidMount() {
+        if (localStorage.getItem('listDate') === null) {
+            localStorage.setItem('listDate', new Date());
+        } else {
+            this.setState({date: new Date(await localStorage.getItem('listDate'))});
+        }
         await this.getNBAGamesToday();
         setInterval( async () => {
             await this.getNBAGamesToday();
           }, 5000);
+        
     }
 
 
     dayHandler = async (offset) => {
         this.state.date.setDate(this.state.date.getDate() + offset);
         const newDate = new Date(this.state.date);
+        localStorage.setItem('listDate', newDate);
         this.setState({games: null, date: newDate});
         await this.getNBAGamesToday();
+
     }
     
     async getNBAGamesToday() {
-        // this.setState({games: null});
-        const res2 = await axios.get(this.baseURL + urlConstants.GET_GAMES_BY_DAY(urlConstants.FORMAT_DATE(this.state.date)));
+        let listDate = urlConstants.FORMAT_DATE(this.state.date);
+        const res2 = await axios.get(this.baseURL + urlConstants.GET_GAMES_BY_DAY(listDate));
         const games = await res2.data.games;
         this.setState({
           games: games

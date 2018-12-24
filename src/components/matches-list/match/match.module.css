@@ -8,7 +8,7 @@
     animation: example 0.5s;
     transition: all 500ms ease-in-out;
     margin: auto;
-    border-radius: 3px;
+    border-radius: 5px;
     
 }
 @keyframes example {

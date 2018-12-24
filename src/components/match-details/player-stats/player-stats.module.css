@@ -95,16 +95,19 @@
         
     }
     .PlayersTable li {
+        display: flex;
         text-align: center;
         flex-wrap: nowrap;
-        flex: none;
+        
+        justify-content: space-around;
+        /* flex-grow: initial; */
         width: 100%;
         padding-top: 5px;
     }
     .PlayersTable label {
         text-align: start;
-        min-width: 50px;
-        font-size: 1rem;
+        min-width: 30px;
+        font-size: 0.9rem;
     }
     
     .PlayersTable .playerRow label {
@@ -112,7 +115,7 @@
     }
     
     .PlayersTable .players {
-        min-width: calc(100% - 350px);
+        min-width: 100px;
         width: calc(100% - 300px);
     }
 }

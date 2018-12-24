@@ -12,14 +12,27 @@ class LeaderBoards extends Component {
 
     baseURL = urlConstants.BASE_URL;
     getTeamStandings = urlConstants.GET_TEAM_STANDINGS;
+    getTeamStatsURL = urlConstants.GET_TEAM_STATS_RANKING;
 
     state = {
         east: [],
-        west: []
+        west: [],
+        teamStats: null
     }
 
     async componentDidMount() {
         await this.getTeams();
+        await this.getTeamStats();
+    }
+
+    async getTeamStats () {
+        const teamStats = await axios.get(this.baseURL + this.getTeamStatsURL);
+        const results = teamStats.data.league.standard.regularSeason.teams;
+        this.setState( {
+            teamStats: results
+        });
+        return this.state;
+
     }
 
     async getTeams() {
@@ -29,7 +42,6 @@ class LeaderBoards extends Component {
         this.setState({
         east: east,
         west: west
-
         });
         return this.state;
     }
@@ -126,6 +138,7 @@ class LeaderBoards extends Component {
                                     <TeamProfile 
                                     players={this.props.players}
                                     teams={this.props.teams}
+                                    teamStats={this.state.teamStats}
                                     {...props}>
                                     </TeamProfile>
                                 </div>);

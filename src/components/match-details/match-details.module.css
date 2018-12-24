@@ -31,6 +31,9 @@
     margin: 0;
     margin-bottom: 20px;
 }
+.playerStats :focus {
+    outline:none;
+}
 @media (min-width: 770px) {
     .playerscol {
         margin-top: 0px;
@@ -52,6 +55,10 @@
     }
 }
 @media (max-width: 770px) {
+    .playerStats {
+        display: block !important;
+        width: 100% !important;
+    }
     .playerscol {
         padding: 15px;
         min-width:100%;
