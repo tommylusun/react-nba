@@ -1,0 +1,41 @@
+
+@keyframes fade-in {
+    0%   {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    width: 95%;
+    margin-right: auto;
+    margin-left: auto;
+    min-width: 520px;
+    min-height: 400px;
+    animation: fade-in 0.3s ease-in-out;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.container li { 
+    display: flex;
+    list-style-type: none;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    justify-content: space-around;
+    padding-left: 0px;
+    /* text-align: center; */
+    vertical-align: middle;
+    /* padding-top: 5px; */
+    /* padding-bottom: 5px; */
+}
+.container label {
+    text-align: end;
+    min-width: 55px;
+    /* border-bottom: 1px solid #00000030; */
+    
+}

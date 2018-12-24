@@ -4,6 +4,7 @@ import axios from 'axios';
 import { urlConstants } from '../../../constants/url-constants';
 
 import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import TeamStats from './team-stats';
 
 
 class TeamProfile extends Component {
@@ -111,16 +112,7 @@ class TeamProfile extends Component {
             );
         }
         if (!!this.state.teamStats){
-            teamStats = (<div>{this.state.teamStats.apg.avg}
-
-            {Object.keys(this.state.teamStats).map( key => {
-                return (<li>
-                            <label>{key}</label>
-                            <label>{this.state.teamStats[key].avg}</label>
-                        </li>);
-            })}
-            
-            </div>);
+            teamStats = (<TeamStats teamStats={this.state.teamStats}></TeamStats>);
 
         }
 
@@ -133,7 +125,7 @@ class TeamProfile extends Component {
                     <div className={styles.header}>
                         <h4>Team Stats</h4>
                     </div>
-                    <div className={styles.header}>
+                    <div className={styles.teamStatsContainer}>
                         {teamStats}
                     </div>
                 </div>

@@ -127,9 +127,71 @@
     transition: all 500ms ease-in-out;
     cursor: pointer;
 }
-.StandingsContainer .playerRow:hover {
-    background: #00000010;
-    box-shadow: 0 5px 5px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.15);
-    transform: scale(1.05);
-    transition: all 75ms ease-in-out;
+
+@media (min-width: 770px) {
+    .StandingsContainer .playerRow:hover {
+        background: #00000010;
+        box-shadow: 0 5px 5px rgba(0,0,0,0.12), 0 2px 2px rgba(0,0,0,0.15);
+        transform: scale(1.05);
+        transition: all 75ms ease-in-out;
+    }
+}
+@media (max-width: 770px) {
+    .StandingsCard {
+        width: 100% !important;
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        margin-top: 0px;
+        margin-left: auto;
+        margin-right: auto; 
+        padding-bottom: 30px;
+        flex-wrap: wrap;
+        padding: 0px;    
+    }
+    .listContainer {
+        /* width: 40%; */
+        padding: 10px;
+        width: 100%;
+        margin: auto;
+        margin-top: 30px;
+    
+        overflow: hidden;
+    
+    }
+    .StandingsContainer label { 
+        text-align: center;
+        flex-wrap: nowrap;
+        min-width: 30px;   
+        width: 30px; 
+        cursor: pointer;
+        font-size: 0.85rem;
+    }
+    .StandingsContainer li { 
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        /* min-width: 450px; */
+        padding-left: 0px;
+        text-align: center;
+        vertical-align: middle;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 0.85rem;
+        
+    }
+    .StandingsContainer .teamName {
+        color: black;
+        text-align: start;
+        width: calc(100% - 330px);
+        min-width: 60px;
+    }
+    .teamProfile {
+        width: 100%;
+        /* min-width: 20%; */
+        height: 100%;
+        margin: auto;
+        overflow: auto;
+    }
 }

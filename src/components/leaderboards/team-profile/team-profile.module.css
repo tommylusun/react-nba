@@ -1,3 +1,12 @@
+
+@keyframes fade-in {
+    0%   {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 .container {
     display: flex;
     flex-direction: row;
@@ -11,16 +20,8 @@
     flex-wrap: wrap;
     overflow: auto;
 }
-@keyframes fade-in {
-    0%   {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
 .teamStatsContainer {
-    /* padding: 25px; */
+    padding: 25px;
     margin: auto;
     margin-bottom: 30px;
     margin-top: 30px;
@@ -28,7 +29,8 @@
     animation: fade-in 0.3s ease-in-out;
 }
 .playerStatsContainer {
-    padding: 25px;
+    padding: 5px;
+    padding-top: 25px;
     margin: auto;
     margin-bottom: 30px;
     margin-top: 30px;
@@ -40,15 +42,18 @@
     animation: fade-in 0.3s ease-in-out;
     text-align: start;
     padding: 5px;
-    width: 180px;
+    width: 25%;
+    min-width: 180px;
     margin: 5px;
     margin-bottom: 20px;
 }
 
 .playerContainer li { 
+    display: flex;
     list-style-type: none;
     flex-wrap: nowrap;
     overflow: hidden;
+    justify-content: space-around;
     padding-left: 0px;
     /* text-align: center; */
     vertical-align: middle;
@@ -88,4 +93,79 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;    
+}
+
+@media (max-width: 770px) {
+    .header {
+        width: 100%;
+        padding: 0px;
+    }
+    .container {
+        display: flex;
+        flex-direction: row;
+        text-align: center;
+        width: 100%;
+        min-width: 0px;
+        min-height: 400px;
+        margin-top: 0px;
+        animation: fade-in 0.3s ease-in-out;
+        flex-wrap: wrap;
+        overflow: auto;
+    }
+    .teamStatsContainer {
+        padding: 25px;
+        width: 100%;
+        animation: fade-in 0.3s ease-in-out;
+    }
+    .playerStatsContainer {
+        padding: 5px;
+        padding-top: 20px;
+        margin: auto;
+        margin-bottom: 30px;
+        width: 100%;
+        animation: fade-in 0.3s ease-in-out;
+    
+    }
+    .playerContainer {
+        animation: fade-in 0.3s ease-in-out;
+        text-align: start;
+        padding: 5px;
+        width: 40%;
+        min-width: 180px;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    .playerContainer li { 
+        display: flex;
+        list-style-type: none;
+        flex-wrap: nowrap;
+        justify-content: space-around;
+        overflow: hidden;
+        padding-left: 0px;
+        /* text-align: center; */
+        vertical-align: middle;
+        /* padding-top: 5px; */
+        /* padding-bottom: 5px; */
+    }
+    .playerContainer label {
+        text-align: end;
+        min-width: 55px;
+        /* border-bottom: 1px solid #00000030; */
+        
+    }
+    .playerContainer .statDesc{
+        text-align: start;
+        min-width: 50px;
+    }
+    .teamStatsContainer li {
+        list-style-type: none;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        padding-left: 0px;
+        /* text-align: center; */
+        vertical-align: middle;
+        /* padding-top: 5px; */
+        /* padding-bottom: 5px; */
+    }
 }

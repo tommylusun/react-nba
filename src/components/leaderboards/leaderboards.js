@@ -105,33 +105,47 @@ class LeaderBoards extends Component {
                 width = { width: '100%'};
                 innerWidth = { width: '70%'};
             }
-            return (
-                <div className={styles.container}>
-                    {/* <div className={styles.containerHeader}>
-                        <h1>Leaderboards</h1>
-                    </div>       */}
-                    <div style={width} className={[styles.StandingsContainer]}>
+            let lists = (<div style={width} className={[styles.StandingsContainer]}>
+                <div style={innerWidth} className={[styles.StandingsCard, 'containerCard'].join(' ')}>
+                
+                    <div className={styles.standingsHeader}>
+                        <h2>Season 2018 Standings</h2>
+                    </div>
+                    <div className={[styles.listContainer, 'innerCard'].join(' ')}>
+                        <div className={styles.confHeader}>
+                            <h3>West</h3>
+                        </div>
+                        {west}
+                    </div>
+                    <div className={[styles.listContainer, 'innerCard'].join(' ')}>
+                        <div className={styles.confHeader}>
+                            <h3>East</h3>
+                        </div>
+                        {east}
+                    </div>
+                </div>
+            </div>);
+            if (window.innerWidth < 770) {
+                if (!this.props.match.isExact){
+                    lists=null;
+                } else {
+                    lists = (<div style={width} className={[styles.StandingsContainer]}>
                         <div style={innerWidth} className={[styles.StandingsCard, 'containerCard'].join(' ')}>
                         
                             <div className={styles.standingsHeader}>
-                                <h2>Season 2018 Standings</h2>
+                                <h3>Season 2018 Standings</h3>
                             </div>
                             <div className={[styles.listContainer, 'innerCard'].join(' ')}>
-                                <div className={styles.confHeader}>
-                                    <h3>West</h3>
-                                </div>
                                 {west}
                             </div>
-                            <div className={[styles.listContainer, 'innerCard'].join(' ')}>
-                                <div className={styles.confHeader}>
-                                    <h3>East</h3>
-                                </div>
-                                {east}
-                            </div>
                         </div>
-                    </div>
+                    </div>);
+                }
+            }
+            return (
+                <div className={styles.container}>
 
-                    
+                        {lists}
                         <Route path="/app/leaderboards/:teamId" component={ (props) => {
                             return (
                                 <div className={styles.teamProfile}>
