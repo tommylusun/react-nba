@@ -21,7 +21,6 @@
     overflow: auto;
 }
 .teamStatsContainer {
-    padding: 25px;
     margin: auto;
     margin-bottom: 30px;
     margin-top: 30px;
@@ -70,17 +69,6 @@
     text-align: start;
     min-width: 50px;
 }
-.teamStatsContainer li {
-    list-style-type: none;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    padding-left: 0px;
-    /* text-align: center; */
-    vertical-align: middle;
-    /* padding-top: 5px; */
-    /* padding-bottom: 5px; */
-}
-
 .header {
     width: 100%;
     padding: 30px;
@@ -113,7 +101,7 @@
         overflow: auto;
     }
     .teamStatsContainer {
-        padding: 25px;
+        padding-top: 25px;
         width: 100%;
         animation: fade-in 0.3s ease-in-out;
     }
@@ -153,14 +141,5 @@
         text-align: start;
         min-width: 50px;
     }
-    .teamStatsContainer li {
-        list-style-type: none;
-        flex-wrap: nowrap;
-        overflow: hidden;
-        padding-left: 0px;
-        /* text-align: center; */
-        vertical-align: middle;
-        /* padding-top: 5px; */
-        /* padding-bottom: 5px; */
-    }
+
 }

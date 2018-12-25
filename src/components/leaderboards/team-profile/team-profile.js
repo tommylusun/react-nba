@@ -125,7 +125,7 @@ class TeamProfile extends Component {
                     <div className={styles.header}>
                         <h4>Team Stats</h4>
                     </div>
-                    <div className={styles.teamStatsContainer}>
+                    <div>
                         {teamStats}
                     </div>
                 </div>
