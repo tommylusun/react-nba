@@ -3,11 +3,9 @@ import React, {
 } from 'react';
 import Match from './match/match';
 import styles from './matches-list.module.css';
-import { Button } from 'semantic-ui-react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { urlConstants } from '../../constants/url-constants';
-
 
 class MatchesList extends Component {
 
@@ -17,7 +15,7 @@ class MatchesList extends Component {
         super(props);
         this.state = {
             selected: null,
-            games: [],
+            games: null,
             date: new Date(),
             today: new Date()
         };
@@ -33,9 +31,7 @@ class MatchesList extends Component {
         setInterval( async () => {
             await this.getNBAGamesToday();
           }, 5000);
-        
     }
-
 
     dayHandler = async (offset) => {
         this.state.date.setDate(this.state.date.getDate() + offset);

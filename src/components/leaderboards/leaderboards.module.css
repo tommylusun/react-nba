@@ -48,34 +48,22 @@
     overflow-y: auto;
     width: 100%;
     height: 100%;
-
-    
-    /* margin: 0; */
-    /* padding: auto; */
     flex-wrap: wrap;
 }
 .teamProfile {
     width: 65%;
-    /* min-width: 20%; */
     height: 100%;
     margin: auto;
     overflow: auto;
 }
 .listContainer {
-    /* width: 40%; */
     padding: 15px;
-    
     margin: auto;
     margin-top: 30px;
-
     overflow: hidden;
-
 }
 .StandingsContainer .list {
     flex-wrap: nowrap;
-    /* overflow: hidden; */
-
-
 }
 .StandingsContainer .confHeader {
     text-align: start;
@@ -120,6 +108,8 @@
 .StandingsContainer .header {
     padding-top: 5px;
     border-bottom: 1px solid #00000030;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .StandingsContainer .playerRow {
     margin: auto; 
@@ -150,42 +140,45 @@
         padding: 0px;    
     }
     .listContainer {
-        /* width: 40%; */
         padding: 10px;
         width: 100%;
         margin: auto;
         margin-top: 30px;
-    
         overflow: hidden;
-    
+    }
+    .listContainer :focus {
+        outline:none;
     }
     .StandingsContainer label { 
         text-align: center;
         flex-wrap: nowrap;
-        min-width: 30px;   
-        width: 30px; 
+        min-width: 40px;   
+        width: 40px; 
         cursor: pointer;
-        font-size: 0.85rem;
+        font-size: 0.95rem;
     }
     .StandingsContainer li { 
         display: flex;
         justify-content: space-around;
         flex-wrap: nowrap;
         overflow: hidden;
-        /* min-width: 450px; */
+        min-width: 260px;
         padding-left: 0px;
         text-align: center;
         vertical-align: middle;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        font-size: 0.85rem;
+        padding-top: 10px;
+        padding-bottom: 10px;
         
     }
     .StandingsContainer .teamName {
         color: black;
         text-align: start;
         width: calc(100% - 330px);
-        min-width: 60px;
+        min-width: 120px;
+    }
+    .StandingsContainer .smallerCol {
+        min-width: 35px;   
+        width: 35px; 
     }
     .teamProfile {
         width: 100%;

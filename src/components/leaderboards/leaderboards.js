@@ -3,10 +3,9 @@ import styles from './leaderboards.module.css';
 import axios from 'axios';
 import { urlConstants } from '../../constants/url-constants';
 import TeamProfile from './team-profile/team-profile';
-
-// import { Loader, Grid, Button } from 'semantic-ui-react'
-import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
-
+import { Route } from 'react-router-dom';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 class LeaderBoards extends Component {
 
@@ -17,7 +16,8 @@ class LeaderBoards extends Component {
     state = {
         east: [],
         west: [],
-        teamStats: null
+        teamStats: null,
+        mobileSelected: 0
     }
 
     async componentDidMount() {
@@ -32,7 +32,6 @@ class LeaderBoards extends Component {
             teamStats: results
         });
         return this.state;
-
     }
 
     async getTeams() {
@@ -40,8 +39,8 @@ class LeaderBoards extends Component {
         const east = await res.data.league.standard.conference.east;
         const west = await res.data.league.standard.conference.west;
         this.setState({
-        east: east,
-        west: west
+            east: east,
+            west: west
         });
         return this.state;
     }
@@ -58,10 +57,10 @@ class LeaderBoards extends Component {
         return (
             <ul className={styles.list}>
                 <li className={styles.header}>
-                    <label><b>Rank</b></label>
+                    <label className={styles.smallerCol}><b>Rank</b></label>
                     <label className={styles.teamName}><b>Team</b></label>
-                    <label><b>Win</b></label>
-                    <label><b>Loss</b></label>
+                    <label className={styles.smallerCol}><b>Win</b></label>
+                    <label className={styles.smallerCol}><b>Loss</b></label>
                     <label><b>Home</b></label>
                     <label><b>Away</b></label>
                     <label><b>Last 10</b></label>
@@ -72,26 +71,21 @@ class LeaderBoards extends Component {
                         background = {
                             'background': `#00000010`
                         }
-                    } 
-                    
+                    }
                     return (
                         <li onClick={() => this.clickHandler(team.teamId)} style={background} className={styles.playerRow}>
-                            <label>{ind+1}</label>
+                            <label className={styles.smallerCol}>{ind+1}</label>
                             <label className={styles.teamName}>{this.getTeamName(team.teamId).ttsName}</label>
-                            <label>{team.win}</label>
-                            <label>{team.loss}</label>
+                            <label className={styles.smallerCol}>{team.win}</label>
+                            <label className={styles.smallerCol}>{team.loss}</label>
                             <label>{team.homeWin}-{team.homeLoss}</label>
                             <label>{team.awayWin}-{team.awayLoss}</label>
                             <label>{team.streak}-{team.isWinStreak ? 'W' : 'L'}</label>
-
                         </li>
                     );
                 })}
             </ul>
         );
-        
-        
-        
     }
 
     render() {
@@ -105,30 +99,40 @@ class LeaderBoards extends Component {
                 width = { width: '100%'};
                 innerWidth = { width: '70%'};
             }
-            let lists = (<div style={width} className={[styles.StandingsContainer]}>
-                <div style={innerWidth} className={[styles.StandingsCard, 'containerCard'].join(' ')}>
-                
-                    <div className={styles.standingsHeader}>
-                        <h2>Season 2018 Standings</h2>
-                    </div>
-                    <div className={[styles.listContainer, 'innerCard'].join(' ')}>
-                        <div className={styles.confHeader}>
-                            <h3>West</h3>
+
+            let lists = (
+                <div style={width} className={[styles.StandingsContainer]}>
+                    <div style={innerWidth} className={[styles.StandingsCard, 'containerCard'].join(' ')}>
+                    
+                        <div className={styles.standingsHeader}>
+                            <h2>Season 2018 Standings</h2>
                         </div>
-                        {west}
-                    </div>
-                    <div className={[styles.listContainer, 'innerCard'].join(' ')}>
-                        <div className={styles.confHeader}>
-                            <h3>East</h3>
+                        <div className={[styles.listContainer, 'innerCard'].join(' ')}>
+                            <div className={styles.confHeader}>
+                                <h3>West</h3>
+                            </div>
+                            {west}
                         </div>
-                        {east}
+                        <div className={[styles.listContainer, 'innerCard'].join(' ')}>
+                            <div className={styles.confHeader}>
+                                <h3>East</h3>
+                            </div>
+                            {east}
+                        </div>
                     </div>
-                </div>
-            </div>);
+                </div>);
+
+            // For Mobile
             if (window.innerWidth < 770) {
                 if (!this.props.match.isExact){
                     lists=null;
                 } else {
+                    let showList = null;
+                    if (this.state.mobileSelected === 0){
+                        showList = west;
+                    } else {
+                        showList = east;
+                    }
                     lists = (<div style={width} className={[styles.StandingsContainer]}>
                         <div style={innerWidth} className={[styles.StandingsCard, 'containerCard'].join(' ')}>
                         
@@ -136,39 +140,40 @@ class LeaderBoards extends Component {
                                 <h3>Season 2018 Standings</h3>
                             </div>
                             <div className={[styles.listContainer, 'innerCard'].join(' ')}>
-                                {west}
+                                <Tabs fullWidth value={this.state.mobileSelected} onChange={(event,value) => this.setState({mobileSelected: value})} indicatorColor="primary">
+                                    <Tab label="West"/>
+                                    <Tab label="East" />
+                                </Tabs>
+                                {showList}
                             </div>
                         </div>
                     </div>);
                 }
             }
+
             return (
                 <div className={styles.container}>
-
-                        {lists}
-                        <Route path="/app/leaderboards/:teamId" component={ (props) => {
-                            return (
-                                <div className={styles.teamProfile}>
-                                    <TeamProfile 
-                                    players={this.props.players}
-                                    teams={this.props.teams}
-                                    teamStats={this.state.teamStats}
-                                    {...props}>
-                                    </TeamProfile>
-                                </div>);
-                        }}/>
+                    {lists}
+                    <Route path="/app/leaderboards/:teamId" component={ (props) => 
+                        <div className={styles.teamProfile}>
+                            <TeamProfile 
+                            players={this.props.players}
+                            teams={this.props.teams}
+                            teamStats={this.state.teamStats}
+                            {...props}>
+                            </TeamProfile>
+                        </div>
+                    }/>
                 </div>
             );
         } else {
             return (<div className={styles.container}>
                 <div>
-                    <h1>Leaderboards</h1>
+                    <h1>Season 2018 Standings</h1>
                 </div>      
             </div>);
         }
-        
     }
-
 }
 
 export default LeaderBoards;
