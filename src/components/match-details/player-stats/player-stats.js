@@ -43,7 +43,7 @@ class PlayerStats extends Component {
 
         if (playerstats !== undefined){
             let stats = (
-                <li className={styles.morestats}>
+                <div className={styles.morestats}>
                     <li>
                         <label></label>
                         <label className={styles.players}>2018 Season avg</label>
@@ -61,7 +61,7 @@ class PlayerStats extends Component {
                         <label>{playerstats.careerSummary.rpg}</label>
                         <label>{playerstats.careerSummary.mpg}</label>
                     </li>      
-                </li>
+                </div>
             );
             let players = Object.assign({},this.state.players);
             players[player.personId] = stats;

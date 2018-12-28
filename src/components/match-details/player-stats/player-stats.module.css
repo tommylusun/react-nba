@@ -98,6 +98,8 @@
         display: flex;
         text-align: center;
         flex-wrap: nowrap;
+        padding-top: 10px !important;
+        padding-bottom: 10px;
         
         justify-content: space-around;
         /* flex-grow: initial; */
@@ -108,6 +110,18 @@
         text-align: start;
         min-width: 30px;
         font-size: 0.9rem;
+    }
+    .morestats li {
+        display: flex;
+        text-align: center;
+        flex-wrap: nowrap;
+        padding-top: 10px !important;
+        padding-bottom: 10px;
+        
+        justify-content: space-around;
+        /* flex-grow: initial; */
+        width: 100%;
+        padding-top: 5px;
     }
     
     .PlayersTable .playerRow label {
