@@ -8,7 +8,7 @@
     animation: example 0.5s;
     transition: all 500ms ease-in-out;
     margin: auto;
-    border-radius: 5px;
+    border-radius: 0px;
     
 }
 @keyframes example {
@@ -24,7 +24,14 @@
     /* background-color: rgba(0,0,0,0.05); */
     color: #000000a0;
     transform: scale(1.02);
-    box-shadow: 0 10px 4px -4px rgba(0,0,0,0.15), 0 6px 2px -3px rgba(0,0,0,0.25);
+    box-shadow: 0 5px 4px 0px rgba(0,0,0,0.15), 0 6px 2px -4px rgba(0,0,0,0.23);
+    transition: all 75ms ease-in-out;
+}
+.container:active{
+    /* background-color: rgba(0,0,0,0.05); */
+    color: #000000a0;
+    transform: scale(1);
+    box-shadow: none;
     transition: all 75ms ease-in-out;
 }
 
@@ -73,5 +80,29 @@
 }
 
 .selected {
-    background-color: #00000010;
+    background-color: #00000009;
+}
+@media (max-width: 770px) {
+    .container {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 10px;
+        min-width: 240px;
+        animation: example 0.5s;
+        transition: all 500ms ease-in-out;
+        margin: auto;
+        border-radius: 0px;
+        box-shadow: none;
+        border-bottom: 0.5px solid rgba(0,0,0,0.2);
+        
+    }
+    .container:hover{
+        /* background-color: rgba(0,0,0,0.05); */
+        color: #000000a0;
+        transform: none;
+        box-shadow: none;
+        transition: all 75ms ease-in-out;
+    }
 }

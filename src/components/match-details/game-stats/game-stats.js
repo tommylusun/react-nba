@@ -17,7 +17,7 @@ class GameStats extends Component {
         const background = { 
             background: `linear-gradient(90deg, ${this.props.team1Color}a0 25%, ${this.props.team2Color}a0 75%)`,
             // background: `linear-gradient(90deg, #a0000010 25%, #0000001a 75%)`,
-            boxShadow: `0 6px 10px rgba(0,0,0,0.19), 0 3px 5px rgba(0,0,0,0.23)`
+            // boxShadow: `0 6px 10px rgba(0,0,0,0.19), 0 3px 5px rgba(0,0,0,0.23)`
 
         };
         this.currentPeriodString = null;

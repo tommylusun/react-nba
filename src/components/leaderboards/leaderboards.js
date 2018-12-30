@@ -63,7 +63,7 @@ class LeaderBoards extends Component {
                     <label className={styles.smallerCol}><b>Loss</b></label>
                     <label><b>Home</b></label>
                     <label><b>Away</b></label>
-                    <label><b>Last 10</b></label>
+                    <label><b>L10</b></label>
                 </li>
                 {conference.map( (team, ind) => {
                     let background = {};

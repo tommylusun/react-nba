@@ -4,6 +4,8 @@
   width: 100%;
   overflow: auto;
   margin: 0px !important;
+  font-family: 'IBM Plex Sans', sans-serif;
+  
 }
 .App-Title {
   margin-top: 5px;
@@ -12,7 +14,7 @@
 }
 .App-logo {
   margin: auto;
-  color: #e9e9e9;
+  color: #ffffff;
 }
 .App-Grid-Header {
   margin: 0px !important;
@@ -20,7 +22,7 @@
   width: 100%;
   text-align: start;
   height: 50px;
-  background: linear-gradient(45deg, #333333 40%, #000000 95%);
+  background: linear-gradient(45deg, #333333 40%, #333333 95%);
 }
 
 .App-Navbar {
@@ -47,19 +49,18 @@ body ::-webkit-scrollbar-track {
 
 .containerCard {
   background-color: #ffffff;
-  box-shadow: 0 5px 5px 0px rgba(0,0,0,0.19), 0 1px 2px rgba(0,0,0,0.25);
+  /* box-shadow: 0 8px 15px 2px rgba(0,0,0,0.19), 0 1px 0px rgba(0,0,0,0.25); */
   margin-top: 30px;
   margin-bottom: 30px;
-  border-radius: 10px;
+  border-radius: 0px;
 }
 .innerCard {
   background-color: #ffffff;
-  box-shadow: 0 9px 3px -5px rgba(0,0,0,0.15), 0 7px 1px -5px rgba(0,0,0,0.25);
+  /* box-shadow: 0 9px 3px -5px rgba(0,0,0,0.15), 0 7px 1px -5px rgba(0,0,0,0.25); */
   margin-bottom: 10px;
   margin-top: 10px;
-  border-radius: 5px;
+  border-radius: 0px;
   border: 0.5px solid rgba(0,0,0,0.2);
-
 }
 
 @media (min-width: 770px) {
@@ -123,5 +124,15 @@ body ::-webkit-scrollbar-track {
     margin-top: 0px;
     margin-bottom: 0px;
     border-radius: 0px;
+  }
+  .innerCard {
+    background-color: #ffffff;
+    box-shadow: none;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 0px;
+    border: none;
+    box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.2);
+
   }
 }

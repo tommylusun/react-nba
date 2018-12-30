@@ -17,7 +17,8 @@ class MatchesList extends Component {
             selected: null,
             games: null,
             date: new Date(),
-            today: new Date()
+            today: new Date(),
+            gamesList: null
         };
     }
 
@@ -57,21 +58,21 @@ class MatchesList extends Component {
     }
 
     render() {
-        let gamesList = null;
+        
         if (this.state.games===null || this.state.games===undefined){
-            gamesList = (  
-                <div className={styles.list}>
-                    <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
-                    <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
-                    <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
-                    <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
-                    <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
-                </div>);  
+            // gamesList = (  
+            //     <div>
+            //         <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
+            //         <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
+            //         <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
+            //         <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
+            //         <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
+            //     </div>);  
                 // <div className={styles.divider}>
                 //     <Loader className='loader' size='large' active content='Fetching games...' />
                 // </div>);
         } else {
-            gamesList = this.state.games.map(match => {
+            this.gamesList = this.state.games.map(match => {
                 match.hTeam['fullName'] = this.getTeamName(match.hTeam.teamId).ttsName;
                 match.vTeam['fullName'] = this.getTeamName(match.vTeam.teamId).ttsName;
            
@@ -88,8 +89,8 @@ class MatchesList extends Component {
                     </div>
                 );
             });
-            if (gamesList.length===0) {
-                gamesList =  (
+            if (this.gamesList.length===0) {
+                this.gamesList =  (
                     <div className={styles.divider}>
                         <h3>No Games Today</h3>
                     </div>);
@@ -122,7 +123,7 @@ class MatchesList extends Component {
                     </div>
                 </div>
                 <div className={styles.list}>
-                    {gamesList} 
+                    {this.gamesList} 
                 </div>
             </div>
         );

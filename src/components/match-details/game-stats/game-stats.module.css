@@ -107,7 +107,8 @@
     .headerTeamName {
         font-size: 1.25rem;
     } 
-    .middleCol {
+    .middleCol h3{
         font-size: 1rem;
     }
+    
 }

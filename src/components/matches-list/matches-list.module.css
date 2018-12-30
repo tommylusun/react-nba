@@ -32,7 +32,7 @@
     display: flex;
     justify-content: center;
     border: 0.5px solid rgba(0,0,0,0.1);
-    border-radius: 5px;
+    border-radius: 0px;
     /* padding: 5px; */
     font-size: 3rem;
     margin: auto;
@@ -44,8 +44,13 @@
     transform: scale(1.05);
     transition-duration: 0.1s;
     color: #555555;
-    box-shadow: 0 9px 3px -5px rgba(0,0,0,0.15), 0 7px 1px -5px rgba(0,0,0,0.25);
-    
+    box-shadow: 0 5px 5px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.15);
+}
+.arrowContainer:active {
+    transform: scale(1.0);
+    transition-duration: 0.1s;
+    color: #555555;
+    box-shadow: 0 0px 0px 0px rgba(0,0,0,0.15);
 }
 
 .rightArrow {
@@ -100,12 +105,12 @@
 
 @media (max-width: 770px) {
     .arrowContainer {
-        height: 80px;
-        width: 80px;
+        height: 70px;
+        width: 70px;
         display: flex;
         justify-content: center;
         border: 0.5px solid rgba(0,0,0,0.2);
-        border-radius: 5px;
+        border-radius: 0px;
         /* padding: 5px; */
         font-size: 3rem;
         margin: auto;
@@ -117,6 +122,10 @@
         min-width: 260px;
         text-align: center;
         margin-top: 0px;
+    }
+    .Match {
+        margin-top: 0px;
+        margin-bottom: 0px;
     }
     .header {
         padding-top: 20px;
@@ -133,5 +142,17 @@
     }
     .containerCard {
         margin: 0px;
+    }
+    .arrowContainer:hover {
+        transform: none;
+        transition-duration: 0.1s;
+        color: #555555;
+        box-shadow: none;
+    }
+    .arrowContainer:active {
+        transform: scale(1.05);
+        transition-duration: 0.1s;
+        color: #555555;
+        background: #00000010;
     }
 }

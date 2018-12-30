@@ -15,7 +15,6 @@ class Players extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.history.location);
         if (this.props.history.location.search !== '') {
             const searchString = this.props.history.location.search.substring(3);
             this.setState({searchValue: searchString});
@@ -87,7 +86,7 @@ class Players extends Component {
                 let imgsrc = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player.personId}.png`
                 return (
                     <div className={[styles.playerListItem,'innerCard'].join(' ')}>
-                        <label>{player.firstName} {player.lastName}</label>
+                        <p className={styles.playerName}>{player.firstName + ' ' + player.lastName}</p>
                         <div>
                             <img style={{width: '100%'}} src={imgsrc} alt={player.lastName}/>
                         </div>

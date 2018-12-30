@@ -106,7 +106,7 @@
         animation: fade-in 0.3s ease-in-out;
     }
     .playerStatsContainer {
-        padding: 5px;
+        padding: 0px;
         padding-top: 20px;
         margin: auto;
         margin-bottom: 30px;
@@ -118,9 +118,9 @@
         animation: fade-in 0.3s ease-in-out;
         text-align: start;
         padding: 5px;
-        width: 40%;
+        width: 42%;
         min-width: 150px;
-        margin: 5px;
+        margin: 15px;
         margin-bottom: 20px;
     }
     
