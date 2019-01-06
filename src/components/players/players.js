@@ -30,8 +30,6 @@ class Players extends Component {
 
     onInputChange(event) {
         if (event.key === 'Enter' ){
-            const list = this.getPlayers(this.state.searchValue);
-            this.setState({searchedPlayers : list});
             this.props.history.push('/app/players?s='+this.state.searchValue);
         }
     }
@@ -86,14 +84,16 @@ class Players extends Component {
             players = this.state.searchedPlayers.map((player) => {
                 let imgsrc = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player.personId}.png`
                 return (
-                    <Link to={'/app/players/:' + player.personId} style={{ textDecoration: 'none', color: 'black'}}>
-                        <div className={[styles.playerListItem,'innerCard'].join(' ')}>
+                    
+                    <div className={[styles.playerListItem,'innerCard'].join(' ')}>
+                        <Link to={'/app/players/' + player.personId} style={{ textDecoration: 'none', color: 'black'}}>
                             <p className={styles.playerName}>{player.firstName + ' ' + player.lastName}</p>
                             <div>
                                 <img style={{width: '100%'}} src={imgsrc} alt={player.lastName}/>
                             </div>
-                        </div>
-                    </Link>
+                        </Link>
+                    </div>
+                    
                 );
             });
             counter = (<label> {this.state.searchedPlayers.length} players</label>);

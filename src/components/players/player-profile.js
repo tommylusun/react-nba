@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './players.module.css';
+import styles from './players-profile.module.css';
 import axios from 'axios';
 import { urlConstants } from '../../constants/url-constants';
 
@@ -10,53 +10,33 @@ import { urlConstants } from '../../constants/url-constants';
 class PlayerProfile extends Component {
 
     state = {
-        searchValue: '',
-        searchedPlayers: 0
+        personId: 0,
+        playerDetails: {}
     }
 
-    componentDidMount() {
-        // if (this.props.history.location.search !== '') {
-        //     const searchString = this.props.history.location.search.substring(3);
-        //     this.setState({searchValue: searchString});
-        //     const list = this.getPlayers(searchString);
-        //     this.setState({searchedPlayers: list});
-        // }   else {
-        //     console.log('yes');
-        //     const list = this.getDefaultList();
-        //     this.setState({searchedPlayers: list});
-        // }
+    async componentDidMount() {
+        console.log(this.props.match.params.personId);
+        await this.setState({personId: this.props.match.params.personId});
+        console.log(this.state.personId);
+
+        let playerDetails = await this.props.players.find( person => person.personId === this.state.personId);
+        this.setState({playerDetails: playerDetails});
+        console.log(this.state.playerDetails);
     }
 
+    componentWillReceiveProps() {
+    }
     onInputChange(event) {
         if (event.key === 'Enter' ){
-            const list = this.getPlayers(this.state.searchValue);
-            this.setState({searchedPlayers : list});
+            // const list = this.getPlayers(this.state.searchValue);
+            // this.setState({searchedPlayers : list});
             this.props.history.push('/app/players?s='+this.state.searchValue);
         }
     }
-    componentWillReceiveProps() {
-        // if (this.props.history.location.search !== this.state.searchValue) {
-            // const searchString = this.props.history.location.search.substring(3);
-            // this.setState({searchValue: searchString})
-            // const list = this.getPlayers(this.state.searchValue);
-            // this.setState({searchedPlayers: list});
-        // }
-    }
-
-    getPlayers(name) {
-        const list = this.props.players.filter((player) => {
-            const fullName = [player.firstName, player.lastName].join(' ').toLowerCase().replace('.','');
-            return fullName.includes(name.toLowerCase());
-        })
-        if (list.length===0){
-            return -1;
-        }
-        return list;
-    }
 
     render() {
-
-    
+        let imgsrc = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${this.state.personId}.png`
+        let player = this.state.playerDetails;
 
         return (
             <div className={styles.container}> 
@@ -68,7 +48,15 @@ class PlayerProfile extends Component {
                     </div>
 
                     <div className={styles.playersSearchContainer}>
-                        Hi
+                    
+                        <div>
+                            <img src={imgsrc} alt={this.state.personId}/>
+                        </div>
+                        <div>
+                            <h2>{player.firstName} {player.lastName}</h2> 
+                            <p>Coming soon...</p>
+                        </div>
+                        
                     </div>
                 </div>
             </div>);

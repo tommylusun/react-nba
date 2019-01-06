@@ -65,11 +65,17 @@ class TeamProfile extends Component {
 
                 return (
                     <div className={[styles.playerContainer,'innerCard'].join(' ')}>
+                        <Link to={'/app/players/' + player.personId}>
+                            <div>
+                                <img style={{width: '100%'}} src={imgsrc} alt={playerDetails.lastName}/>
+                            </div>
+                            <div style={{borderBottom: '1px solid #00000030', height: '50px'}}>
+                                <h5 >{playerDetails.firstName} {playerDetails.lastName}</h5>
+                            </div>
+                        </Link>   
+
                         
-                        <div><img style={{width: '100%'}} src={imgsrc} alt={playerDetails.lastName}/></div>
-                        <div style={{borderBottom: '1px solid #00000030', height: '50px'}}>
-                            <h5 >{playerDetails.firstName} {playerDetails.lastName}</h5>
-                        </div>
+                        
                         <li>
                             <label className={styles.statDesc}><b>Stat</b></label>
                             <label><b>Career</b></label>
@@ -92,6 +98,7 @@ class TeamProfile extends Component {
                             <label>{playerStats.latest.rpg}</label>  
 
                         </li>
+                        
                     </div>
                 );
             });

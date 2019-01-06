@@ -5,6 +5,7 @@ import styles from './game-stats.module.css';
 import { Grid } from 'semantic-ui-react'
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { urlConstants } from '../../../constants/url-constants';
+import { Link } from 'react-router-dom';
 
 
 class GameStats extends Component {
@@ -43,7 +44,14 @@ class GameStats extends Component {
                             <label><b>Total</b></label>
                         </li>
                         <li>
-                            <label className={styles.teamName}>{this.data.hTeam.fullName}</label>
+                           
+                            <label className={styles.teamName}>
+                                <Link to={'/app/leaderboards/' + this.data.hTeam.teamId}>
+                                    {this.data.hTeam.fullName}
+                                </Link>
+                            </label>
+                            
+                            
                             <label>{this.data.hTeam.linescore[0].score}</label>
                             <label>{this.data.hTeam.linescore[1].score}</label>
                             <label>{this.data.hTeam.linescore[2].score}</label>
@@ -51,7 +59,11 @@ class GameStats extends Component {
                             <label>{this.data.hTeam.score}</label>
                         </li>
                         <li>
-                            <label className={styles.teamName}>{this.data.vTeam.fullName}</label>
+                            <label className={styles.teamName}>
+                                <Link to={'/app/leaderboards/' + this.data.hTeam.teamId}>
+                                {this.data.vTeam.fullName}
+                                </Link>
+                            </label>
                             <label>{this.data.vTeam.linescore[0].score}</label>
                             <label>{this.data.vTeam.linescore[1].score}</label>
                             <label>{this.data.vTeam.linescore[2].score}</label>

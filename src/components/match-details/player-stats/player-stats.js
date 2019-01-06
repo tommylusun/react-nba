@@ -5,6 +5,7 @@ import styles from './player-stats.module.css';
 import axios from 'axios';
 import { Loader } from 'semantic-ui-react';
 import { urlConstants } from '../../../constants/url-constants';
+import { Link } from 'react-router-dom';
 
 class PlayerStats extends Component {
 
@@ -60,7 +61,12 @@ class PlayerStats extends Component {
                         <label>{playerstats.careerSummary.apg}</label>
                         <label>{playerstats.careerSummary.rpg}</label>
                         <label>{playerstats.careerSummary.mpg}</label>
-                    </li>      
+                    </li>  
+                    <li>
+                        <Link to={'/app/players/' + player.personId}>
+                            Player profile
+                        </Link>   
+                    </li>    
                 </div>
             );
             let players = Object.assign({},this.state.players);

@@ -86,6 +86,9 @@
     }
 
 }
+a {
+    font-style: normal;
+}
 @media (max-width: 770px) {
 
     .PlayersTable ul {

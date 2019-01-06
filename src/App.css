@@ -63,6 +63,10 @@ body ::-webkit-scrollbar-track {
   border: 0.5px solid rgba(0,0,0,0.2);
 }
 
+a{
+  /* text-decoration: none !important; */
+  color: black;
+}
 @media (min-width: 770px) {
   .App-body { 
     display: block;
