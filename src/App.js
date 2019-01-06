@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "@babel/polyfill";
 import './App.css';
 import { urlConstants } from './constants/url-constants';
 import MatchDetails from './components/match-details/match-details';
@@ -101,6 +102,16 @@ class App extends Component {
     }/>
   );
 
+  playerProfile = (
+    <Route exact path="/app/players:playerId" component={ props => 
+      <Players
+      teams={this.state.teams}
+      players={this.state.players}
+      {...props}
+      />
+    }/>
+  );
+
   render() { 
     if (this.state.teams === null){
       return null;
@@ -135,6 +146,7 @@ class App extends Component {
               {this.leaderBoards}
               {this.homePage}
               {this.playersTab}
+              {this.playerProfile}
           </Grid.Row>  
 
           <div className="App-footer"></div>

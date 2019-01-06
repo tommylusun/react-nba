@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './players.module.css';
 import axios from 'axios';
 import { urlConstants } from '../../constants/url-constants';
+import { Link } from 'react-router-dom';
 
 // import { Loader, Grid, Button } from 'semantic-ui-react'
 // import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
@@ -85,12 +86,14 @@ class Players extends Component {
             players = this.state.searchedPlayers.map((player) => {
                 let imgsrc = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player.personId}.png`
                 return (
-                    <div className={[styles.playerListItem,'innerCard'].join(' ')}>
-                        <p className={styles.playerName}>{player.firstName + ' ' + player.lastName}</p>
-                        <div>
-                            <img style={{width: '100%'}} src={imgsrc} alt={player.lastName}/>
+                    <Link to={'/app/players/:' + player.personId} style={{ textDecoration: 'none', color: 'black'}}>
+                        <div className={[styles.playerListItem,'innerCard'].join(' ')}>
+                            <p className={styles.playerName}>{player.firstName + ' ' + player.lastName}</p>
+                            <div>
+                                <img style={{width: '100%'}} src={imgsrc} alt={player.lastName}/>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                 );
             });
             counter = (<label> {this.state.searchedPlayers.length} players</label>);
