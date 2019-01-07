@@ -25,6 +25,10 @@ app.get('/api', cors(), (req, res)=>{
     }); 
 });
 
+app.get("/sitemap.xml", function(req, res){
+    res.sendFile(path.join(__dirname, './build/sitemap.xml')); 
+  });
+
 // Listen for requests
 app.listen(port, () => {
     console.log(path.join(__dirname, './build/'));
