@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import styles from './players.module.css';
-import axios from 'axios';
-import { urlConstants } from '../../constants/url-constants';
 import { Link } from 'react-router-dom';
-
+import {Helmet} from "react-helmet";
 // import { Loader, Grid, Button } from 'semantic-ui-react'
 // import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
 
@@ -103,6 +101,9 @@ class Players extends Component {
 
         return (
             <div className={styles.container}> 
+                <Helmet>
+                    <title>Active 2018 2019 season NBA players</title>
+                </Helmet>
                 <div className={[styles.playersContainer,'containerCard'].join(' ')}>
                     <h1>2018 Active Players</h1> 
 

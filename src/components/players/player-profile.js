@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styles from './players-profile.module.css';
-import axios from 'axios';
-import { urlConstants } from '../../constants/url-constants';
+import {Helmet} from "react-helmet";
 
 // import { Loader, Grid, Button } from 'semantic-ui-react'
 // import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
@@ -40,6 +39,9 @@ class PlayerProfile extends Component {
 
         return (
             <div className={styles.container}> 
+                <Helmet>
+                    <title>{`${player.firstName}`} {`${player.lastName}`} - 2018 2019 NBA season player profile</title>
+                </Helmet>
                 <div className={[styles.playersContainer,'containerCard'].join(' ')}>
                     <h1>2018 Active Players</h1> 
 

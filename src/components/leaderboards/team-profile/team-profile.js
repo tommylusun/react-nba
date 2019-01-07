@@ -3,8 +3,9 @@ import styles from './team-profile.module.css';
 import axios from 'axios';
 import { urlConstants } from '../../../constants/url-constants';
 
-import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import TeamStats from './team-stats';
+import {Helmet} from "react-helmet";
 
 
 class TeamProfile extends Component {
@@ -125,6 +126,9 @@ class TeamProfile extends Component {
 
         return (
             <div className={[styles.container,'containerCard'].join(' ')}>
+                <Helmet>
+                    <title>{`${this.state.teamDetails.ttsName}`} - NBA 2018 2019 team profile</title>
+                </Helmet>
                 <div className={styles.header}>
                     <h1>{this.state.teamDetails.ttsName}</h1>
                 </div>

@@ -6,6 +6,7 @@ import TeamProfile from './team-profile/team-profile';
 import { Route } from 'react-router-dom';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import {Helmet} from "react-helmet";
 
 class LeaderBoards extends Component {
 
@@ -153,6 +154,9 @@ class LeaderBoards extends Component {
 
             return (
                 <div className={styles.container}>
+                    <Helmet>
+                        <title>Team Standings - 2018 2019 NBA regular season</title>
+                    </Helmet>
                     {lists}
                     <Route path="/app/leaderboards/:teamId" component={ (props) => 
                         <div className={styles.teamProfile}>

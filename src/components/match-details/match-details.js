@@ -10,6 +10,7 @@ import axios from 'axios';
 import {urlConstants} from '../../constants/url-constants';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import {Helmet} from "react-helmet";
 
 
 class gameDetails extends Component {
@@ -136,6 +137,9 @@ class gameDetails extends Component {
             
             return ( 
                 <div className={[styles.container, 'containerCard'].join(' ')}>
+                    <Helmet>
+                        <title>{`${this.home.fullName}`} - {`${this.away.fullName}`} - 2018 2019 NBA regular season game</title>
+                    </Helmet>
                     <Grid className={styles.grid}>
                         <Grid.Row centered className={[styles.gameStats,''].join(' ')}>
                             <GameStats team1Color={this.state.team1Color} team2Color={this.state.team2Color} stats={this.basicGameData}/>
