@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './team-profile.module.css';
 import axios from 'axios';
 import { urlConstants } from '../../../constants/url-constants';
+import { Loader} from 'semantic-ui-react'
 
 import {Link} from 'react-router-dom';
 import TeamStats from './team-stats';
@@ -111,16 +112,16 @@ class TeamProfile extends Component {
     }
 
     render() {
-        let teamStats = null
-        if (this.state.roster === null && this.state.list === null && this.state.teamStats === null) {
+        let teamStats = null;
+        if (this.state.roster === null || this.state.list === null || this.state.teamStats === null) {
             return (
-                <div className={[styles.container,'containerCard'].join(' ')}>
-                </div>
+                // <div className={styles.loader}>
+                //     <Loader className={styles.loader} size='large' active content='Fetching team...' />
+                // </div>
             );
         }
         if (!!this.state.teamStats){
             teamStats = (<TeamStats teamStats={this.state.teamStats}></TeamStats>);
-
         }
 
         return (

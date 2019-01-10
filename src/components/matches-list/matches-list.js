@@ -54,7 +54,7 @@ class MatchesList extends Component {
 
     render() {
         let showMobile = {};
-        if (this.props.location.pathname !== '/app/matches'){
+        if (this.props.location.pathname !== '/app/matches' && window.innerWidth < 770){
             showMobile = {display: 'none'};
         }
         if (this.state.games===null || this.state.games===undefined){
