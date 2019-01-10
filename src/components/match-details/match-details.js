@@ -35,7 +35,7 @@ class gameDetails extends Component {
         await this.getGameDetails(this.props.match.params.date,this.props.match.params.id);
 
 
-        setInterval( async () => {
+        this.liveUpdate = setInterval( async () => {
             await this.getGameDetails(this.props.match.params.date,this.props.match.params.id);
           }, 5000);
     }
@@ -77,6 +77,9 @@ class gameDetails extends Component {
         return (
             <GameStats stats={stats}/>
         );
+    }
+    componentWillUnmount(){
+        clearInterval(this.liveUpdate);
     }
 
     render() {

@@ -23,24 +23,15 @@ class MatchesList extends Component {
     }
 
     async componentDidMount() {
-        if (localStorage.getItem('listDate') === null) {
-            localStorage.setItem('listDate', new Date());
-        } else {
-            this.setState({date: new Date(await localStorage.getItem('listDate'))});
-        }
         await this.getNBAGamesToday();
-        setInterval( async () => {
+        this.liveUpdate = setInterval( async () => {
             await this.getNBAGamesToday();
           }, 5000);
     }
 
     dayHandler = async (offset) => {
         this.state.date.setDate(this.state.date.getDate() + offset);
-        const newDate = new Date(this.state.date);
-        localStorage.setItem('listDate', newDate);
-        this.setState({games: null, date: newDate});
         await this.getNBAGamesToday();
-
     }
     
     async getNBAGamesToday() {
@@ -57,20 +48,16 @@ class MatchesList extends Component {
         return this.props.teams.find( team => team.teamId === teamId);
     }
 
+    componentWillUnmount(){
+        clearInterval(this.liveUpdate);
+    }
+
     render() {
-        
+        let showMobile = {};
+        if (this.props.location.pathname !== '/app/matches'){
+            showMobile = {display: 'none'};
+        }
         if (this.state.games===null || this.state.games===undefined){
-            // gamesList = (  
-            //     <div>
-            //         <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
-            //         <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
-            //         <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
-            //         <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
-            //         <div className={[styles.placeholder,'innerCard'].join(' ')}>...</div>
-            //     </div>);  
-                // <div className={styles.divider}>
-                //     <Loader className='loader' size='large' active content='Fetching games...' />
-                // </div>);
         } else {
             this.gamesList = this.state.games.map(match => {
                 match.hTeam['fullName'] = this.getTeamName(match.hTeam.teamId).ttsName;
@@ -78,7 +65,7 @@ class MatchesList extends Component {
            
                 
                 return ( 
-                    <div className={styles.Match} onClick={() => this.setState({selected: match.gameId})}>
+                    <div key={match.gameId} className={styles.Match} onClick={() => this.setState({selected: match.gameId})}>
                         <Link to={'/app/matches/' + urlConstants.FORMAT_DATE(this.state.date) + '/' + match.gameId} style={{ textDecoration: 'none', color: 'black'}}>
                             <Match
                             selected={this.state.selected === match.gameId ? true : false}
@@ -106,7 +93,7 @@ class MatchesList extends Component {
         }
 
         return ( 
-            <div className={[styles.MatchesList, 'containerCard'].join(' ')}>
+            <div style={showMobile} className={[styles.MatchesList, 'containerCard'].join(' ')}>
 
                 <div className={[styles.header].join(' ')}>
                     <div className={styles.dateHeader}>

@@ -7,10 +7,10 @@ import Tab from '@material-ui/core/Tab';
 
 class HeaderNav extends Component {
 
-    state = {};
+    state = {value: 0};
 
     componentDidMount() {
-        this.setState( {value: -1});
+        //this.setState( {value: -1});
         this.updateActiveTab(this.props.location.pathname);
     }
 

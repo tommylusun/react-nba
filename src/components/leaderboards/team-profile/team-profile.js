@@ -21,7 +21,6 @@ class TeamProfile extends Component {
         teamStats: null
     };
     async componentDidMount() {
-        console.log(this.props);
         await this.getTeamData(this.props.match.params.teamId);
         await this.playersList();
     }

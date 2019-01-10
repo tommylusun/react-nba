@@ -74,7 +74,7 @@ class LeaderBoards extends Component {
                         }
                     }
                     return (
-                        <li onClick={() => this.clickHandler(team.teamId)} style={background} className={styles.playerRow}>
+                        <li key={team.teamId} onClick={() => this.clickHandler(team.teamId)} style={background} className={styles.playerRow}>
                             <label className={styles.smallerCol}>{ind+1}</label>
                             <label className={styles.teamName}>{this.getTeamName(team.teamId).ttsName}</label>
                             <label className={styles.smallerCol}>{team.win}</label>

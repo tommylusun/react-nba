@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styles from './match.module.css';
-import {Helmet} from "react-helmet";
 
 class Match extends Component {
 

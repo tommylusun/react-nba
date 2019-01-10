@@ -117,15 +117,15 @@ class App extends Component {
     if (this.state.teams === null){
       return null;
     }
-    if (window.innerWidth < 770) {
-      this.matchList = (
-        <Route exact path="/app/matches" render={(props) => 
-          <Grid.Column className='MatchesList-container'>
-            <MatchesList teams={this.state.teams} {...props}/>
-          </Grid.Column>
-          }/> 
-      );
-    }    
+    // if (window.innerWidth < 770) {
+    //   this.matchList = (
+    //     <Route path="/app/matches" render={(props) => 
+    //       <Grid.Column style={{display: 'none'}} className='MatchesList-container'>
+    //         <MatchesList teams={this.state.teams} {...props}/>
+    //       </Grid.Column>
+    //       }/> 
+    //   );
+    // }    
     return (
       <BrowserRouter>
         <Grid className="App">

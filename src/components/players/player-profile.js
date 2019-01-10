@@ -14,13 +14,9 @@ class PlayerProfile extends Component {
     }
 
     async componentDidMount() {
-        console.log(this.props.match.params.personId);
         await this.setState({personId: this.props.match.params.personId});
-        console.log(this.state.personId);
-
         let playerDetails = await this.props.players.find( person => person.personId === this.state.personId);
         this.setState({playerDetails: playerDetails});
-        console.log(this.state.playerDetails);
     }
 
     componentWillReceiveProps() {
