@@ -115,9 +115,9 @@ class TeamProfile extends Component {
         let teamStats = null;
         if (this.state.roster === null || this.state.list === null || this.state.teamStats === null) {
             return (
-                // <div className={styles.loader}>
-                //     <Loader className={styles.loader} size='large' active content='Fetching team...' />
-                // </div>
+                <div className={styles.loader}>
+                    {/* <Loader className={styles.loader} size='large' active content='Fetching team...' /> */}
+                </div>
             );
         }
         if (!!this.state.teamStats){
