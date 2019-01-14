@@ -36,7 +36,7 @@ class PlayerProfile extends Component {
         return (
             <div className={styles.container}> 
                 <Helmet>
-                    <title>{`${player.firstName}`} {`${player.lastName}`} - 2018 2019 NBA season player profile</title>
+                    <title>{`${player.firstName}`} {`${player.lastName}`} - 2018 2019 NBA Season Player Profile, Stats</title>
                 </Helmet>
                 <div className={[styles.playersContainer,'containerCard'].join(' ')}>
                     <h1>2018 Active Players</h1> 

@@ -141,7 +141,7 @@ class gameDetails extends Component {
             return ( 
                 <div className={[styles.container, 'containerCard'].join(' ')}>
                     <Helmet>
-                        <title>{`${this.home.fullName}`} - {`${this.away.fullName}`} - 2018 2019 NBA regular season game</title>
+                        <title>{`${this.home.fullName}`} vs {`${this.away.fullName}`} - {`${new Date(this.basicGameData.startTimeUTC).toDateString()}`} - Game Details and Statistics NBA Regular Season 2018 2019</title>
                     </Helmet>
                     <Grid className={styles.grid}>
                         <Grid.Row centered className={[styles.gameStats,''].join(' ')}>

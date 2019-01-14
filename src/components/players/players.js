@@ -101,7 +101,7 @@ class Players extends Component {
         return (
             <div className={styles.container}> 
                 <Helmet>
-                    <title>Active 2018 2019 season NBA players</title>
+                    <title>Active 2018 2019 Regular Season NBA Players</title>
                 </Helmet>
                 <div className={[styles.playersContainer,'containerCard'].join(' ')}>
                     <h1>2018 Active Players</h1> 
