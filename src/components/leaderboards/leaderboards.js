@@ -106,7 +106,7 @@ class LeaderBoards extends Component {
                     <div style={innerWidth} className={[styles.StandingsCard, 'containerCard'].join(' ')}>
                     
                         <div className={styles.standingsHeader}>
-                            <h2>Season 2018 Standings</h2>
+                            <h2>Season 2019 Standings</h2>
                         </div>
                         <div className={[styles.listContainer, 'innerCard'].join(' ')}>
                             <div className={styles.confHeader}>
@@ -138,7 +138,7 @@ class LeaderBoards extends Component {
                         <div style={innerWidth} className={[styles.StandingsCard, 'containerCard'].join(' ')}>
                         
                             <div className={styles.standingsHeader}>
-                                <h3>Season 2018 Standings</h3>
+                                <h3>Season 2019 Standings</h3>
                             </div>
                             <div className={[styles.listContainer, 'innerCard'].join(' ')}>
                                 <Tabs fullWidth value={this.state.mobileSelected} onChange={(event,value) => this.setState({mobileSelected: value})} indicatorColor="primary">
@@ -173,7 +173,7 @@ class LeaderBoards extends Component {
         } else {
             return (<div className={styles.container}>
                 <div>
-                    <h1>Season 2018 Standings</h1>
+                    <h1>Season 2019 Standings</h1>
                 </div>      
             </div>);
         }
