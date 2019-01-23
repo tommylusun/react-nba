@@ -10,10 +10,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 You'll need NodeJs and its package manager `npm`
 
-```
-Node.js
-```
-
 ### Installation
 
 A step by step series of examples that tell you how to get a development env running
