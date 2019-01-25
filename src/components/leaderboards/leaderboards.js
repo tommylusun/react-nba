@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './leaderboards.module.css';
 import axios from 'axios';
-import { urlConstants } from '../../constants/url-constants';
+import { urlConstants } from '../../utils/url-constants';
 import TeamProfile from './team-profile/team-profile';
 import { Route } from 'react-router-dom';
 import Tabs from '@material-ui/core/Tabs';
@@ -155,7 +155,7 @@ class LeaderBoards extends Component {
             return (
                 <div className={styles.container}>
                     <Helmet>
-                        <title>NBA Regular Season Standings and Statistics - 2018 2019</title>
+                        <title>NBA 2019 Season Rankings and Stats</title>
                     </Helmet>
                     {lists}
                     <Route path="/app/leaderboards/:teamId" component={ (props) => 

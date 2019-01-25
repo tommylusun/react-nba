@@ -3,6 +3,15 @@
     text-align: center;
     align-items: center;
 }
+.GameScoreSummary .teamName {
+    min-width: 150px;
+    padding-right: 15px;
+}
+.GameScoreSummary .header {
+    padding-bottom: 5px;
+    padding-top: 10px;
+    border-bottom: 1px solid #00000030;
+}
 .livebar {
     width: 200px;
     margin: auto;
@@ -29,6 +38,9 @@
     max-height: 150px;
     animation: fade-in 0.75s; 
 }
+.score {
+    font-size: 2.5vw;
+}
 
 @keyframes fade-in {
     0%   {
@@ -38,9 +50,7 @@
         opacity: 1;
     }
 }
-.score {
-    font-size: 2.5vw;
-}
+
 @media (min-width: 770px) {
     .GameScoreSummary ul {
         list-style-type: none;
@@ -62,19 +72,8 @@
         min-width: 50px;
         width: 50px;
     }
-    
-
-}
-.GameScoreSummary .teamName {
-    min-width: 150px;
-    padding-right: 15px;
 }
 
-.GameScoreSummary .header {
-    padding-bottom: 5px;
-    padding-top: 10px;
-    border-bottom: 1px solid #00000030;
-}
 @media (max-width: 770px) {
     .GameScoreSummary {
         width: 100%;

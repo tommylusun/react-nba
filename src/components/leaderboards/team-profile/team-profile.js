@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './team-profile.module.css';
 import axios from 'axios';
-import { urlConstants } from '../../../constants/url-constants';
+import { urlConstants } from '../../../utils/url-constants';
 import { Loader} from 'semantic-ui-react'
 
 import {Link} from 'react-router-dom';
@@ -48,9 +48,6 @@ class TeamProfile extends Component {
         return axios.get(this.baseURL + this.getPlayerStatsURL(personId)).then((data)=> {
             return data.data.league.standard.stats;
         });
-        // console.log(await axios.get(this.baseURL + this.getPlayerStatsURL(personId)));
-        // const stats = await data.league.standard.stats;
-        // return data;
     }
 
 
@@ -63,7 +60,6 @@ class TeamProfile extends Component {
                 let playerDetails = this.props.players.find( person => person.personId === player.personId);
                 let imgsrc = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player.personId}.png`
 
-
                 return (
                     <div className={[styles.playerContainer,'innerCard'].join(' ')}>
                         <Link to={'/app/players/' + player.personId}>
@@ -74,9 +70,6 @@ class TeamProfile extends Component {
                                 <h5 >{playerDetails.firstName} {playerDetails.lastName}</h5>
                             </div>
                         </Link>   
-
-                        
-                        
                         <li>
                             <label className={styles.statDesc}><b>Stat</b></label>
                             <label><b>Career</b></label>
@@ -127,7 +120,7 @@ class TeamProfile extends Component {
         return (
             <div className={[styles.container,'containerCard'].join(' ')}>
                 <Helmet>
-                    <title>{`${this.state.teamDetails.ttsName}`} Team Profile Stats - NBA 2018 2019</title>
+                    <title>{`${this.state.teamDetails.ttsName}`} Team Profile Stats - NBA 2019</title>
                 </Helmet>
                 <div className={styles.header}>
                     <h1>{this.state.teamDetails.ttsName}</h1>

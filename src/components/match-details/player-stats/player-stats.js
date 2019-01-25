@@ -4,7 +4,7 @@ import React, {
 import styles from './player-stats.module.css';
 import axios from 'axios';
 import { Loader } from 'semantic-ui-react';
-import { urlConstants } from '../../../constants/url-constants';
+import { urlConstants } from '../../../utils/url-constants';
 import { Link } from 'react-router-dom';
 
 class PlayerStats extends Component {

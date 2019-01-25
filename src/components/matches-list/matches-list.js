@@ -5,7 +5,7 @@ import Match from './match/match';
 import styles from './matches-list.module.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { urlConstants } from '../../constants/url-constants';
+import { urlConstants } from '../../utils/url-constants';
 
 class MatchesList extends Component {
 

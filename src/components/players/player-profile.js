@@ -36,10 +36,10 @@ class PlayerProfile extends Component {
         return (
             <div className={styles.container}> 
                 <Helmet>
-                    <title>{`${player.firstName}`} {`${player.lastName}`} - 2018 2019 NBA Season Player Profile, Stats</title>
+                    <title>{`${player.firstName}`} {`${player.lastName}`} - 2019 NBA Player Stats</title>
                 </Helmet>
                 <div className={[styles.playersContainer,'containerCard'].join(' ')}>
-                    <h1>2018 Active Players</h1> 
+                    <h1>2018 Active NBA Players</h1> 
 
                     <div className={styles.searchHeader}>
                         <input placeholder='Enter name' className={[styles.searchBar,'innerCard'].join(' ')} type='text' value={this.state.searchValue} onKeyPress={(e) => this.onInputChange(e)} onChange={(event)=> this.setState({searchValue: event.target.value})}/>

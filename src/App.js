@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import "@babel/polyfill";
 import './App.css';
-import { urlConstants } from './constants/url-constants';
+import { urlConstants } from './utils/url-constants';
 import MatchDetails from './components/match-details/match-details';
 import MatchesList from './components/matches-list/matches-list';
 import LeaderBoards from './components/leaderboards/leaderboards';

@@ -7,13 +7,13 @@ import { Loader, Grid } from 'semantic-ui-react'
 import PlayerStats from './player-stats/player-stats';
 import GameStats from './game-stats/game-stats';
 import axios from 'axios';
-import {urlConstants} from '../../constants/url-constants';
+import {urlConstants} from '../../utils/url-constants';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import {Helmet} from "react-helmet";
 
 
-class gameDetails extends Component {
+class GameDetails extends Component {
 
     baseURL = urlConstants.BASE_URL;
 
@@ -133,15 +133,10 @@ class gameDetails extends Component {
                         </Grid.Column>
                     </Grid.Row>);
             }
-               
-
-
-            
-            
             return ( 
                 <div className={[styles.container, 'containerCard'].join(' ')}>
                     <Helmet>
-                        <title>{`${this.home.fullName}`} vs {`${this.away.fullName}`} - {`${new Date(this.basicGameData.startTimeUTC).toDateString()}`} - Game Details and Statistics NBA Regular Season 2018 2019</title>
+                        <title>{`${this.home.fullName}`} vs {`${this.away.fullName}`} - {`${new Date(this.basicGameData.startTimeUTC).toDateString()}`} - Match Details and Stats NBA</title>
                     </Helmet>
                     <Grid className={styles.grid}>
                         <Grid.Row centered className={[styles.gameStats,''].join(' ')}>
@@ -162,10 +157,7 @@ class gameDetails extends Component {
                 
             );
         }
-        
-
-        
     }
 }
 
-export default gameDetails;
+export default GameDetails;
