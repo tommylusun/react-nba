@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-height: calc(100% - 150px);
+    max-height: calc(100% - 120px);
     padding: 15px;
     overflow: auto;
     justify-content: center;
@@ -41,6 +41,9 @@
     font-size: 1.5rem;
     transition: all ease-in-out 0.2s;
     
+}
+.playerStatsSection {
+    width: 100%;
 }
 @media (min-width: 770px) {
     .playerListItem:hover {

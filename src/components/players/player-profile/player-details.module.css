@@ -1,0 +1,7 @@
+.playerDetailsContainer{
+    text-align: start;
+    margin-left: 25px;
+}
+.labelName {
+    min-width: 150px;   
+}

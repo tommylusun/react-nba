@@ -155,7 +155,7 @@ class LeaderBoards extends Component {
             return (
                 <div className={styles.container}>
                     <Helmet>
-                        <title>NBA 2019 Season Rankings and Stats</title>
+                        <title>2018-2019 NBA Season Current Standings - NBA Stats Simplified</title>
                     </Helmet>
                     {lists}
                     <Route path="/app/leaderboards/:teamId" component={ (props) => 

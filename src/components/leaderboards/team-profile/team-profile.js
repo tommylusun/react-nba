@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './team-profile.module.css';
 import axios from 'axios';
 import { urlConstants } from '../../../utils/url-constants';
-import { Loader} from 'semantic-ui-react'
+// import { Loader} from 'semantic-ui-react'
 
 import {Link} from 'react-router-dom';
 import TeamStats from './team-stats';
@@ -120,7 +120,7 @@ class TeamProfile extends Component {
         return (
             <div className={[styles.container,'containerCard'].join(' ')}>
                 <Helmet>
-                    <title>{`${this.state.teamDetails.ttsName}`} Team Profile Stats - NBA 2019</title>
+                    <title>{`${this.state.teamDetails.ttsName}`} Team Profile 2018-2019 - NBA Stats Simplified</title>
                 </Helmet>
                 <div className={styles.header}>
                     <h1>{this.state.teamDetails.ttsName}</h1>
