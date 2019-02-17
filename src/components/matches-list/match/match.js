@@ -25,7 +25,7 @@ const Match = (props) => {
         <div className={[styles.container, 'innerCard', props.selected ? styles.selected : ''].join(' ') }>
             <div className={styles.col}>
                 <p className={styles.record}>{props.match.hTeam.win} - {props.match.hTeam.loss}</p>
-                <h4 className={styles.heading}>{props.match.hTeam.fullName.split(' ').pop()}</h4>
+                <h4 className={styles.heading}>{props.match.hTeam.city ? props.match.hTeam.city : ''}</h4>
                 <div style={{color: Hcolor}} className={styles.colScoreH}>
                     <p>{props.match.hTeam.score}</p>
                 </div>
@@ -37,7 +37,7 @@ const Match = (props) => {
             
             <div className={styles.col}>
                 <p className={styles.record}>{props.match.vTeam.win} - {props.match.vTeam.loss}</p>
-                <h4 className={styles.heading}>{props.match.vTeam.fullName.split(' ').pop()}</h4>
+                <h4 className={styles.heading}>{props.match.vTeam.city ? props.match.vTeam.city : ''}</h4>
                 <div style={{color: Vcolor}} className={styles.colScoreV}>
                     <p>{props.match.vTeam.score}</p>
                 </div>

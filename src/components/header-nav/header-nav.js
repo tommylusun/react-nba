@@ -45,7 +45,7 @@ class HeaderNav extends Component {
         let value = this.state.value;
         return (
             <div className={styles.navbar}>
-                <Tabs fullWidth value={value} onChange={this.handleChange} indicatorColor="primary">
+                <Tabs variant="fullWidth" value={value} onChange={this.handleChange} indicatorColor="primary">
                     <Tab label="Matches"/>
                     <Tab label="LeaderBoards" />
                     <Tab label="Players" />

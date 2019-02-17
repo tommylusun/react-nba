@@ -16,7 +16,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 class App extends Component {
   
   baseURL = urlConstants.BASE_URL;
-  getTeamsURL = urlConstants.GET_ALL_TEAMS_V2;
+  getTeamsURL = urlConstants.GET_ALL_TEAMS;
   getPlayersURL = urlConstants.GET_ALL_PLAYERS;
 
   constructor(props) {
@@ -40,6 +40,7 @@ class App extends Component {
 
   async getPlayers() {
     const res = await axios.get(this.baseURL + this.getPlayersURL);
+    await console.log(res);
     const players = await res.data.league.standard;
     this.setState({
       players: players,
@@ -49,7 +50,7 @@ class App extends Component {
 
   async getTeams() {
     const res = await axios.get(this.baseURL + this.getTeamsURL);
-    const teams = await res.data.teams.config;
+    const teams = await res.data.league.standard;
     this.setState({
       teams: teams,
     });
@@ -131,7 +132,7 @@ class App extends Component {
         <Grid className="App">
           <Grid.Row className="App-Grid-Header">
             <div className='App-Title'>
-                <h1 className='App-logo'>NBA Stats</h1>
+                <h1 className='App-logo'>2019 NBA Statistics and Live Game Scores - Stats Simplified</h1>
             </div>
           </Grid.Row>    
           <Grid.Row className='App-Navbar'>

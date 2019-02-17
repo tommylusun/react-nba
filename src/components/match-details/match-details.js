@@ -19,7 +19,7 @@ class GameDetails extends Component {
 
 
     state = {
-        game: 'loading', 
+        game: null, 
         team1Color: '#ffffff',
         team2Color: '#ffffff',
         showTeam: 'h',
@@ -41,8 +41,9 @@ class GameDetails extends Component {
     }
 
     async componentWillReceiveProps(nextProps) {
+        
         if (this.props.match.params.id !== nextProps.match.params.id ){
-            this.setState( {game: 'loading'});
+            this.setState( {game: null});
             await this.getGameDetails(nextProps.match.params.date,nextProps.match.params.id);
         }
     }
@@ -50,10 +51,13 @@ class GameDetails extends Component {
     async getGameDetails(date, gameId) {
         try {
             const matchDetails = await axios.get(this.baseURL + urlConstants.GET_GAME_DETAILS(date,gameId));
-            matchDetails.data.basicGameData.vTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).ttsName;
-            matchDetails.data.basicGameData.hTeam['fullName'] = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).ttsName;
-            const team1Color = this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId).primaryColor;
-            const team2Color = this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId).primaryColor;
+            const vTeam = await this.getTeamName(matchDetails.data.basicGameData.vTeam.teamId);
+            const hTeam = await this.getTeamName(matchDetails.data.basicGameData.hTeam.teamId);
+            matchDetails.data.basicGameData.vTeam['fullName'] = vTeam.fullName;
+            matchDetails.data.basicGameData.hTeam['fullName'] = hTeam.fullName;
+            const team1Color = hTeam.primaryColor;
+            const team2Color = vTeam.primaryColor;
+            console.log(matchDetails);
             this.setState( 
                 {
                     game: matchDetails.data,
@@ -84,11 +88,11 @@ class GameDetails extends Component {
 
     render() {
 
-        if (this.state.game === 'loading' || !!!this.props.players){
+        if (!this.state.game || !this.props.players){
             return (
                 <div className={styles.container}>
                     <div className = {styles['container-placeholder']}>
-                        {/* {this.loading} */}
+                        {this.loading}
                     </div>
                 </div>
             );

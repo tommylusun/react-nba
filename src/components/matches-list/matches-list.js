@@ -60,9 +60,9 @@ class MatchesList extends Component {
         if (this.state.games===null || this.state.games===undefined){
         } else {
             this.gamesList = this.state.games.map(match => {
-                match.hTeam['fullName'] = this.getTeamName(match.hTeam.teamId).ttsName;
-                match.vTeam['fullName'] = this.getTeamName(match.vTeam.teamId).ttsName;
-           
+                match.hTeam['city'] = this.getTeamName(match.hTeam.teamId).city;
+                match.vTeam['city'] = this.getTeamName(match.vTeam.teamId).city;
+                
                 
                 return ( 
                     <div key={match.gameId} className={styles.Match} onClick={() => this.setState({selected: match.gameId})}>

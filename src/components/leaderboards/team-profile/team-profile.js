@@ -120,10 +120,10 @@ class TeamProfile extends Component {
         return (
             <div className={[styles.container,'containerCard'].join(' ')}>
                 <Helmet>
-                    <title>{`${this.state.teamDetails.ttsName}`} Team Profile 2018-2019 - NBA Stats Simplified</title>
+                    <title>{`${this.state.teamDetails.fullName}`} Team Profile 2018-2019 - NBA Simply Stats</title>
                 </Helmet>
                 <div className={styles.header}>
-                    <h1>{this.state.teamDetails.ttsName}</h1>
+                    <h1>{this.state.teamDetails.fullName}</h1>
                 </div>
                 <div className={[styles.teamStatsContainer,'innerCard'].join(' ')}>
                     <div className={styles.header}>

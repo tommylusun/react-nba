@@ -97,7 +97,7 @@ const GameStats = (props) => {
                 <Grid.Row style={background}>
                     <Grid.Column width={4}>
                         <div>
-                            <img className={styles.image} src={urlConstants.GET_TEAM_LOGO(data.hTeam.triCode)} alt="team"></img>
+                            <img className={styles.image} src={urlConstants.GET_TEAM_LOGO(data.hTeam.triCode)} alt=" "></img>
                         </div>
                         <p><b>{data.hTeam.win} - {data.hTeam.loss}</b></p>
                     </Grid.Column>
@@ -114,7 +114,7 @@ const GameStats = (props) => {
                     </Grid.Column>
                     <Grid.Column width={4}>
                         <div>
-                            <img className={styles.image} src={urlConstants.GET_TEAM_LOGO(data.vTeam.triCode)} alt="team"></img>
+                            <img className={styles.image} src={urlConstants.GET_TEAM_LOGO(data.vTeam.triCode)} alt=" "></img>
                         </div>
                         <p><b>{data.vTeam.win} - {data.vTeam.loss}</b></p>
                     </Grid.Column>

@@ -64,7 +64,7 @@ class PlayerStats extends Component {
                     </li>  
                     <li>
                         <Link to={'/app/players/' + player.personId}>
-                            Player profile
+                            <b style={{textDecoration: 'underline'}}>Player profile</b>
                         </Link>   
                     </li>    
                 </div>
@@ -95,6 +95,7 @@ class PlayerStats extends Component {
                     playerDetails = {firstName: "Not",lastName: "Found"};
                 }
                 const selected = (!!this.state && !!this.state.players[player.personId]) ? styles.highlight : '';
+                const chevronStyle = (!!this.state && !!this.state.players[player.personId]) ? styles.chevronUp : styles.chevronDown;
                 return (
                     <>
                         <li key={player.personId} className={[styles.playerRow, selected].join(' ')} onClick={() => this.getMoreStats(player)}>
@@ -104,6 +105,7 @@ class PlayerStats extends Component {
                             <label>{player.assists}</label>
                             <label>{player.totReb}</label>
                             <label>{player.min}</label>
+                            <span className={chevronStyle}></span>
                         </li>
                         {this.showStats(player.personId)}
                     </>
