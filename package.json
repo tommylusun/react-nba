@@ -12,8 +12,7 @@
     "react-helmet": "^5.2.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.2",
-    "semantic-ui-react": "^0.83.0",
-    "terser": "^3.14.1"
+    "semantic-ui-react": "^0.83.0"
   },
   "scripts": {
     "postinstall": "npm run build",
@@ -33,6 +32,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
     "terser": "^3.14.1"
   }
 }

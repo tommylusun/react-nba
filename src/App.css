@@ -113,8 +113,8 @@ a{
     margin-left: 0%;
     margin-right: 0%;
     width: 100% !important;  
-    max-height: calc(100% - 100px) !important;
-    min-height: calc(100% - 100px);
+    max-height: calc(100% - 110px) !important;
+    min-height: calc(100% - 110px);
   }
   .App-Match-Details-Container {
     overflow: auto;

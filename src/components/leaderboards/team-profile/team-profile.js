@@ -4,10 +4,14 @@ import axios from 'axios';
 import { urlConstants } from '../../../utils/url-constants';
 // import { Loader} from 'semantic-ui-react'
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import TeamStats from './team-stats';
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
+import { connect } from 'react-redux'
 
+const mapStateToProps = state => ({
+    theteams: state.teams
+});
 
 class TeamProfile extends Component {
 
@@ -29,14 +33,15 @@ class TeamProfile extends Component {
     async getTeamData(teamId) {
         const data = await axios.get(this.baseURL + this.getTeamRosterURL(teamId));
         const roster = await data.data.league.standard.players;
-        const teamDetails = await this.props.teams.find( team => team.teamId === teamId);
-        if (!!this.props.teamStats){
-            const teamStats = await this.props.teamStats.find( team => team.teamId === teamId);
+        // const teamDetails = await this.props.teams.find( team => team.teamId === teamId);
+        const teamDetails = await this.props.theteams.find( team => team.teamId === teamId);
+        if (!!this.props.teamStats) {
+            const teamStats = await this.props.teamStats.find(team => team.teamId === teamId);
             this.setState({
                 teamStats: teamStats
             });
         }
-        
+
         this.setState({
             roster: roster,
             teamDetails: teamDetails
@@ -45,7 +50,7 @@ class TeamProfile extends Component {
     }
 
     getPlayerStats(personId) {
-        return axios.get(this.baseURL + this.getPlayerStatsURL(personId)).then((data)=> {
+        return axios.get(this.baseURL + this.getPlayerStatsURL(personId)).then((data) => {
             return data.data.league.standard.stats;
         });
     }
@@ -55,21 +60,21 @@ class TeamProfile extends Component {
         this.setState({
             list: <div>Loading...</div>
         });
-        const list = this.state.roster.map ( (player) => {
+        const list = this.state.roster.map((player) => {
             return this.getPlayerStats(player.personId).then((playerStats) => {
-                let playerDetails = this.props.players.find( person => person.personId === player.personId);
+                let playerDetails = this.props.players.find(person => person.personId === player.personId);
                 let imgsrc = `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${player.personId}.png`
 
                 return (
-                    <div className={[styles.playerContainer,'innerCard'].join(' ')}>
+                    <div className={[styles.playerContainer, 'innerCard'].join(' ')}>
                         <Link to={'/app/players/' + player.personId}>
                             <div>
-                                <img style={{width: '100%'}} src={imgsrc} alt={playerDetails.lastName}/>
+                                <img style={{ width: '100%' }} src={imgsrc} alt={playerDetails.lastName} />
                             </div>
-                            <div style={{borderBottom: '1px solid #00000030', height: '50px'}}>
+                            <div style={{ borderBottom: '1px solid #00000030', height: '50px' }}>
                                 <h5 >{playerDetails.firstName} {playerDetails.lastName}</h5>
                             </div>
-                        </Link>   
+                        </Link>
                         <li>
                             <label className={styles.statDesc}><b>Stat</b></label>
                             <label><b>Career</b></label>
@@ -78,21 +83,21 @@ class TeamProfile extends Component {
                         <li>
                             <label className={styles.statDesc}>ppg:</label>
                             <label>{playerStats.careerSummary.ppg}</label>
-                            <label>{playerStats.latest.ppg}</label>  
+                            <label>{playerStats.latest.ppg}</label>
                         </li>
                         <li>
                             <label className={styles.statDesc}>apg:</label>
                             <label>{playerStats.careerSummary.apg}</label>
-                            <label>{playerStats.latest.apg}</label>  
+                            <label>{playerStats.latest.apg}</label>
 
                         </li>
                         <li>
                             <label className={styles.statDesc}>rpg:</label>
                             <label>{playerStats.careerSummary.rpg}</label>
-                            <label>{playerStats.latest.rpg}</label>  
+                            <label>{playerStats.latest.rpg}</label>
 
                         </li>
-                        
+
                     </div>
                 );
             });
@@ -113,19 +118,19 @@ class TeamProfile extends Component {
                 </div>
             );
         }
-        if (!!this.state.teamStats){
+        if (!!this.state.teamStats) {
             teamStats = (<TeamStats teamStats={this.state.teamStats}></TeamStats>);
         }
 
         return (
-            <div className={[styles.container,'containerCard'].join(' ')}>
+            <div className={[styles.container, 'containerCard'].join(' ')}>
                 <Helmet>
                     <title>{`${this.state.teamDetails.fullName}`} Team Profile 2018-2019 - NBA Simply Stats</title>
                 </Helmet>
                 <div className={styles.header}>
                     <h1>{this.state.teamDetails.fullName}</h1>
                 </div>
-                <div className={[styles.teamStatsContainer,'innerCard'].join(' ')}>
+                <div className={[styles.teamStatsContainer, 'innerCard'].join(' ')}>
                     <div className={styles.header}>
                         <h4>Team Stats</h4>
                     </div>
@@ -133,16 +138,16 @@ class TeamProfile extends Component {
                         {teamStats}
                     </div>
                 </div>
-                <div className={[styles.playerStatsContainer,'innerCard'].join(' ')}>
+                <div className={[styles.playerStatsContainer, 'innerCard'].join(' ')}>
                     <h4>Player Stats </h4>
-                    
+
                     <div className={styles.body}>
                         {this.state.list}
                     </div>
                 </div>
-                
+
             </div>);
     }
 }
-
-export default TeamProfile;
+const ExpTeamProfile = connect(mapStateToProps)(TeamProfile);
+export default ExpTeamProfile;

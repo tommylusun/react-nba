@@ -7,7 +7,13 @@ import PlayerStats from './player-profile/player-stats';
 import PlayerDetails from './player-profile/player-details';
 // import { Loader, Grid, Button } from 'semantic-ui-react'
 // import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 
+
+const mapStateToProps = state => ({
+    teams: state.teams,
+    players: state.players
+});
 
 class PlayerProfile extends Component {
 
@@ -22,7 +28,7 @@ class PlayerProfile extends Component {
         await this.setState({personId: this.props.match.params.personId});
         let playerDetails = await this.props.players.find( person => person.personId === this.state.personId);
         let teamName = await this.props.teams.find( team => team.teamId === playerDetails.teamId);
-        playerDetails['teamName']=teamName.ttsName;
+        playerDetails['teamName']=teamName.fullName;
         const playerStats = await this.getPlayerStats(this.state.personId);
         await this.setState({playerStats: playerStats});
         await this.setState({playerDetails: playerDetails});
@@ -80,5 +86,5 @@ class PlayerProfile extends Component {
 
 
 }
-
-export default PlayerProfile;
+const ExpPlayerProfile = connect(mapStateToProps)(PlayerProfile);
+export default ExpPlayerProfile;

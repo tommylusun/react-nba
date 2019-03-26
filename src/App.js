@@ -12,7 +12,20 @@ import axios from 'axios';
 import HeaderNav from './components/header-nav/header-nav';
 import { Grid } from 'semantic-ui-react'
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addTeams,addPlayers } from './actions';
 
+// function to convert the global state obtained from redux to local props
+function mapDispatchToProps(dispatch) {
+  return {
+    addTeams: teams => {
+      dispatch(addTeams(teams));
+    },
+    addPlayers: players => {
+      dispatch(addPlayers(players));
+    }
+  };
+}
 class App extends Component {
   
   baseURL = urlConstants.BASE_URL;
@@ -40,11 +53,11 @@ class App extends Component {
 
   async getPlayers() {
     const res = await axios.get(this.baseURL + this.getPlayersURL);
-    await console.log(res);
     const players = await res.data.league.standard;
     this.setState({
       players: players,
     });
+    this.props.addPlayers(players);
     return this.state;
   }
 
@@ -54,6 +67,7 @@ class App extends Component {
     this.setState({
       teams: teams,
     });
+    this.props.addTeams(teams);
     return this.state;
   }
 
@@ -69,8 +83,6 @@ class App extends Component {
             <MatchDetails 
             className='App-Match-Details-Container'
             {...props}
-            players={this.state.players}
-            teams={this.state.teams}
             />
           </Grid.Column>
         }/>
@@ -79,7 +91,7 @@ class App extends Component {
   matchList = (
     <Route path="/app/matches" render={(props) => 
       <Grid.Column className='MatchesList-container'>
-        <MatchesList teams={this.state.teams} {...props}/>
+        <MatchesList {...props}/>
       </Grid.Column>
       }/> 
   );
@@ -87,8 +99,6 @@ class App extends Component {
   leaderBoards = (
     <Route path="/app/leaderboards" component={ props => 
       <LeaderBoards
-      teams={this.state.teams}
-      players={this.state.players}
       {...props}
       />
     }/>
@@ -97,8 +107,6 @@ class App extends Component {
   playersTab = (
     <Route exact path="/app/players" component={ props => 
       <Players
-      teams={this.state.teams}
-      players={this.state.players}
       {...props}
       />
     }/>
@@ -107,8 +115,6 @@ class App extends Component {
   playerProfile = (
     <Route exact path="/app/players/:personId" component={ props => 
       <PlayerProfile
-      teams={this.state.teams}
-      players={this.state.players}
       {...props}
       />
     }/>
@@ -117,24 +123,15 @@ class App extends Component {
   render() { 
     if (this.state.teams === null){
       return null;
-    }
-    // if (window.innerWidth < 770) {
-    //   this.matchList = (
-    //     <Route path="/app/matches" render={(props) => 
-    //       <Grid.Column style={{display: 'none'}} className='MatchesList-container'>
-    //         <MatchesList teams={this.state.teams} {...props}/>
-    //       </Grid.Column>
-    //       }/> 
-    //   );
-    // }    
+    } 
     return (
       <BrowserRouter>
         <Grid className="App">
           <Grid.Row className="App-Grid-Header">
             <div className='App-Title'>
-                <h1 className='App-logo'>2019 NBA Statistics and Live Game Scores - Stats Simplified</h1>
+                <h1 className='App-logo'>2019 NBA Stats</h1>
             </div>
-          </Grid.Row>    
+          </Grid.Row>
           <Grid.Row className='App-Navbar'>
             <HeaderNav/>
           </Grid.Row>
@@ -159,5 +156,5 @@ class App extends Component {
   }
 
 }
-
-export default App;
+const ExportApp = connect(null,mapDispatchToProps)(App);
+export default ExportApp;

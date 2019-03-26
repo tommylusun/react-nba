@@ -7,7 +7,13 @@ import { Route } from 'react-router-dom';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import {Helmet} from "react-helmet";
+import { connect } from 'react-redux'
 
+
+const mapStateToProps = state => ({
+    teams: state.teams,
+    players: state.players
+});
 class LeaderBoards extends Component {
 
     baseURL = urlConstants.BASE_URL;
@@ -24,6 +30,8 @@ class LeaderBoards extends Component {
     async componentDidMount() {
         await this.getTeams();
         await this.getTeamStats();
+        // await this.props.teams;
+        // await this.props.players;
     }
 
     async getTeamStats () {
@@ -179,5 +187,5 @@ class LeaderBoards extends Component {
         }
     }
 }
-
-export default LeaderBoards;
+const ExpLeaderBoards = connect(mapStateToProps)(LeaderBoards);
+export default ExpLeaderBoards;

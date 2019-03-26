@@ -6,7 +6,12 @@ import styles from './matches-list.module.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { urlConstants } from '../../utils/url-constants';
+import { connect } from 'react-redux'
 
+
+const mapStateToProps = state => ({
+    teams: state.teams,
+});
 class MatchesList extends Component {
 
     baseURL = urlConstants.BASE_URL;
@@ -116,5 +121,5 @@ class MatchesList extends Component {
         );
     }
 }
-
-export default MatchesList;
+const ExpMatchesList = connect(mapStateToProps)(MatchesList);
+export default ExpMatchesList;

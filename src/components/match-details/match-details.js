@@ -11,13 +11,17 @@ import {urlConstants} from '../../utils/url-constants';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import {Helmet} from "react-helmet";
+import { connect } from 'react-redux'
 
+
+const mapStateToProps = state => ({
+    teams: state.teams,
+    players: state.players
+});
 
 class GameDetails extends Component {
 
     baseURL = urlConstants.BASE_URL;
-
-
     state = {
         game: null, 
         team1Color: '#ffffff',
@@ -27,7 +31,6 @@ class GameDetails extends Component {
     };
 
     loading = (<Loader className={styles.loading} inline='centered' active content='Loading' />);
-
 
     async componentDidMount() {
         this.hPlayers = this.loading;
@@ -57,7 +60,6 @@ class GameDetails extends Component {
             matchDetails.data.basicGameData.hTeam['fullName'] = hTeam.fullName;
             const team1Color = hTeam.primaryColor;
             const team2Color = vTeam.primaryColor;
-            console.log(matchDetails);
             this.setState( 
                 {
                     game: matchDetails.data,
@@ -129,8 +131,8 @@ class GameDetails extends Component {
                 playerListSection = 
                     (<Grid.Row centered className={styles.playerStats}>
                         <Tabs fullWidth value={this.state.mobileNavValue} onChange={(event,value) => this.setState({mobileNavValue: value})} indicatorColor="primary">
-                            <Tab label="Home"/>
-                            <Tab label="Away" />
+                            <Tab style={{width:'50%'}} label={this.home.fullName}/>
+                            <Tab style={{width:'50%'}} label={this.away.fullName} />
                         </Tabs>
                         <Grid.Column className={[styles.playerscol,'innerCard'].join(' ')}>
                                 {playerStatsList}
@@ -163,5 +165,5 @@ class GameDetails extends Component {
         }
     }
 }
-
-export default GameDetails;
+const ExpGameDetails = connect(mapStateToProps)(GameDetails);
+export default ExpGameDetails;

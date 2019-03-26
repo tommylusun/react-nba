@@ -4,7 +4,13 @@ import { Link } from 'react-router-dom';
 import {Helmet} from "react-helmet";
 // import { Loader, Grid, Button } from 'semantic-ui-react'
 // import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux'
 
+
+const mapStateToProps = state => ({
+    teams: state.teams,
+    players: state.players
+});
 
 class Players extends Component {
 
@@ -126,5 +132,5 @@ class Players extends Component {
 
 
 }
-
-export default Players;
+const ExpPlayers = connect(mapStateToProps)(Players);
+export default ExpPlayers;
