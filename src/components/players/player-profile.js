@@ -5,15 +5,8 @@ import { urlConstants } from '../../utils/url-constants';
 import axios from 'axios'
 import PlayerStats from './player-profile/player-stats';
 import PlayerDetails from './player-profile/player-details';
-// import { Loader, Grid, Button } from 'semantic-ui-react'
-// import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 
-
-const mapStateToProps = state => ({
-    teams: state.teams,
-    players: state.players
-});
 
 class PlayerProfile extends Component {
 
@@ -32,7 +25,6 @@ class PlayerProfile extends Component {
         const playerStats = await this.getPlayerStats(this.state.personId);
         await this.setState({playerStats: playerStats});
         await this.setState({playerDetails: playerDetails});
-        console.log(this.state);
     }
 
     componentWillReceiveProps() {
@@ -45,8 +37,6 @@ class PlayerProfile extends Component {
 
     onInputChange(event) {
         if (event.key === 'Enter' ){
-            // const list = this.getPlayers(this.state.searchValue);
-            // this.setState({searchedPlayers : list});
             this.props.history.push('/app/players?s='+this.state.searchValue);
         }
     }
@@ -82,9 +72,10 @@ class PlayerProfile extends Component {
                     </div>
                 </div>
             </div>);
-    } 
-
-
+    }
 }
-const ExpPlayerProfile = connect(mapStateToProps)(PlayerProfile);
-export default ExpPlayerProfile;
+const mapStateToProps = state => ({
+    teams: state.teams,
+    players: state.players
+});
+export default connect(mapStateToProps)(PlayerProfile);

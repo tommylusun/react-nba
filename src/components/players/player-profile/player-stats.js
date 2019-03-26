@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './player-stats.module.css';
+
 const PlayerStats = (props) => {
 
     const STAT_NAME = {

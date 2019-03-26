@@ -3,15 +3,10 @@ import styles from './team-profile.module.css';
 import axios from 'axios';
 import { urlConstants } from '../../../utils/url-constants';
 // import { Loader} from 'semantic-ui-react'
-
 import { Link } from 'react-router-dom';
 import TeamStats from './team-stats';
 import { Helmet } from "react-helmet";
 import { connect } from 'react-redux'
-
-const mapStateToProps = state => ({
-    theteams: state.teams
-});
 
 class TeamProfile extends Component {
 
@@ -34,7 +29,7 @@ class TeamProfile extends Component {
         const data = await axios.get(this.baseURL + this.getTeamRosterURL(teamId));
         const roster = await data.data.league.standard.players;
         // const teamDetails = await this.props.teams.find( team => team.teamId === teamId);
-        const teamDetails = await this.props.theteams.find( team => team.teamId === teamId);
+        const teamDetails = await this.props.theteams.find(team => team.teamId === teamId);
         if (!!this.props.teamStats) {
             const teamStats = await this.props.teamStats.find(team => team.teamId === teamId);
             this.setState({
@@ -149,5 +144,7 @@ class TeamProfile extends Component {
             </div>);
     }
 }
-const ExpTeamProfile = connect(mapStateToProps)(TeamProfile);
-export default ExpTeamProfile;
+const mapStateToProps = state => ({
+    theteams: state.teams
+});
+export default connect(mapStateToProps)(TeamProfile);

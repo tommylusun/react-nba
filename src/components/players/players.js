@@ -6,12 +6,6 @@ import {Helmet} from "react-helmet";
 // import { BrowserRouter, Route, NavLink, Link, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux'
 
-
-const mapStateToProps = state => ({
-    teams: state.teams,
-    players: state.players
-});
-
 class Players extends Component {
 
     state = {
@@ -128,9 +122,10 @@ class Players extends Component {
 
                 
             </div>);
-    } 
-
-
+    }
 }
-const ExpPlayers = connect(mapStateToProps)(Players);
-export default ExpPlayers;
+const mapStateToProps = state => ({
+    teams: state.teams,
+    players: state.players
+});
+export default connect(mapStateToProps)(Players);

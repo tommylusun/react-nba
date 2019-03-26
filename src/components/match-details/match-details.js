@@ -2,7 +2,6 @@ import React, {
     Component
 } from 'react';
 import styles from './match-details.module.css';
-// import styles from './gamees-list.module.css';
 import { Loader, Grid } from 'semantic-ui-react'
 import PlayerStats from './player-stats/player-stats';
 import GameStats from './game-stats/game-stats';
@@ -12,12 +11,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import {Helmet} from "react-helmet";
 import { connect } from 'react-redux'
-
-
-const mapStateToProps = state => ({
-    teams: state.teams,
-    players: state.players
-});
 
 class GameDetails extends Component {
 
@@ -165,5 +158,8 @@ class GameDetails extends Component {
         }
     }
 }
-const ExpGameDetails = connect(mapStateToProps)(GameDetails);
-export default ExpGameDetails;
+const mapStateToProps = state => ({
+    teams: state.teams,
+    players: state.players
+});
+export default connect(mapStateToProps)(GameDetails);

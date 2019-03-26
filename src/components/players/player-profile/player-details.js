@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './player-details.module.css';
+
 const PlayerDetails = (props) => {
 
     const PLAYER_PROFILE_NAMES = {

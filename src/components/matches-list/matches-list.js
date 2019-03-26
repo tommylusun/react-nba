@@ -8,10 +8,6 @@ import { Link } from 'react-router-dom';
 import { urlConstants } from '../../utils/url-constants';
 import { connect } from 'react-redux'
 
-
-const mapStateToProps = state => ({
-    teams: state.teams,
-});
 class MatchesList extends Component {
 
     baseURL = urlConstants.BASE_URL;
@@ -68,7 +64,6 @@ class MatchesList extends Component {
                 match.hTeam['city'] = this.getTeamName(match.hTeam.teamId).city;
                 match.vTeam['city'] = this.getTeamName(match.vTeam.teamId).city;
                 
-                
                 return ( 
                     <div key={match.gameId} className={styles.Match} onClick={() => this.setState({selected: match.gameId})}>
                         <Link to={'/app/matches/' + urlConstants.FORMAT_DATE(this.state.date) + '/' + match.gameId} style={{ textDecoration: 'none', color: 'black'}}>
@@ -121,5 +116,7 @@ class MatchesList extends Component {
         );
     }
 }
-const ExpMatchesList = connect(mapStateToProps)(MatchesList);
-export default ExpMatchesList;
+const mapStateToProps = state => ({
+    teams: state.teams,
+});
+export default connect(mapStateToProps)(MatchesList);

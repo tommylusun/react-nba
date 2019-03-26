@@ -15,7 +15,6 @@ class PlayerStats extends Component {
         this.setState({players: {}});
     }
 
-
     getPlayerStats = async (id) => {
         let playerstats = await axios.get(urlConstants.BASE_URL + urlConstants.GET_PLAYER_STATS(id));
         return playerstats.data.league.standard.stats;
