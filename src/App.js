@@ -44,22 +44,22 @@ class App extends Component {
     } />
   );
 
-  match = (
-    <Route exact path="/app/matches/:date/:id" component={(props) =>
-      <Grid.Column className='App-Match-Details-Container'>
-        <MatchDetails
-          className='App-Match-Details-Container'
-          {...props}
-        />
-      </Grid.Column>
-    } />
-  );
-
-  matchList = (
+  matches = (
     <Route path="/app/matches" render={(props) =>
-      <Grid.Column className='MatchesList-container'>
-        <MatchesList {...props} />
-      </Grid.Column>
+      <>
+        <Grid.Column className='MatchesList-container'>
+          <MatchesList {...props} />
+        </Grid.Column>
+
+        <Route exact path="/app/matches/:date/:id" component={(props) =>
+          <Grid.Column className='App-Match-Details-Container'>
+            <MatchDetails
+              className='App-Match-Details-Container'
+              {...props}
+            />
+          </Grid.Column>
+        } />
+      </>
     } />
   );
 
@@ -105,14 +105,13 @@ class App extends Component {
 
           <Grid.Row centered className="App-body">
             <Switch>
-              <Redirect exact from="/" to="/app/matches" />
+              {this.matches}
+              {this.leaderBoards}
+              {this.homePage}
+              {this.playersTab}
+              {this.playerProfile}
+              <Redirect exact from="*" to="/app/matches" />
             </Switch>
-            {this.matchList}
-            {this.match}
-            {this.leaderBoards}
-            {this.homePage}
-            {this.playersTab}
-            {this.playerProfile}
           </Grid.Row>
 
           <div className="App-footer"></div>
