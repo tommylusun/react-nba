@@ -107,7 +107,7 @@ class App extends Component {
             <Switch>
               {this.matches}
               {this.leaderBoards}
-              {this.homePage}
+              {/* {this.homePage} */}
               {this.playersTab}
               {this.playerProfile}
               <Redirect exact from="*" to="/app/matches" />

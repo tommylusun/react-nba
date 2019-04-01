@@ -126,6 +126,14 @@
         transition: all 75ms ease-in-out;
     }
 }
+@media (max-width: 1080px) {
+    .teamProfile {
+        width: 90%;
+        height: 100%;
+        margin: auto;
+        overflow: auto;
+    }
+}
 @media (max-width: 770px) {
 
     .standingsHeader{

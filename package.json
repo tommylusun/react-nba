@@ -7,12 +7,15 @@
     "@material-ui/core": "^3.7.0",
     "axios": "^0.18.0",
     "cors": "^2.8.5",
-    "react": "^16.7.0",
+    "react": "^16.8.6",
     "react-dom": "^16.7.0",
     "react-helmet": "^5.2.0",
+    "react-responsive": "^6.1.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.2",
-    "semantic-ui-react": "^0.83.0"
+    "react-swipe": "^6.0.4",
+    "semantic-ui-react": "^0.83.0",
+    "swipe-js-iso": "^2.1.5"
   },
   "scripts": {
     "postinstall": "npm run build",
