@@ -127,8 +127,8 @@ class LeaderBoards extends Component {
                                         </Tabs>
                                         {this.state.mobileSelected === 1 ? east : west} */}
 
-                                        <Button variant="outlined" style={{ width: '40%', margin: '10px' }} onClick={() => this.reactSwipeEl.slide(0)}>West</Button>
-                                        <Button variant="outlined" style={{ width: '40%', margin: '10px' }} onClick={() => this.reactSwipeEl.slide(1)}>East</Button>
+                                        <Button variant="outlined" style={{ width: '40%', margin: '10px' }} onClick={() => this.reactSwipe.slide(0)}>West</Button>
+                                        <Button variant="outlined" style={{ width: '40%', margin: '10px' }} onClick={() => this.reactSwipe.slide(1)}>East</Button>
                                         <ReactSwipe swipeOptions={{ continuous: false }} ref={reactSwipe => (this.reactSwipe = reactSwipe)}>
                                             <div><h2>West</h2>{west}</div>
                                             <div><h2>East</h2>{east}</div>
